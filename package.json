@@ -1,0 +1,24 @@
+{
+  "name": "threeui-community",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A login-free open-source catalog for ThreeUI Community resources with media-only Pro previews.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "generate:catalog": "node scripts/build-public-catalog.mjs",
+    "test": "node --test scripts/public-boundary.test.mjs",
+    "audit:public": "node scripts/audit-public.mjs",
+    "build": "npm run test && npm run audit:public && vite build && node scripts/audit-build.mjs",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.1.1",
+    "vite": "^7.3.1"
+  }
+}
