@@ -4,6 +4,8 @@ The open-source, login-free edition of ThreeUI. It uses the same application she
 
 The catalog is the only product-level difference: Pro and Beta components are removed. Every Community component keeps all of its free variants and controls.
 
+[Browse ThreeUI](https://threeui.com) · [View the source on GitHub](https://github.com/MengTo/threeui)
+
 ![ThreeUI Community preview](assets/preview.jpg)
 
 ## Included
