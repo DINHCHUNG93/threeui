@@ -2,23 +2,32 @@
   "name": "threeui-community",
   "version": "0.1.0",
   "private": true,
-  "description": "A login-free open-source catalog for ThreeUI Community resources with media-only Pro previews.",
+  "description": "The login-free open-source ThreeUI Community catalog, synchronized with the main ThreeUI interface.",
   "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "generate:catalog": "node scripts/build-public-catalog.mjs",
+    "sync:community": "node scripts/sync-community-from-main.mjs",
+    "typecheck": "tsc --noEmit",
     "test": "node --test scripts/public-boundary.test.mjs",
     "audit:public": "node scripts/audit-public.mjs",
-    "build": "npm run test && npm run audit:public && vite build && node scripts/audit-build.mjs",
+    "build": "npm run typecheck && npm run test && npm run audit:public && vite build && node scripts/audit-build.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "three": "0.149.0",
+    "three128": "npm:three@0.128.0",
+    "three165": "npm:three@0.165.0"
   },
   "devDependencies": {
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@types/three": "0.149.0",
     "@vitejs/plugin-react": "^5.1.1",
+    "typescript": "^5.9.3",
     "vite": "^7.3.1"
   }
 }

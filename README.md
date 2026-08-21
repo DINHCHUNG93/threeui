@@ -1,18 +1,19 @@
 # ThreeUI Community
 
-A login-free edition of the ThreeUI product interface. It preserves the main project's non-Beta catalog structure, variant families, sidebar, browse grid, search, themes, documentation layout, and responsive navigation. Reviewed Community source is included; Pro remains media-only.
+The open-source, login-free edition of ThreeUI. It uses the same application shell, layout, navigation, browse grid, search, themes, responsive behavior, component pages, live renderers, controls, variant picker, and source tabs as the main project.
+
+The catalog is the only product-level difference: Pro and Beta components are removed. Every Community component keeps all of its free variants and controls.
 
 ![ThreeUI Community preview](assets/preview.jpg)
 
-## Public boundary
+## Included
 
-- Community: all non-Beta catalog entries remain visible. Reviewed source bundles are included under MIT when they have no Pro file overlap, bundled binary assets, private runtime URLs, environment dependencies, or private paths. Entries still awaiting that boundary remain preview-only.
-- Pro: title, description, tags, poster URL, preview-video URL, and upgrade URL only.
-- Authentication and commerce: not included.
-- Catalog media: loaded from the verified live deployment at `https://threeui.com`; no media binaries are redistributed by this repository.
-- Repository preview: `assets/preview.jpg` and `assets/preview.webm` document this open-source interface and are included under MIT.
-
-The export is intentionally fail-closed. A Community source package is withheld when its implementation shares a file with Pro, embeds assets, reaches a runtime outside the narrow public allowlist, or lacks complete reviewable source; its public catalog metadata and variant previews can remain visible.
+- 50 Community parent components
+- 111 Community routes
+- 141 free variant records, plus 23 singleton components (164 browse results)
+- Complete Community implementation source and required assets
+- No authentication, account state, checkout runtime, Pro implementation, or Beta implementation
+- `Get Pro` links to `https://threeui.com/pricing`
 
 ## Run locally
 
@@ -21,20 +22,26 @@ npm install
 npm run dev
 ```
 
-Build and run the publication boundary checks:
+Run the complete publication boundary, type, and production-build checks:
 
 ```bash
 npm run build
 ```
 
-## Data
+## Synchronization
 
-- `public/data/catalog.json` contains public Community and media-only Pro metadata.
-- `public/data/community-source.json` contains reviewed Community source bundles.
-- `public/data/resource-report.json` explains how many Community source packages remain preview-only and why.
+The checked-in repository runs independently. Maintainers can refresh its Community subset from a separately held main-project snapshot:
 
-Catalog generation is an internal release operation. It requires a separately held private source snapshot through `THREEUI_SOURCE_ROOT`; ordinary contributors do not need that source to run or build this repository.
+```bash
+npm run sync:community -- /path/to/main-threeui
+```
+
+The sync fails closed, filters Pro and Beta before generating the public import graph, preserves all free metadata and options, removes restricted font assets, and writes:
+
+- `public/community-sync-report.json` — counts plus per-component variant/control parity
+- `public/source-code.json` — Community source bundles used by the Code tab
+- `src/data/shaders.tsx` — Community-only catalog and renderer imports
 
 ## License
 
-Application and included Community source: MIT. External catalog media is not part of this repository or the MIT grant; see `ASSET-LICENSES.md`.
+Application code, Community component code, and ThreeUI-authored Community imagery are MIT licensed. Bundled open fonts remain under the SIL Open Font License 1.1, and bundled Three.js runtime files remain MIT licensed. Remote catalog thumbnails and previews loaded from `https://threeui.com` are not redistributed by this repository. See `ASSET-LICENSES.md`, `FONT-LICENSES.md`, and `THIRD_PARTY_NOTICES.md`.

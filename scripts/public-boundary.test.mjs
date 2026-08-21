@@ -1,100 +1,154 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
+import { readdir, readFile, stat } from "node:fs/promises";
+import { dirname, join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import test from "node:test";
+import { createServer } from "vite";
 
-const catalog = JSON.parse(await readFile(new URL("../public/data/catalog.json", import.meta.url), "utf8"));
-const source = JSON.parse(await readFile(new URL("../public/data/community-source.json", import.meta.url), "utf8"));
-const report = JSON.parse(await readFile(new URL("../public/data/resource-report.json", import.meta.url), "utf8"));
-const signatures = JSON.parse(await readFile(new URL("./pro-signatures.json", import.meta.url), "utf8"));
-const appSource = await readFile(new URL("../src/App.jsx", import.meta.url), "utf8");
-const styles = await readFile(new URL("../src/styles.css", import.meta.url), "utf8");
-const generatorSource = await readFile(new URL("./build-public-catalog.mjs", import.meta.url), "utf8");
-const sourceById = new Map(source.components.map((component) => [component.id, component]));
-const allowedProKeys = new Set(["id", "label", "description", "category", "runtime", "tags", "thumbnail", "preview", "access", "upgradeUrl", "variants"]);
-const allowedVariantKeys = new Set(["id", "label", "description", "thumbnail", "preview", "access", "upgradeUrl"]);
+const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
+const report = JSON.parse(await readFile(join(root, "public", "community-sync-report.json"), "utf8"));
+const sourceRegistry = JSON.parse(await readFile(join(root, "public", "source-code.json"), "utf8"));
+const styles = await readFile(join(root, "src", "styles.css"));
 
-test("catalog has distinct reviewed Community and media-only Pro sets", () => {
-  assert.ok(catalog.community.length > 0, "expected at least one reviewed Community resource");
-  assert.ok(catalog.pro.length > 0, "expected at least one Pro preview");
-  const ids = [...catalog.community, ...catalog.pro].map((item) => item.id);
-  assert.equal(new Set(ids).size, ids.length, "every public catalog record needs a unique id");
-  const communityIds = new Set(catalog.community.map((item) => item.id));
-  for (const item of catalog.pro) assert.ok(!communityIds.has(item.id), `${item.id} cannot be both Community and Pro`);
-});
-
-test("every Community card has reviewed source or a documented preview-only boundary", () => {
-  const previewOnlyIds = new Set(report.omittedCommunity.map((item) => item.id));
-  for (const item of catalog.community) {
-    assert.equal(item.access, "community");
-    if (item.sourceId) assert.ok(sourceById.has(item.sourceId), `${item.id} is missing source ${item.sourceId}`);
-    else {
-      assert.equal(item.sourceAvailability, "preview-only");
-      assert.ok(previewOnlyIds.has(item.id), `${item.id} needs a documented source-boundary reason`);
-    }
-  }
-});
-
-test("Pro records cannot carry source-bearing fields", () => {
-  for (const item of catalog.pro) {
-    assert.equal(item.access, "pro");
-    assert.equal(item.upgradeUrl, "https://threeui.com/pricing");
-    assert.match(item.thumbnail, /^https:\/\/threeui\.com\//);
-    assert.match(item.preview, /^https:\/\/threeui\.com\//);
-    for (const key of Object.keys(item)) assert.ok(allowedProKeys.has(key), `${item.id} exposes forbidden field ${key}`);
-    for (const variant of item.variants ?? []) {
-      assert.equal(variant.access, "pro");
-      assert.equal(variant.upgradeUrl, "https://threeui.com/pricing");
-      if (variant.preview) assert.match(variant.preview, /^https:\/\/threeui\.com\//);
-      for (const key of Object.keys(variant)) assert.ok(allowedVariantKeys.has(key), `${item.id}/${variant.id} exposes forbidden field ${key}`);
-    }
-  }
-});
-
-test("variant families retain media metadata without implementation fields", () => {
-  const families = [...catalog.community, ...catalog.pro].filter((item) => (item.variants?.length ?? 0) > 1);
-  assert.ok(families.length > 0, "expected published variant families");
-  for (const item of families) {
-    for (const variant of item.variants) {
-      assert.match(variant.thumbnail, /^https:\/\/threeui\.com\//);
-      if (variant.preview) assert.match(variant.preview, /^https:\/\/threeui\.com\//);
-      for (const key of Object.keys(variant)) assert.ok(allowedVariantKeys.has(key), `${item.id}/${variant.id} exposes forbidden field ${key}`);
-      assert.ok(!("sourceId" in variant) && !("props" in variant) && !("controls" in variant), `${item.id}/${variant.id} exposes implementation metadata`);
-    }
-  }
-});
-
-test("public app preserves the reduced ThreeUI shell without auth or private feature imports", () => {
-  for (const token of ["sidebar", "browse-grid", "browse-category-filters", "theme-buttons", "pro-disclosure", "source-card"]) {
-    assert.match(`${appSource}\n${styles}`, new RegExp(`\\b${token}\\b`), `missing ThreeUI shell surface ${token}`);
-  }
-  assert.doesNotMatch(appSource, /AccountButton|AuthProvider|OAuthConsent|McpDocumentation|PricingDocumentation|supabase|stripe/i);
-  assert.match(appSource, /View full ThreeUI/);
-  assert.match(appSource, /Preview only in this repository/);
-  assert.match(appSource, /variant-picker/);
-  assert.doesNotMatch(appSource, /\bbeta\b/i);
-  assert.match(generatorSource, /shader\.status === "beta"/);
-});
-
-function allowedSourceUrl(value) {
-  const url = new URL(value.replaceAll("&amp;", "&"));
-  if (url.hostname === "www.w3.org" && ["/2000/svg", "/1999/xhtml"].includes(url.pathname)) return true;
-  if (["fonts.googleapis.com", "fonts.gstatic.com"].includes(url.hostname)) return true;
-  return url.hostname === "cdn.jsdelivr.net" && /^\/npm\/three@[0-9.]+\//.test(url.pathname);
+const vite = await createServer({ root, server: { middlewareMode: true }, appType: "custom", logLevel: "silent" });
+let catalog;
+try {
+  catalog = await vite.ssrLoadModule("/src/data/shaders.tsx");
+} finally {
+  await vite.close();
 }
 
-test("Community source contains no Pro IDs, exports, private paths, auth, commerce, or unapproved runtime URLs", () => {
-  const serialized = JSON.stringify(source);
-  for (const id of signatures.ids) assert.ok(!serialized.includes(id), `Community source mentions Pro id ${id}`);
-  for (const name of signatures.importNames) assert.ok(!new RegExp(`\\b${name}\\b`).test(serialized), `Community source mentions Pro export ${name}`);
+const visible = catalog.VISIBLE_READY_SHADERS;
+const allRoutes = catalog.READY_SHADERS;
+const componentReport = new Map(report.components.map((component) => [component.id, component]));
+
+test("the public catalog is the complete current Community snapshot", () => {
+  assert.equal(report.communityParents, 50);
+  assert.equal(report.communityRoutes, 111);
+  assert.equal(report.communityVariants, 141);
+  assert.ok(report.excludedProParents > 0, "the source snapshot should contain excluded Pro parents");
+  assert.ok(report.excludedBetaParents > 0, "the source snapshot should contain excluded Beta parents");
+  assert.equal(visible.length, report.communityParents);
+  assert.equal(allRoutes.length, report.communityRoutes);
+  assert.equal(new Set(allRoutes.map((shader) => shader.id)).size, allRoutes.length);
+  assert.ok(allRoutes.every((shader) => shader.status === undefined && shader.access === undefined));
+});
+
+test("every free variant and control stays in sync with the source snapshot", () => {
+  assert.deepEqual([...componentReport.keys()].sort(), visible.map((shader) => shader.id).sort());
+
+  let variantCount = 0;
+  for (const shader of visible) {
+    const expected = componentReport.get(shader.id);
+    const variants = shader.variants ?? [];
+    variantCount += variants.length;
+    assert.deepEqual(variants.map((variant) => variant.id), expected.variantIds, `${shader.id} variant drift`);
+    assert.deepEqual((shader.controls ?? []).map((control) => control.key), expected.controlKeys, `${shader.id} control drift`);
+    for (const variant of variants) {
+      assert.deepEqual(
+        (variant.controls ?? []).map((control) => control.key),
+        expected.variantControlKeys[variant.id],
+        `${shader.id}/${variant.id} control drift`,
+      );
+    }
+  }
+  assert.equal(variantCount, report.communityVariants);
+
+  assert.equal(componentReport.get("brand-orbs").variantIds.length, 23);
+  assert.equal(componentReport.get("predictive-arc").variantIds.length, 8);
+  assert.equal(componentReport.get("character-carousel").variantIds.length, 2);
+});
+
+test("all Community parents include their implementation source", () => {
+  const ids = visible.map((shader) => shader.id).sort();
+  assert.deepEqual([...sourceRegistry.readyIds].sort(), ids);
+  assert.deepEqual(sourceRegistry.components.map((component) => component.id).sort(), ids);
+  assert.equal(new Set(sourceRegistry.readyIds).size, sourceRegistry.readyIds.length);
+
+  for (const component of sourceRegistry.components) {
+    assert.ok(component.files.length + component.sharedFilePaths.length > 0, `${component.id} has no source`);
+    for (const file of component.files) {
+      assert.ok(
+        file.path.startsWith("src/shaders/")
+          || file.path.startsWith("public/")
+          || file.path === "scripts/generate-landscape.mjs",
+        `${component.id} includes an unexpected source path`,
+      );
+      assert.equal(createHash("sha256").update(file.code).digest("hex"), file.sha256, `${file.path} hash mismatch`);
+    }
+    for (const path of component.sharedFilePaths) {
+      assert.ok(path.startsWith("src/shaders/") || path.startsWith("public/"));
+    }
+  }
+});
+
+test("the main layout stylesheet remains byte-identical to the synchronized snapshot", () => {
+  assert.equal(createHash("sha256").update(styles).digest("hex"), report.layoutStylesSha256);
+});
+
+test("mixed-access renderers expose only their Community option", async () => {
+  const exactSurfaces = [
+    ["src/shaders/globe/GlobeCollection.tsx", 'export type GlobeVariant = "energy-orb"'],
+    ["src/shaders/spark-badge/SparkBadge.tsx", 'export type SparkBadgeVariant = "badge"'],
+    ["src/shaders/sylva-living-world/SylvaLivingWorldScene.tsx", 'export type SylvaLivingWorldVariant = "living-green"'],
+    ["src/shaders/temple-night/TempleNightScene.tsx", 'export type TempleNightVariant = "temple-night"'],
+  ];
+  for (const [path, signature] of exactSurfaces) {
+    const source = await readFile(join(root, path), "utf8");
+    assert.ok(source.includes(signature), `${path} is missing its exact Community variant boundary`);
+    assert.equal((source.match(/export type .*Variant =/g) ?? []).length, 1, `${path} exposes another variant union`);
+  }
+
+  const landingPages = await readFile(join(root, "src/shaders/landing-pages/LandingPages.tsx"), "utf8");
+  assert.equal((landingPages.match(/export function /g) ?? []).length, 6, "landing pages should export the frame and five Community pages");
+});
+
+test("the public shell keeps the main UI but has no auth or private catalog runtime", async () => {
+  const files = [];
+  async function walk(directory) {
+    for (const entry of await readdir(directory, { withFileTypes: true })) {
+      const path = join(directory, entry.name);
+      if (entry.isDirectory()) await walk(path);
+      else if (/\.(?:css|html|js|jsx|json|mjs|ts|tsx)$/.test(entry.name)) files.push(path);
+    }
+  }
+  await walk(join(root, "src"));
+  const combined = (await Promise.all(files.map((path) => readFile(path, "utf8")))).join("\n");
   for (const pattern of [
     /\/Users\/[A-Za-z0-9._-]+\//,
-    /import\.meta\.env/,
-    /process\.env/,
-    /supabase/i,
-    /checkout/i,
+    /shader-field-react/,
+    /threeui\.netlify\.app/,
     /AuthProvider/,
-  ]) assert.doesNotMatch(serialized, pattern);
-  for (const url of serialized.match(/https?:\/\/[^\\"'<>`)]+/g) ?? []) {
-    assert.ok(allowedSourceUrl(url), `unapproved Community source URL ${url}`);
-  }
+    /AccountButton/,
+    /OAuthConsent/,
+    /@supabase\//,
+    /createClient\s*\(/,
+    /supabase\.auth/,
+    /create-checkout-session/i,
+    /stripe-webhook/i,
+    /VITE_SUPABASE/,
+    /SFProDisplay/,
+    /Maccess SF/,
+    /sf-(?:bold|light|medium|regular|semibold)\.woff2/,
+  ]) assert.doesNotMatch(combined, pattern);
+
+  for (const path of [
+    "src/auth",
+    "src/components/ProShaderDocumentation.tsx",
+    "src/components/AccountButton.tsx",
+    "src/components/OAuthConsent.tsx",
+    "src/components/PricingDocumentation.tsx",
+    "src/catalogVisibility.ts",
+    "src/localBeta.ts",
+  ]) await assert.rejects(stat(join(root, path)), `${path} must not ship`);
+
+  const maccessAssets = await readdir(join(root, "src/shaders/maccess-elements/assets"));
+  assert.ok(maccessAssets.every((name) => !name.endsWith(".woff2")), "restricted font binaries must not ship");
+
+  const app = await readFile(join(root, "src", "App.tsx"), "utf8");
+  const sidebar = await readFile(join(root, "src", "components", "Sidebar.tsx"), "utf8");
+  const upgrade = await readFile(join(root, "src", "components", "UpgradeLink.tsx"), "utf8");
+  for (const token of ["sidebar", "topbar", "pane-scroll", "mobile-nav-scrim"]) assert.match(`${app}\n${sidebar}`, new RegExp(token));
+  assert.match(upgrade, /https:\/\/threeui\.com\/pricing/);
 });

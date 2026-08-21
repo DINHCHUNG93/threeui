@@ -1,17 +1,54 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Open-source ThreeUI Community components with media-only previews of ThreeUI Pro." />
-    <meta name="theme-color" content="#0b0b0c" />
+    <script>
+      (() => {
+        const root = document.documentElement;
+        const palettes = new Set(["mono", "sepia", "azure", "moss", "mauve"]);
+        try {
+          const savedTheme = localStorage.getItem("threeui-theme");
+          const lightPalette = localStorage.getItem("threeui-palette-light");
+          const darkPalette = localStorage.getItem("threeui-palette-dark");
+          const mode = savedTheme === "light" || savedTheme === "system" ? savedTheme : "dark";
+          if (mode === "system") root.removeAttribute("data-theme");
+          else root.dataset.theme = mode;
+          const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          const scheme = mode === "system" ? (prefersDark ? "dark" : "light") : mode;
+          root.dataset.scheme = scheme;
+          const palette = scheme === "dark" ? darkPalette : lightPalette;
+          root.dataset.palette = palettes.has(palette) ? palette : "mono";
+        } catch {
+          root.dataset.theme = "dark";
+          root.dataset.scheme = "dark";
+          root.dataset.palette = "mono";
+        }
+      })();
+    </script>
+    <meta
+      name="description"
+      content="Browse high-quality Three.js hero components, 3D shaders, prompts, and templates with customizable variants. Framework-agnostic. Copy, paste, and ship."
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ThreeUI" />
+    <meta property="og:title" content="Three.js Components &amp; Interactive Shaders | ThreeUI" />
+    <meta property="og:description" content="Browse high-quality Three.js hero components, 3D shaders, prompts, and templates with customizable variants. Framework-agnostic. Copy, paste, and ship." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Three.js Components &amp; Interactive Shaders | ThreeUI" />
+    <meta name="twitter:description" content="Browse high-quality Three.js hero components, 3D shaders, prompts, and templates with customizable variants. Framework-agnostic. Copy, paste, and ship." />
+    <link rel="icon" href="/threeui-mark.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <title>Three.js Components &amp; Interactive Shaders | ThreeUI</title>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
