@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "generatedAt": "2026-08-21T03:30:02.622Z",
   "policy": "Community source is included only after positive authorship, no Pro overlap, no bundled assets, and no runtime URL outside the W3 namespace, Google Fonts, or pinned Three.js allowlist. Pro records are media metadata only.",
-  "upgradeUrl": "https://threeui.netlify.app/pricing",
+  "upgradeUrl": "https://threeui.com/pricing",
   "community": [
     {
       "id": "character-carousel",
@@ -34,8 +34,8 @@
         "animated",
         "variants"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/character-carousel.jpg",
-      "preview": "https://threeui.netlify.app/previews/character-carousel.webm",
+      "thumbnail": "https://threeui.com/thumbnails/character-carousel.jpg",
+      "preview": "https://threeui.com/previews/character-carousel.webm",
       "access": "community",
       "sourceId": "character-carousel"
     },
@@ -59,8 +59,8 @@
         "retro",
         "screen"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/crt.jpg",
-      "preview": "https://threeui.netlify.app/previews/crt.webm",
+      "thumbnail": "https://threeui.com/thumbnails/crt.jpg",
+      "preview": "https://threeui.com/previews/crt.webm",
       "access": "community",
       "sourceId": "crt"
     },
@@ -83,8 +83,8 @@
         "vintage",
         "responsive"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/engraved-certificate.jpg",
-      "preview": "https://threeui.netlify.app/previews/engraved-certificate.webm",
+      "thumbnail": "https://threeui.com/thumbnails/engraved-certificate.jpg",
+      "preview": "https://threeui.com/previews/engraved-certificate.webm",
       "access": "community",
       "sourceId": "engraved-certificate"
     },
@@ -107,8 +107,8 @@
         "light mode",
         "dark mode"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/gradient-collection.jpg",
-      "preview": "https://threeui.netlify.app/previews/gradient-collection.webm",
+      "thumbnail": "https://threeui.com/thumbnails/gradient-collection.jpg",
+      "preview": "https://threeui.com/previews/gradient-collection.webm",
       "access": "community",
       "sourceId": "gradient-collection"
     },
@@ -141,8 +141,8 @@
         "morphing",
         "variants"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/hypnotic-loops.jpg",
-      "preview": "https://threeui.netlify.app/previews/hypnotic-loops.webm",
+      "thumbnail": "https://threeui.com/thumbnails/hypnotic-loops.jpg",
+      "preview": "https://threeui.com/previews/hypnotic-loops.webm",
       "access": "community",
       "sourceId": "hypnotic-loops"
     },
@@ -167,8 +167,8 @@
         "water",
         "cinematic"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/at-the-horizon.jpg",
-      "preview": "https://threeui.netlify.app/previews/at-the-horizon.webm",
+      "thumbnail": "https://threeui.com/thumbnails/at-the-horizon.jpg",
+      "preview": "https://threeui.com/previews/at-the-horizon.webm",
       "access": "community",
       "sourceId": "at-the-horizon"
     },
@@ -198,8 +198,8 @@
         "dark mode",
         "responsive"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/recursive-erosion.jpg",
-      "preview": "https://threeui.netlify.app/previews/recursive-erosion.webm",
+      "thumbnail": "https://threeui.com/thumbnails/recursive-erosion.jpg",
+      "preview": "https://threeui.com/previews/recursive-erosion.webm",
       "access": "community",
       "sourceId": "recursive-erosion"
     },
@@ -235,8 +235,8 @@
         "collection",
         "variants"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/structure-flow.jpg",
-      "preview": "https://threeui.netlify.app/previews/structure-flow.webm",
+      "thumbnail": "https://threeui.com/thumbnails/structure-flow.jpg",
+      "preview": "https://threeui.com/previews/structure-flow.webm",
       "access": "community",
       "sourceId": "structure-flow"
     },
@@ -269,8 +269,8 @@
         "interactive",
         "variants"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/globe-study.jpg",
-      "preview": "https://threeui.netlify.app/previews/globe-study.webm",
+      "thumbnail": "https://threeui.com/thumbnails/globe-study.jpg",
+      "preview": "https://threeui.com/previews/globe-study.webm",
       "access": "community",
       "sourceId": "globe-study"
     },
@@ -301,8 +301,8 @@
         "dark mode",
         "responsive"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/uplink-loader.jpg",
-      "preview": "https://threeui.netlify.app/previews/uplink-loader.webm",
+      "thumbnail": "https://threeui.com/thumbnails/uplink-loader.jpg",
+      "preview": "https://threeui.com/previews/uplink-loader.webm",
       "access": "community",
       "sourceId": "uplink-loader"
     },
@@ -326,8 +326,8 @@
         "warp",
         "background"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/warp-field.jpg",
-      "preview": "https://threeui.netlify.app/previews/warp-field.webm",
+      "thumbnail": "https://threeui.com/thumbnails/warp-field.jpg",
+      "preview": "https://threeui.com/previews/warp-field.webm",
       "access": "community",
       "sourceId": "warp-field"
     }
@@ -372,10 +372,10 @@
         "variants",
         "365"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/365-tetrahedron.jpg",
-      "preview": "https://threeui.netlify.app/previews/365-tetrahedron.webm",
+      "thumbnail": "https://threeui.com/thumbnails/365-tetrahedron.jpg",
+      "preview": "https://threeui.com/previews/365-tetrahedron.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "skills-plugins",
@@ -431,10 +431,10 @@
         "reduced motion",
         "variants"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/skills-plugins-keyboard.jpg",
-      "preview": "https://threeui.netlify.app/previews/skills-plugins.webm",
+      "thumbnail": "https://threeui.com/thumbnails/skills-plugins-keyboard.jpg",
+      "preview": "https://threeui.com/previews/skills-plugins.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "agent-arcana-landing-page",
@@ -467,10 +467,10 @@
         "interactive",
         "responsive"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/agent-arcana-landing-page.jpg",
-      "preview": "https://threeui.netlify.app/previews/agent-arcana-landing-page.webm",
+      "thumbnail": "https://threeui.com/thumbnails/agent-arcana-landing-page.jpg",
+      "preview": "https://threeui.com/previews/agent-arcana-landing-page.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "ascii-page-transition-hero",
@@ -499,10 +499,10 @@
         "responsive",
         "local font"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/ascii-page-transition-hero.jpg",
-      "preview": "https://threeui.netlify.app/previews/ascii-page-transition-hero.webm",
+      "thumbnail": "https://threeui.com/thumbnails/ascii-page-transition-hero.jpg",
+      "preview": "https://threeui.com/previews/ascii-page-transition-hero.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "attune-hero",
@@ -541,10 +541,10 @@
         "interactive",
         "responsive"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/attune-hero.jpg",
-      "preview": "https://threeui.netlify.app/previews/attune-hero.webm",
+      "thumbnail": "https://threeui.com/thumbnails/attune-hero.jpg",
+      "preview": "https://threeui.com/previews/attune-hero.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "aurello-landing-page",
@@ -582,10 +582,10 @@
         "interactive",
         "responsive"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/aurello-landing-page.jpg",
-      "preview": "https://threeui.netlify.app/previews/aurello-landing-page.webm",
+      "thumbnail": "https://threeui.com/thumbnails/aurello-landing-page.jpg",
+      "preview": "https://threeui.com/previews/aurello-landing-page.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "axonis-landing-page",
@@ -620,10 +620,10 @@
         "interactive",
         "responsive"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/axonis-landing-page.jpg",
-      "preview": "https://threeui.netlify.app/previews/axonis-landing-page.webm",
+      "thumbnail": "https://threeui.com/thumbnails/axonis-landing-page.jpg",
+      "preview": "https://threeui.com/previews/axonis-landing-page.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "betawise-landing-page",
@@ -666,10 +666,10 @@
         "interactive",
         "responsive"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/betawise-landing-page.jpg",
-      "preview": "https://threeui.netlify.app/previews/betawise-landing-page.webm",
+      "thumbnail": "https://threeui.com/thumbnails/betawise-landing-page.jpg",
+      "preview": "https://threeui.com/previews/betawise-landing-page.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "betawise-hero",
@@ -704,10 +704,10 @@
         "interactive",
         "responsive"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/betawise-hero.jpg",
-      "preview": "https://threeui.netlify.app/previews/betawise-hero.webm",
+      "thumbnail": "https://threeui.com/thumbnails/betawise-hero.jpg",
+      "preview": "https://threeui.com/previews/betawise-hero.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "cadence-hero",
@@ -745,10 +745,10 @@
         "light mode",
         "dark mode"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/cadence-hero.jpg",
-      "preview": "https://threeui.netlify.app/previews/cadence-hero.webm",
+      "thumbnail": "https://threeui.com/thumbnails/cadence-hero.jpg",
+      "preview": "https://threeui.com/previews/cadence-hero.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "cathode-hero",
@@ -786,10 +786,10 @@
         "reduced motion",
         "dark mode"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/cathode-hero.jpg",
-      "preview": "https://threeui.netlify.app/previews/cathode-hero.webm",
+      "thumbnail": "https://threeui.com/thumbnails/cathode-hero.jpg",
+      "preview": "https://threeui.com/previews/cathode-hero.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "centra-landing-page",
@@ -829,10 +829,10 @@
         "interactive",
         "responsive"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/centra-landing-page.jpg",
-      "preview": "https://threeui.netlify.app/previews/centra-landing-page.webm",
+      "thumbnail": "https://threeui.com/thumbnails/centra-landing-page.jpg",
+      "preview": "https://threeui.com/previews/centra-landing-page.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "cortexa-hero",
@@ -874,10 +874,10 @@
         "responsive",
         "reduced motion"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/cortexa-hero.jpg",
-      "preview": "https://threeui.netlify.app/previews/cortexa-hero.webm",
+      "thumbnail": "https://threeui.com/thumbnails/cortexa-hero.jpg",
+      "preview": "https://threeui.com/previews/cortexa-hero.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "cross-beam",
@@ -901,10 +901,10 @@
         "reactive",
         "ripples"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/cross-beam.jpg",
-      "preview": "https://threeui.netlify.app/previews/cross-beam.webm",
+      "thumbnail": "https://threeui.com/thumbnails/cross-beam.jpg",
+      "preview": "https://threeui.com/previews/cross-beam.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "echo-vale-landing-page",
@@ -940,10 +940,10 @@
         "interactive",
         "responsive"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/echo-vale-landing-page.jpg",
-      "preview": "https://threeui.netlify.app/previews/echo-vale-landing-page.webm",
+      "thumbnail": "https://threeui.com/thumbnails/echo-vale-landing-page.jpg",
+      "preview": "https://threeui.com/previews/echo-vale-landing-page.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "energy-orb--network-globe",
@@ -982,10 +982,10 @@
         "animated",
         "variants"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/network-globe.jpg",
-      "preview": "https://threeui.netlify.app/previews/network-globe.mp4",
+      "thumbnail": "https://threeui.com/thumbnails/network-globe.jpg",
+      "preview": "https://threeui.com/previews/network-globe.mp4",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "energy-orb--tangled-constellations",
@@ -1024,10 +1024,10 @@
         "animated",
         "variants"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/tangled-constellations.jpg",
-      "preview": "https://threeui.netlify.app/previews/tangled-constellations.mp4",
+      "thumbnail": "https://threeui.com/thumbnails/tangled-constellations.jpg",
+      "preview": "https://threeui.com/previews/tangled-constellations.mp4",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "halfwave-landing-page",
@@ -1069,10 +1069,10 @@
         "interactive",
         "responsive"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/halfwave-landing-page.jpg",
-      "preview": "https://threeui.netlify.app/previews/halfwave-landing-page.webm",
+      "thumbnail": "https://threeui.com/thumbnails/halfwave-landing-page.jpg",
+      "preview": "https://threeui.com/previews/halfwave-landing-page.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "heatmap-badge",
@@ -1108,10 +1108,10 @@
         "dark mode",
         "self contained"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/heatmap-badge.jpg",
-      "preview": "https://threeui.netlify.app/previews/heatmap-badge.webm",
+      "thumbnail": "https://threeui.com/thumbnails/heatmap-badge.jpg",
+      "preview": "https://threeui.com/previews/heatmap-badge.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "hourglass-loader",
@@ -1155,10 +1155,10 @@
         "embedded textures",
         "self contained"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/hourglass-loader.jpg",
-      "preview": "https://threeui.netlify.app/previews/hourglass-loader.webm",
+      "thumbnail": "https://threeui.com/thumbnails/hourglass-loader.jpg",
+      "preview": "https://threeui.com/previews/hourglass-loader.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "inkbound-river-story",
@@ -1183,10 +1183,10 @@
         "responsive",
         "dark mode"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/inkbound-river-story.jpg",
-      "preview": "https://threeui.netlify.app/previews/inkbound-river-story.webm",
+      "thumbnail": "https://threeui.com/thumbnails/inkbound-river-story.jpg",
+      "preview": "https://threeui.com/previews/inkbound-river-story.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "isometric-charging-dock",
@@ -1209,10 +1209,10 @@
         "animation",
         "loop"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/isometric-charging-dock.jpg",
-      "preview": "https://threeui.netlify.app/previews/isometric-charging-dock.webm",
+      "thumbnail": "https://threeui.com/thumbnails/isometric-charging-dock.jpg",
+      "preview": "https://threeui.com/previews/isometric-charging-dock.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "iso-mail-lightshafts",
@@ -1255,10 +1255,10 @@
         "pointer",
         "orthographic"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/iso-mail-lightshafts.jpg",
-      "preview": "https://threeui.netlify.app/previews/iso-mail-lightshafts.webm",
+      "thumbnail": "https://threeui.com/thumbnails/iso-mail-lightshafts.jpg",
+      "preview": "https://threeui.com/previews/iso-mail-lightshafts.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "isometric-motion-grid",
@@ -1279,10 +1279,10 @@
         "product",
         "orthographic"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/isometric-motion-grid.jpg",
-      "preview": "https://threeui.netlify.app/previews/isometric-motion-grid.webm",
+      "thumbnail": "https://threeui.com/thumbnails/isometric-motion-grid.jpg",
+      "preview": "https://threeui.com/previews/isometric-motion-grid.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "kairo-landing-page",
@@ -1321,10 +1321,10 @@
         "interactive",
         "responsive"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/kairo-landing-page.jpg",
-      "preview": "https://threeui.netlify.app/previews/kairo-landing-page.webm",
+      "thumbnail": "https://threeui.com/thumbnails/kairo-landing-page.jpg",
+      "preview": "https://threeui.com/previews/kairo-landing-page.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "meng-timeline",
@@ -1361,10 +1361,10 @@
         "self contained",
         "full html"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/meng-timeline.jpg",
-      "preview": "https://threeui.netlify.app/previews/meng-timeline.webm",
+      "thumbnail": "https://threeui.com/thumbnails/meng-timeline.jpg",
+      "preview": "https://threeui.com/previews/meng-timeline.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "meridian-landing-page",
@@ -1400,10 +1400,10 @@
         "interactive",
         "responsive"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/meridian-landing-page.jpg",
-      "preview": "https://threeui.netlify.app/previews/meridian-landing-page.webm",
+      "thumbnail": "https://threeui.com/thumbnails/meridian-landing-page.jpg",
+      "preview": "https://threeui.com/previews/meridian-landing-page.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "noctiluca-landing-page",
@@ -1442,10 +1442,10 @@
         "interactive",
         "responsive"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/noctiluca-landing-page.jpg",
-      "preview": "https://threeui.netlify.app/previews/noctiluca-landing-page.webm",
+      "thumbnail": "https://threeui.com/thumbnails/noctiluca-landing-page.jpg",
+      "preview": "https://threeui.com/previews/noctiluca-landing-page.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "nocturne-hero",
@@ -1484,10 +1484,10 @@
         "interactive",
         "responsive"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/nocturne-hero.jpg",
-      "preview": "https://threeui.netlify.app/previews/nocturne-hero.webm",
+      "thumbnail": "https://threeui.com/thumbnails/nocturne-hero.jpg",
+      "preview": "https://threeui.com/previews/nocturne-hero.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "noema-bloom",
@@ -1526,10 +1526,10 @@
         "responsive",
         "reduced motion"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/noema-bloom.jpg",
-      "preview": "https://threeui.netlify.app/previews/noema-bloom.webm",
+      "thumbnail": "https://threeui.com/thumbnails/noema-bloom.jpg",
+      "preview": "https://threeui.com/previews/noema-bloom.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "receipt-printer",
@@ -1572,10 +1572,10 @@
         "dark mode",
         "full html"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/receipt-printer.jpg",
-      "preview": "https://threeui.netlify.app/previews/receipt-printer.webm",
+      "thumbnail": "https://threeui.com/thumbnails/receipt-printer.jpg",
+      "preview": "https://threeui.com/previews/receipt-printer.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "renderlab-landing-page",
@@ -1613,10 +1613,10 @@
         "interactive",
         "responsive"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/renderlab-landing-page.jpg",
-      "preview": "https://threeui.netlify.app/previews/renderlab-landing-page.webm",
+      "thumbnail": "https://threeui.com/thumbnails/renderlab-landing-page.jpg",
+      "preview": "https://threeui.com/previews/renderlab-landing-page.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "sakura-branch",
@@ -1651,10 +1651,10 @@
         "interactive",
         "variants"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/sakura-branch.jpg",
-      "preview": "https://threeui.netlify.app/previews/sakura-branch.webm",
+      "thumbnail": "https://threeui.com/thumbnails/sakura-branch.jpg",
+      "preview": "https://threeui.com/previews/sakura-branch.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "scalability-bricks",
@@ -1677,10 +1677,10 @@
         "materials",
         "interactive"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/scalability-bricks.jpg",
-      "preview": "https://threeui.netlify.app/previews/scalability-bricks.webm",
+      "thumbnail": "https://threeui.com/thumbnails/scalability-bricks.jpg",
+      "preview": "https://threeui.com/previews/scalability-bricks.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "sekitei-landing-page",
@@ -1713,10 +1713,10 @@
         "responsive",
         "dark mode"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/sekitei-landing-page.jpg",
-      "preview": "https://threeui.netlify.app/previews/sekitei-landing-page.webm",
+      "thumbnail": "https://threeui.com/thumbnails/sekitei-landing-page.jpg",
+      "preview": "https://threeui.com/previews/sekitei-landing-page.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "spark-badge--browser",
@@ -1736,10 +1736,10 @@
         "curl noise",
         "interactive"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/spark-browser.jpg",
-      "preview": "https://threeui.netlify.app/previews/spark-browser.mp4",
+      "thumbnail": "https://threeui.com/thumbnails/spark-browser.jpg",
+      "preview": "https://threeui.com/previews/spark-browser.mp4",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "spark-badge--iphone",
@@ -1759,10 +1759,10 @@
         "curl noise",
         "interactive"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/spark-iphone.jpg",
-      "preview": "https://threeui.netlify.app/previews/spark-iphone.mp4",
+      "thumbnail": "https://threeui.com/thumbnails/spark-iphone.jpg",
+      "preview": "https://threeui.com/previews/spark-iphone.mp4",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "spark-badge--studio-display",
@@ -1782,10 +1782,10 @@
         "curl noise",
         "interactive"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/spark-studio-display.jpg",
-      "preview": "https://threeui.netlify.app/previews/spark-studio-display.mp4",
+      "thumbnail": "https://threeui.com/thumbnails/spark-studio-display.jpg",
+      "preview": "https://threeui.com/previews/spark-studio-display.mp4",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "sunset-valley",
@@ -1816,10 +1816,10 @@
         "pointer",
         "procedural"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/sunset-valley.jpg",
-      "preview": "https://threeui.netlify.app/previews/sunset-valley.webm",
+      "thumbnail": "https://threeui.com/thumbnails/sunset-valley.jpg",
+      "preview": "https://threeui.com/previews/sunset-valley.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "sylva-hero--maple-autumn",
@@ -1858,10 +1858,10 @@
         "interactive",
         "responsive"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/sylva-hero-maple-autumn.jpg",
-      "preview": "https://threeui.netlify.app/previews/sylva-hero-maple-autumn.webm",
+      "thumbnail": "https://threeui.com/thumbnails/sylva-hero-maple-autumn.jpg",
+      "preview": "https://threeui.com/previews/sylva-hero-maple-autumn.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "sylva-hero--sakura-sunset",
@@ -1900,10 +1900,10 @@
         "interactive",
         "responsive"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/sylva-hero-sakura-sunset.jpg",
-      "preview": "https://threeui.netlify.app/previews/sylva-hero-sakura-sunset.webm",
+      "thumbnail": "https://threeui.com/thumbnails/sylva-hero-sakura-sunset.jpg",
+      "preview": "https://threeui.com/previews/sylva-hero-sakura-sunset.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "sylva-hero--sequoia-mist",
@@ -1942,10 +1942,10 @@
         "interactive",
         "responsive"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/sylva-hero-sequoia-mist.jpg",
-      "preview": "https://threeui.netlify.app/previews/sylva-hero-sequoia-mist.webm",
+      "thumbnail": "https://threeui.com/thumbnails/sylva-hero-sequoia-mist.jpg",
+      "preview": "https://threeui.com/previews/sylva-hero-sequoia-mist.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "sylva-living-world--maple-autumn",
@@ -2010,10 +2010,10 @@
         "reduced motion",
         "variants"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/sylva-living-world-maple-autumn.jpg",
-      "preview": "https://threeui.netlify.app/previews/sylva-living-world-maple-autumn.webm",
+      "thumbnail": "https://threeui.com/thumbnails/sylva-living-world-maple-autumn.jpg",
+      "preview": "https://threeui.com/previews/sylva-living-world-maple-autumn.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "sylva-living-world--sakura-sunset",
@@ -2078,10 +2078,10 @@
         "reduced motion",
         "variants"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/sylva-living-world-sakura-sunset.jpg",
-      "preview": "https://threeui.netlify.app/previews/sylva-living-world-sakura-sunset.webm",
+      "thumbnail": "https://threeui.com/thumbnails/sylva-living-world-sakura-sunset.jpg",
+      "preview": "https://threeui.com/previews/sylva-living-world-sakura-sunset.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "sylva-living-world--sequoia-mist",
@@ -2146,10 +2146,10 @@
         "reduced motion",
         "variants"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/sylva-living-world-sequoia-mist.jpg",
-      "preview": "https://threeui.netlify.app/previews/sylva-living-world-sequoia-mist.webm",
+      "thumbnail": "https://threeui.com/thumbnails/sylva-living-world-sequoia-mist.jpg",
+      "preview": "https://threeui.com/previews/sylva-living-world-sequoia-mist.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "sylva-motion",
@@ -2200,10 +2200,10 @@
         "self contained",
         "full html"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/sylva-motion.jpg",
-      "preview": "https://threeui.netlify.app/previews/sylva-motion.webm",
+      "thumbnail": "https://threeui.com/thumbnails/sylva-motion.jpg",
+      "preview": "https://threeui.com/previews/sylva-motion.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "temple-night--lake-louise",
@@ -2226,10 +2226,10 @@
         "landscape",
         "procedural"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/lake-louise.jpg",
-      "preview": "https://threeui.netlify.app/previews/lake-louise.webm",
+      "thumbnail": "https://threeui.com/thumbnails/lake-louise.jpg",
+      "preview": "https://threeui.com/previews/lake-louise.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "temple-night--presidio-sunset",
@@ -2252,10 +2252,10 @@
         "landscape",
         "procedural"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/presidio-sunset.jpg",
-      "preview": "https://threeui.netlify.app/previews/presidio-sunset.webm",
+      "thumbnail": "https://threeui.com/thumbnails/presidio-sunset.jpg",
+      "preview": "https://threeui.com/previews/presidio-sunset.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "temple-night--yosemite-sunset",
@@ -2278,10 +2278,10 @@
         "landscape",
         "procedural"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/yosemite-sunset.jpg",
-      "preview": "https://threeui.netlify.app/previews/yosemite-sunset.webm",
+      "thumbnail": "https://threeui.com/thumbnails/yosemite-sunset.jpg",
+      "preview": "https://threeui.com/previews/yosemite-sunset.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "terrain-plume",
@@ -2303,10 +2303,10 @@
         "monochrome",
         "plume"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/terrain-plume.jpg",
-      "preview": "https://threeui.netlify.app/previews/terrain-plume.webm",
+      "thumbnail": "https://threeui.com/thumbnails/terrain-plume.jpg",
+      "preview": "https://threeui.com/previews/terrain-plume.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "tidecrest-hero",
@@ -2340,10 +2340,10 @@
         "interactive",
         "responsive"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/tidecrest-hero.jpg",
-      "preview": "https://threeui.netlify.app/previews/tidecrest-hero.webm",
+      "thumbnail": "https://threeui.com/thumbnails/tidecrest-hero.jpg",
+      "preview": "https://threeui.com/previews/tidecrest-hero.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "trochil-hero",
@@ -2386,10 +2386,10 @@
         "reduced motion",
         "dark mode"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/trochil-hero.jpg",
-      "preview": "https://threeui.netlify.app/previews/trochil-hero.webm",
+      "thumbnail": "https://threeui.com/thumbnails/trochil-hero.jpg",
+      "preview": "https://threeui.com/previews/trochil-hero.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "understory-landing-page",
@@ -2432,10 +2432,10 @@
         "interactive",
         "responsive"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/understory-landing-page.jpg",
-      "preview": "https://threeui.netlify.app/previews/understory-landing-page.webm",
+      "thumbnail": "https://threeui.com/thumbnails/understory-landing-page.jpg",
+      "preview": "https://threeui.com/previews/understory-landing-page.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "understory-motion",
@@ -2484,10 +2484,10 @@
         "self contained",
         "full html"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/understory-motion.jpg",
-      "preview": "https://threeui.netlify.app/previews/understory-motion.webm",
+      "thumbnail": "https://threeui.com/thumbnails/understory-motion.jpg",
+      "preview": "https://threeui.com/previews/understory-motion.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "veyra-hero",
@@ -2531,10 +2531,10 @@
         "responsive",
         "dark mode"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/veyra-hero.jpg",
-      "preview": "https://threeui.netlify.app/previews/veyra-hero.webm",
+      "thumbnail": "https://threeui.com/thumbnails/veyra-hero.jpg",
+      "preview": "https://threeui.com/previews/veyra-hero.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "volta-atelier-landing-page",
@@ -2577,10 +2577,10 @@
         "interactive",
         "responsive"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/volta-atelier-landing-page.jpg",
-      "preview": "https://threeui.netlify.app/previews/volta-atelier-landing-page.webm",
+      "thumbnail": "https://threeui.com/thumbnails/volta-atelier-landing-page.jpg",
+      "preview": "https://threeui.com/previews/volta-atelier-landing-page.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "volta-atelier-hero",
@@ -2609,10 +2609,10 @@
         "reduced motion",
         "animated"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/volta-atelier-hero.jpg",
-      "preview": "https://threeui.netlify.app/previews/volta-atelier-hero.webm",
+      "thumbnail": "https://threeui.com/thumbnails/volta-atelier-hero.jpg",
+      "preview": "https://threeui.com/previews/volta-atelier-hero.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "mechanical-keyboard",
@@ -2644,10 +2644,10 @@
         "product showcase",
         "variants"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/mechanical-wallet.jpg",
-      "preview": "https://threeui.netlify.app/previews/mechanical-wallet.webm",
+      "thumbnail": "https://threeui.com/thumbnails/mechanical-wallet.jpg",
+      "preview": "https://threeui.com/previews/mechanical-wallet.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     },
     {
       "id": "wood-icons",
@@ -2689,10 +2689,10 @@
         "reduced motion",
         "variants"
       ],
-      "thumbnail": "https://threeui.netlify.app/thumbnails/wood-icons.jpg",
-      "preview": "https://threeui.netlify.app/previews/wood-icons.webm",
+      "thumbnail": "https://threeui.com/thumbnails/wood-icons.jpg",
+      "preview": "https://threeui.com/previews/wood-icons.webm",
       "access": "pro",
-      "upgradeUrl": "https://threeui.netlify.app/pricing"
+      "upgradeUrl": "https://threeui.com/pricing"
     }
   ]
 }

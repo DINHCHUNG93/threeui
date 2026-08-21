@@ -2,7 +2,7 @@ import { useDeferredValue, useEffect, useMemo, useState } from "react";
 
 const CATALOG_URL = "./data/catalog.json";
 const SOURCE_URL = "./data/community-source.json";
-const LIVE_SITE = "https://threeui.netlify.app";
+const LIVE_SITE = "https://threeui.com";
 const CATEGORY_ORDER = ["Landing Pages", "Hero", "Three.js", "Backgrounds", "Buttons", "Text Animation", "UI Elements", "CSS", "Motion Design", "Sections"];
 const FEATURED_LABELS = ["ASCII Page Transition", "Agent Arcana", "Character Carousel", "Understory", "Receipt Printer", "Noctiluca", "CRT", "365 Shapes", "Aurello", "Recursive Erosion", "Engraved Certificate", "Structure Flow"];
 const FEATURED_RANK = new Map(FEATURED_LABELS.map((label, index) => [label, index]));

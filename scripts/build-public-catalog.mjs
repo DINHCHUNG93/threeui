@@ -12,8 +12,8 @@ if (!process.env.THREEUI_SOURCE_ROOT && !process.argv[2]) {
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const dataRoot = join(projectRoot, "public", "data");
 const sourceRegistryPath = join(sourceRoot, "inventory", "source-code.json");
-const upgradeUrl = "https://threeui.netlify.app/pricing";
-const mediaOrigin = "https://threeui.netlify.app";
+const upgradeUrl = "https://threeui.com/pricing";
+const mediaOrigin = "https://threeui.com";
 const maxTextBytes = 500_000;
 const textExtensions = new Set([".css", ".glsl", ".html", ".js", ".jsx", ".json", ".mjs", ".ts", ".tsx", ".txt"]);
 

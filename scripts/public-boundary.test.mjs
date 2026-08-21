@@ -29,9 +29,9 @@ test("every Community card has a committed source bundle", () => {
 test("Pro records cannot carry source-bearing fields", () => {
   for (const item of catalog.pro) {
     assert.equal(item.access, "pro");
-    assert.equal(item.upgradeUrl, "https://threeui.netlify.app/pricing");
-    assert.match(item.thumbnail, /^https:\/\/threeui\.netlify\.app\//);
-    assert.match(item.preview, /^https:\/\/threeui\.netlify\.app\//);
+    assert.equal(item.upgradeUrl, "https://threeui.com/pricing");
+    assert.match(item.thumbnail, /^https:\/\/threeui\.com\//);
+    assert.match(item.preview, /^https:\/\/threeui\.com\//);
     for (const key of Object.keys(item)) assert.ok(allowedProKeys.has(key), `${item.id} exposes forbidden field ${key}`);
   }
 });

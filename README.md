@@ -9,7 +9,7 @@ A reduced, login-free edition of the ThreeUI product interface. It preserves the
 - Community: reviewed source bundles under MIT, with no Pro file overlap, bundled binary assets, private runtime URLs, environment dependencies, or private paths. External URLs are limited to W3 namespaces, Google Fonts, and pinned Three.js modules.
 - Pro: title, description, tags, poster URL, preview-video URL, and upgrade URL only.
 - Authentication and commerce: not included.
-- Catalog media: loaded from the verified live deployment at `https://threeui.netlify.app`; no media binaries are redistributed by this repository.
+- Catalog media: loaded from the verified live deployment at `https://threeui.com`; no media binaries are redistributed by this repository.
 - Repository preview: `assets/preview.jpg` and `assets/preview.webm` document this open-source interface and are included under MIT.
 
 The export is intentionally fail-closed. A Community resource is omitted when its implementation shares a file with Pro, embeds assets, reaches a runtime outside the narrow public allowlist, or lacks complete reviewable source.
