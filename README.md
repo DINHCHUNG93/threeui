@@ -1,6 +1,6 @@
 # ThreeUI Community
 
-A login-free open-source catalog for reviewed ThreeUI Community resources. Pro entries are represented by images and videos only and link to the live ThreeUI upgrade page.
+A reduced, login-free edition of the ThreeUI product interface. It preserves the main project's sidebar, browse grid, search, themes, documentation layout, and responsive navigation while limiting the catalog to reviewed Community source and media-only Pro previews.
 
 ![ThreeUI Community preview](assets/preview.jpg)
 

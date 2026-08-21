@@ -5,6 +5,8 @@ import test from "node:test";
 const catalog = JSON.parse(await readFile(new URL("../public/data/catalog.json", import.meta.url), "utf8"));
 const source = JSON.parse(await readFile(new URL("../public/data/community-source.json", import.meta.url), "utf8"));
 const signatures = JSON.parse(await readFile(new URL("./pro-signatures.json", import.meta.url), "utf8"));
+const appSource = await readFile(new URL("../src/App.jsx", import.meta.url), "utf8");
+const styles = await readFile(new URL("../src/styles.css", import.meta.url), "utf8");
 const sourceById = new Map(source.components.map((component) => [component.id, component]));
 const allowedProKeys = new Set(["id", "label", "description", "category", "runtime", "tags", "thumbnail", "preview", "access", "upgradeUrl"]);
 
@@ -32,6 +34,15 @@ test("Pro records cannot carry source-bearing fields", () => {
     assert.match(item.preview, /^https:\/\/threeui\.netlify\.app\//);
     for (const key of Object.keys(item)) assert.ok(allowedProKeys.has(key), `${item.id} exposes forbidden field ${key}`);
   }
+});
+
+test("public app preserves the reduced ThreeUI shell without auth or private feature imports", () => {
+  for (const token of ["sidebar", "browse-grid", "browse-category-filters", "theme-buttons", "pro-disclosure", "source-card"]) {
+    assert.match(`${appSource}\n${styles}`, new RegExp(`\\b${token}\\b`), `missing ThreeUI shell surface ${token}`);
+  }
+  assert.doesNotMatch(appSource, /AccountButton|AuthProvider|OAuthConsent|McpDocumentation|PricingDocumentation|supabase|stripe/i);
+  assert.match(appSource, /View full ThreeUI/);
+  assert.match(appSource, /Preview only in this repository/);
 });
 
 function allowedSourceUrl(value) {
