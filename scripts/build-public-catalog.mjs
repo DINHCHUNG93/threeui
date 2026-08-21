@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { existsSync } from "node:fs";
 import { mkdir, readFile, stat, writeFile } from "node:fs/promises";
 import { dirname, extname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -39,6 +40,14 @@ function mediaUrl(value, fallback) {
   return new URL(path.startsWith("/") ? path : `/${path}`, mediaOrigin).toString();
 }
 
+function optionalMediaUrl(value) {
+  if (!value) return undefined;
+  if (/^https:\/\//.test(value)) return value;
+  const pathname = value.startsWith("/") ? value.slice(1) : value;
+  if (!existsSync(join(sourceRoot, "public", pathname))) return undefined;
+  return new URL(`/${pathname}`, mediaOrigin).toString();
+}
+
 function rememberAccess(map, id, access) {
   if (!id) return;
   const normalized = access === "pro" ? "pro" : "community";
@@ -49,6 +58,23 @@ function rememberAccess(map, id, access) {
 function publicMetadata(shader, access, override = {}) {
   const mediaId = String(override.id ?? shader.id);
   const id = String(override.publicId ?? mediaId);
+  const sourceVariants = override.variants ?? shader.variants ?? [];
+  const primaryVariant = sourceVariants[0];
+  const variants = sourceVariants.map((variant) => {
+    const variantAccess = shaderModule.getShaderAccess(shader, variant) === "pro" ? "pro" : "community";
+    const variantPreview = optionalMediaUrl(variant.preview);
+    return {
+      id: String(variant.id),
+      label: String(variant.label),
+      description: String(variant.description || shader.description),
+      thumbnail: mediaUrl(variant.thumbnail, `/thumbnails/${variant.id}.jpg`),
+      ...(variantPreview ? { preview: variantPreview } : {}),
+      access: variantAccess,
+      ...(variantAccess === "pro" ? { upgradeUrl } : {}),
+    };
+  });
+  const preview = optionalMediaUrl(override.preview ?? shader.preview ?? primaryVariant?.preview)
+    ?? optionalMediaUrl(`/previews/${mediaId}.webm`);
   return {
     id,
     label: String(override.label ?? shader.label),
@@ -57,8 +83,9 @@ function publicMetadata(shader, access, override = {}) {
     runtime: String(shader.runtime),
     tags: Array.isArray(shader.tags) ? shader.tags.map(String) : [],
     thumbnail: mediaUrl(override.thumbnail ?? shader.thumbnail, `/thumbnails/${mediaId}.jpg`),
-    preview: mediaUrl(override.preview ?? shader.preview, `/previews/${mediaId}.webm`),
+    ...(preview ? { preview } : {}),
     access,
+    ...(variants.length ? { variants } : {}),
     ...(access === "pro" ? { upgradeUrl } : { sourceId: String(shader.id) }),
   };
 }
@@ -151,23 +178,10 @@ const forbiddenSourcePatterns = [
 const communityCandidates = [];
 const pro = [];
 for (const shader of shaderModule.VISIBLE_READY_SHADERS) {
+  if (shader.status === "beta") continue;
   const baseAccess = shaderModule.getShaderAccess(shader) === "pro" ? "pro" : "community";
   if (baseAccess === "pro") pro.push(publicMetadata(shader, "pro"));
   else communityCandidates.push(publicMetadata(shader, "community"));
-
-  if (baseAccess === "community") {
-    for (const variant of shader.variants ?? []) {
-      if (shaderModule.getShaderAccess(shader, variant) !== "pro") continue;
-      pro.push(publicMetadata(shader, "pro", {
-        id: variant.id,
-        publicId: `${shader.id}--${variant.id}`,
-        label: `${shader.label} — ${variant.label}`,
-        description: variant.description || shader.description,
-        thumbnail: variant.thumbnail,
-        preview: variant.preview,
-      }));
-    }
-  }
 }
 
 const community = [];
@@ -202,6 +216,8 @@ for (const item of communityCandidates) {
 
   if (reason) {
     omittedCommunity.push({ id: item.id, label: item.label, reason });
+    const { sourceId: _sourceId, ...previewOnlyItem } = item;
+    community.push({ ...previewOnlyItem, sourceAvailability: "preview-only" });
     continue;
   }
 
@@ -239,6 +255,8 @@ const report = {
   schemaVersion: 1,
   generatedAt,
   communityPublished: community.length,
+  communitySourcePublished: publicSources.length,
+  communityPreviewOnly: omittedCommunity.length,
   proPreviewsPublished: pro.length,
   communityOmitted: omittedCommunity.length,
   omittedCommunity,
@@ -252,4 +270,4 @@ await Promise.all([
   writeFile(join(projectRoot, "scripts", "pro-signatures.json"), `${JSON.stringify({ ids: [...proIds].sort(), importNames: [...proImportNames].sort() }, null, 2)}\n`),
 ]);
 
-console.log(`Published ${community.length} reviewed Community resources and ${pro.length} media-only Pro previews; omitted ${omittedCommunity.length} Community resources pending isolation or licensing.`);
+console.log(`Published ${community.length} Community entries (${publicSources.length} with reviewed source, ${omittedCommunity.length} preview-only) and ${pro.length} media-only Pro previews.`);

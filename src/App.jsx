@@ -1,4 +1,4 @@
-import { useDeferredValue, useEffect, useMemo, useState } from "react";
+import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 
 const CATALOG_URL = "./data/catalog.json";
 const SOURCE_URL = "./data/community-source.json";
@@ -79,6 +79,16 @@ function groupByCategory(items) {
   });
 }
 
+function resourceSearchText(item) {
+  return [
+    item.label,
+    item.category,
+    item.runtime,
+    ...(item.tags || []),
+    ...(item.variants || []).flatMap((variant) => [variant.label, variant.description]),
+  ].join(" ").toLocaleLowerCase();
+}
+
 function CatalogSection({ label, items, activeId, onSelect }) {
   const [expanded, setExpanded] = useState(true);
   const [openCategories, setOpenCategories] = useState(() => new Set(CATEGORY_ORDER));
@@ -97,7 +107,7 @@ function CatalogSection({ label, items, activeId, onSelect }) {
                 return next;
               })}>{category}<span className="chev"><ChevronIcon /></span></button>
               <div className={`nav-children${isOpen ? " is-open" : ""}`}><div className="nav-list">
-                {categoryItems.map((item) => <button className={`nav-link${activeId === item.id ? " active" : ""}`} type="button" key={item.id} onClick={() => onSelect(item)}><span>{item.label}</span>{item.access === "pro" ? <span className="pro-badge">PRO</span> : null}</button>)}
+                {categoryItems.map((item) => <button className={`nav-link${activeId === item.id ? " active" : ""}`} type="button" key={item.id} onClick={() => onSelect(item)}><span>{item.label}</span><span className="nav-link-badges">{item.variants?.length > 1 ? <span className="variant-count" aria-label={`${item.variants.length} variants`} title={`${item.variants.length} variants`}>{item.variants.length}</span> : null}{item.access === "pro" ? <span className="pro-badge">PRO</span> : null}</span></button>)}
               </div></div>
             </div>
           );
@@ -142,7 +152,7 @@ function BrowsePage({ resources, onSelect }) {
   const filtered = useMemo(() => ordered.filter((item) => {
     if (category && item.category !== category) return false;
     if (!deferredQuery) return true;
-    return [item.label, item.category, item.runtime, ...(item.tags || [])].join(" ").toLocaleLowerCase().includes(deferredQuery);
+    return resourceSearchText(item).includes(deferredQuery);
   }), [category, deferredQuery, ordered]);
   const categories = CATEGORY_ORDER.filter((value) => resources.some((item) => item.category === value));
   return (
@@ -154,7 +164,7 @@ function BrowsePage({ resources, onSelect }) {
         <div className="browse-category-filters" role="group" aria-label="Filter components by category">{categories.map((value) => <button type="button" key={value} aria-pressed={category === value} onClick={() => setCategory(category === value ? null : value)}>{value}</button>)}</div>
       </header>
       {filtered.length ? <div className="browse-grid">{filtered.map((item, index) => (
-        <article className="browse-item" key={item.id} style={{ "--browse-index": index }}><button className="browse-item-link" type="button" aria-label={`${item.label}. ${item.access === "pro" ? "Premium preview" : "Community source"}.`} onPointerEnter={() => setPreviewId(item.id)} onPointerLeave={() => setPreviewId(null)} onFocus={() => setPreviewId(item.id)} onBlur={() => setPreviewId(null)} onClick={() => onSelect(item)}>
+        <article className="browse-item" key={item.id} style={{ "--browse-index": index }}><button className="browse-item-link" type="button" aria-label={`${item.label}. ${item.access === "pro" ? "Premium preview" : "Community source"}.${item.variants?.length > 1 ? ` ${item.variants.length} variants.` : ""}`} onPointerEnter={() => setPreviewId(item.id)} onPointerLeave={() => setPreviewId(null)} onFocus={() => setPreviewId(item.id)} onBlur={() => setPreviewId(null)} onClick={() => onSelect(item)}>
           <Media item={item} active={previewId === item.id} eager={index < 6} /><span className="browse-details"><span className="browse-title-row"><strong>{item.label}</strong>{item.access === "pro" ? <span className="pro-badge">PRO</span> : null}</span><span className="browse-tags">{(item.tags || []).slice(0, 3).map((tag) => <span key={tag}>{tag}</span>)}</span></span>
         </button></article>
       ))}</div> : <div className="browse-empty" role="status"><strong>No components match “{query}”.</strong><span>Try another title, tag, category, or technology.</span></div>}
@@ -186,20 +196,68 @@ function SourceViewer({ source }) {
   </section>;
 }
 
+function VariantPicker({ item, activeVariantId, onSelect }) {
+  const [previewId, setPreviewId] = useState(null);
+  const [edgeMask, setEdgeMask] = useState("none");
+  const railRef = useRef(null);
+  const variantCount = item.variants?.length || 0;
+  useEffect(() => {
+    const rail = railRef.current;
+    if (!rail || variantCount <= 1) return undefined;
+    let animationFrame = 0;
+    const updateMask = () => {
+      animationFrame = 0;
+      const hasLeft = rail.scrollLeft > 2;
+      const hasRight = rail.scrollLeft + rail.clientWidth < rail.scrollWidth - 2;
+      setEdgeMask(hasLeft && hasRight ? "both" : hasLeft ? "left" : hasRight ? "right" : "none");
+    };
+    const scheduleUpdate = () => { if (!animationFrame) animationFrame = window.requestAnimationFrame(updateMask); };
+    const resizeObserver = new ResizeObserver(scheduleUpdate);
+    rail.addEventListener("scroll", scheduleUpdate, { passive: true });
+    resizeObserver.observe(rail);
+    scheduleUpdate();
+    return () => {
+      rail.removeEventListener("scroll", scheduleUpdate);
+      resizeObserver.disconnect();
+      if (animationFrame) window.cancelAnimationFrame(animationFrame);
+    };
+  }, [item.id, variantCount]);
+  if (!item.variants || item.variants.length <= 1) return null;
+  return <section className="variant-picker" aria-label={`${item.label} variants`}>
+    <div className="variant-picker-head">{item.variants.length} variants</div>
+    <div className="variant-options" ref={railRef} role="radiogroup" aria-label="Choose a variant" data-edge-mask={edgeMask}>
+      {item.variants.map((variant) => {
+        const selected = variant.id === activeVariantId;
+        const previewing = previewId === variant.id;
+        return <button className={`variant-option${selected ? " active" : ""}`} type="button" role="radio" aria-checked={selected} aria-label={`${variant.label}. ${variant.description}`} key={variant.id} onPointerEnter={() => setPreviewId(variant.id)} onPointerLeave={() => setPreviewId(null)} onFocus={() => setPreviewId(variant.id)} onBlur={() => setPreviewId(null)} onClick={(event) => { onSelect(variant.id); event.currentTarget.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" }); }}>
+          <span className="variant-option-thumbnail"><img src={variant.thumbnail} alt="" loading="lazy" decoding="async" />{previewing && variant.preview ? <video className="variant-option-preview-video" src={variant.preview} poster={variant.thumbnail} autoPlay muted loop playsInline preload="metadata" tabIndex={-1} aria-hidden="true" /> : null}</span>
+          <span className="variant-option-label"><span>{variant.label}</span>{variant.access === "pro" ? <span className="pro-badge">PRO</span> : null}</span>
+        </button>;
+      })}
+    </div>
+  </section>;
+}
+
 function DetailPage({ item, source, onBrowse }) {
   const [playing, setPlaying] = useState(true);
   const [copied, setCopied] = useState(false);
+  const [activeVariantId, setActiveVariantId] = useState(item.variants?.[0]?.id || null);
+  const activeVariant = item.variants?.find((variant) => variant.id === activeVariantId) || item.variants?.[0] || null;
+  const activeMedia = activeVariant || item;
+  const activeAccess = activeVariant?.access || item.access;
+  const upgradeUrl = activeVariant?.upgradeUrl || item.upgradeUrl || `${LIVE_SITE}/pricing`;
   const copySource = async () => {
-    if (!source) return;
+    if (!source || activeAccess === "pro") return;
     await navigator.clipboard.writeText(source.files.map((file) => `// ${file.path}\n${file.code}`).join("\n\n"));
     setCopied(true);
     window.setTimeout(() => setCopied(false), 1400);
   };
   return (
     <main className="doc-page component-doc"><header className="doc-intro detail-intro"><div><button className="back-link" type="button" onClick={onBrowse}>← Browse</button><span className="eyebrow">{item.category} · {item.runtime}</span><h1>{item.label}</h1><p className="lede">{item.description}</p><div className="tagrow">{(item.tags || []).slice(0, 8).map((tag) => <span className="tag" key={tag}>{tag}</span>)}{item.access === "pro" ? <span className="pro-badge">PRO</span> : null}</div></div>
-      <div className="doc-actions">{item.access === "pro" ? <a className="primary-action" href={item.upgradeUrl || `${LIVE_SITE}/pricing`} target="_blank" rel="noreferrer">View Pro ↗</a> : <button className="primary-action" type="button" onClick={copySource} disabled={!source}><CopyIcon />{copied ? "Copied" : "Copy code"}</button>}</div></header>
-      <section className="preview-card"><div className="preview-toolbar"><span>{item.access === "pro" ? "Media preview" : "Community preview"}</span><button type="button" onClick={() => setPlaying((current) => !current)}>{playing ? "Pause" : "Play"}</button></div><div className="detail-media">{playing && item.preview ? <video src={item.preview} poster={item.thumbnail} autoPlay muted loop playsInline preload="metadata" /> : <img src={item.thumbnail} alt={`${item.label} preview`} />}{item.access === "pro" ? <span className="pro-badge preview-badge">PRO PREVIEW</span> : null}</div></section>
-      {item.access === "pro" ? <section className="pro-disclosure"><span className="pro-badge">PRO</span><div><h2>Preview only in this repository</h2><p>The public project includes the image, video, tags, and upgrade link. Renderer source, prompts, controls, and package exports stay on the live ThreeUI site.</p><a href={item.upgradeUrl || `${LIVE_SITE}/pricing`} target="_blank" rel="noreferrer">Explore the full component ↗</a></div></section> : <SourceViewer source={source} />}
+      <div className="doc-actions">{activeAccess === "pro" ? <a className="primary-action" href={upgradeUrl} target="_blank" rel="noreferrer">View Pro ↗</a> : source ? <button className="primary-action" type="button" onClick={copySource}><CopyIcon />{copied ? "Copied" : "Copy code"}</button> : <button className="primary-action" type="button" disabled>Preview only</button>}</div></header>
+      <section className="preview-card"><div className="preview-toolbar"><span>{activeAccess === "pro" ? "Media preview" : "Community preview"}{activeVariant ? ` · ${activeVariant.label}` : ""}</span><button type="button" onClick={() => setPlaying((current) => !current)}>{playing ? "Pause" : "Play"}</button></div><div className="detail-media">{playing && activeMedia.preview ? <video key={activeMedia.id} src={activeMedia.preview} poster={activeMedia.thumbnail} autoPlay muted loop playsInline preload="metadata" /> : <img src={activeMedia.thumbnail} alt={`${item.label}${activeVariant ? ` ${activeVariant.label}` : ""} preview`} />}{activeAccess === "pro" ? <span className="pro-badge preview-badge">PRO PREVIEW</span> : null}</div></section>
+      <VariantPicker item={item} activeVariantId={activeVariant?.id || null} onSelect={(variantId) => { setActiveVariantId(variantId); setPlaying(true); }} />
+      {activeAccess === "pro" ? <section className="pro-disclosure"><span className="pro-badge">PRO</span><div><h2>Preview only in this repository</h2><p>The public project includes the image, video, tags, and upgrade link. Renderer source, prompts, controls, and package exports stay on the live ThreeUI site.</p><a href={upgradeUrl} target="_blank" rel="noreferrer">Explore the full component ↗</a></div></section> : source ? <SourceViewer source={source} /> : <section className="community-disclosure"><div><h2>Preview available, source under review</h2><p>This Community entry stays visible to match the ThreeUI catalog, but its source package is not published until bundled assets and mixed-access files have a clean public boundary.</p></div></section>}
     </main>
   );
 }
@@ -209,7 +267,7 @@ function SearchDialog({ open, resources, onClose, onSelect }) {
   const deferredQuery = useDeferredValue(query.trim().toLocaleLowerCase());
   useEffect(() => { if (!open) setQuery(""); }, [open]);
   if (!open) return null;
-  const results = resources.filter((item) => !deferredQuery || [item.label, item.category, ...(item.tags || [])].join(" ").toLocaleLowerCase().includes(deferredQuery)).slice(0, 12);
+  const results = resources.filter((item) => !deferredQuery || resourceSearchText(item).includes(deferredQuery)).slice(0, 12);
   return <div className="dialog-backdrop" role="presentation" onMouseDown={(event) => event.target === event.currentTarget && onClose()}><section className="dialog" role="dialog" aria-modal="true" aria-labelledby="search-title"><div className="dialog-field"><SearchIcon /><input autoFocus value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search components..." aria-label="Search components" /><button type="button" onClick={onClose}>ESC</button></div><div className="dialog-results scroll-area"><span className="eyebrow" id="search-title">{results.length} RESULTS</span>{results.map((item) => <button className="dialog-result" type="button" key={item.id} onClick={() => onSelect(item)}><img src={item.thumbnail} alt="" /><span><strong>{item.label}</strong><small>{item.category} · {item.access === "pro" ? "Pro preview" : "Community"}</small></span>{item.access === "pro" ? <span className="pro-badge">PRO</span> : null}</button>)}</div></section></div>;
 }
 
@@ -249,6 +307,6 @@ export default function App() {
   const selectItem = (item) => { setActiveItem(item); setPage("detail"); setSearchOpen(false); setSidebarOpen(false); };
 
   return <><header className="topbar"><button className="icon-btn" type="button" aria-label="Open navigation" onClick={() => setSidebarOpen(true)}><MenuIcon /></button><button className="topbar-brand-button" type="button" aria-label="Browse ThreeUI" onClick={browse}><BrandMark compact /></button><ThemeButtons compact theme={theme} onChange={setTheme} /></header>
-    <div className="app"><Sidebar open={sidebarOpen} page={page} resources={resources} activeItem={activeItem} theme={theme} onTheme={setTheme} onBrowse={browse} onInstallation={install} onSelect={selectItem} onSearch={() => setSearchOpen(true)} />{sidebarOpen ? <button className="mobile-nav-scrim" type="button" aria-label="Close navigation" onClick={() => setSidebarOpen(false)} /> : null}<section className="pane"><div className="pane-scroll scroll-area">{error ? <main className="state-page"><strong>Catalog unavailable</strong><span>{error}</span></main> : !catalog ? <main className="state-page"><span className="loading-bar" />Loading public catalog…</main> : page === "installation" ? <InstallationPage /> : page === "detail" && activeItem ? <DetailPage item={activeItem} source={activeSource} onBrowse={browse} /> : <BrowsePage resources={resources} onSelect={selectItem} />}</div></section></div>
+    <div className="app"><Sidebar open={sidebarOpen} page={page} resources={resources} activeItem={activeItem} theme={theme} onTheme={setTheme} onBrowse={browse} onInstallation={install} onSelect={selectItem} onSearch={() => setSearchOpen(true)} />{sidebarOpen ? <button className="mobile-nav-scrim" type="button" aria-label="Close navigation" onClick={() => setSidebarOpen(false)} /> : null}<section className="pane"><div className="pane-scroll scroll-area">{error ? <main className="state-page"><strong>Catalog unavailable</strong><span>{error}</span></main> : !catalog ? <main className="state-page"><span className="loading-bar" />Loading public catalog…</main> : page === "installation" ? <InstallationPage /> : page === "detail" && activeItem ? <DetailPage key={activeItem.id} item={activeItem} source={activeSource} onBrowse={browse} /> : <BrowsePage resources={resources} onSelect={selectItem} />}</div></section></div>
     <SearchDialog open={searchOpen} resources={resources} onClose={() => setSearchOpen(false)} onSelect={selectItem} /></>;
 }

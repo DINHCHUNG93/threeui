@@ -4,11 +4,14 @@ import test from "node:test";
 
 const catalog = JSON.parse(await readFile(new URL("../public/data/catalog.json", import.meta.url), "utf8"));
 const source = JSON.parse(await readFile(new URL("../public/data/community-source.json", import.meta.url), "utf8"));
+const report = JSON.parse(await readFile(new URL("../public/data/resource-report.json", import.meta.url), "utf8"));
 const signatures = JSON.parse(await readFile(new URL("./pro-signatures.json", import.meta.url), "utf8"));
 const appSource = await readFile(new URL("../src/App.jsx", import.meta.url), "utf8");
 const styles = await readFile(new URL("../src/styles.css", import.meta.url), "utf8");
+const generatorSource = await readFile(new URL("./build-public-catalog.mjs", import.meta.url), "utf8");
 const sourceById = new Map(source.components.map((component) => [component.id, component]));
-const allowedProKeys = new Set(["id", "label", "description", "category", "runtime", "tags", "thumbnail", "preview", "access", "upgradeUrl"]);
+const allowedProKeys = new Set(["id", "label", "description", "category", "runtime", "tags", "thumbnail", "preview", "access", "upgradeUrl", "variants"]);
+const allowedVariantKeys = new Set(["id", "label", "description", "thumbnail", "preview", "access", "upgradeUrl"]);
 
 test("catalog has distinct reviewed Community and media-only Pro sets", () => {
   assert.ok(catalog.community.length > 0, "expected at least one reviewed Community resource");
@@ -19,10 +22,15 @@ test("catalog has distinct reviewed Community and media-only Pro sets", () => {
   for (const item of catalog.pro) assert.ok(!communityIds.has(item.id), `${item.id} cannot be both Community and Pro`);
 });
 
-test("every Community card has a committed source bundle", () => {
+test("every Community card has reviewed source or a documented preview-only boundary", () => {
+  const previewOnlyIds = new Set(report.omittedCommunity.map((item) => item.id));
   for (const item of catalog.community) {
     assert.equal(item.access, "community");
-    assert.ok(sourceById.has(item.sourceId), `${item.id} is missing source ${item.sourceId}`);
+    if (item.sourceId) assert.ok(sourceById.has(item.sourceId), `${item.id} is missing source ${item.sourceId}`);
+    else {
+      assert.equal(item.sourceAvailability, "preview-only");
+      assert.ok(previewOnlyIds.has(item.id), `${item.id} needs a documented source-boundary reason`);
+    }
   }
 });
 
@@ -33,6 +41,25 @@ test("Pro records cannot carry source-bearing fields", () => {
     assert.match(item.thumbnail, /^https:\/\/threeui\.com\//);
     assert.match(item.preview, /^https:\/\/threeui\.com\//);
     for (const key of Object.keys(item)) assert.ok(allowedProKeys.has(key), `${item.id} exposes forbidden field ${key}`);
+    for (const variant of item.variants ?? []) {
+      assert.equal(variant.access, "pro");
+      assert.equal(variant.upgradeUrl, "https://threeui.com/pricing");
+      if (variant.preview) assert.match(variant.preview, /^https:\/\/threeui\.com\//);
+      for (const key of Object.keys(variant)) assert.ok(allowedVariantKeys.has(key), `${item.id}/${variant.id} exposes forbidden field ${key}`);
+    }
+  }
+});
+
+test("variant families retain media metadata without implementation fields", () => {
+  const families = [...catalog.community, ...catalog.pro].filter((item) => (item.variants?.length ?? 0) > 1);
+  assert.ok(families.length > 0, "expected published variant families");
+  for (const item of families) {
+    for (const variant of item.variants) {
+      assert.match(variant.thumbnail, /^https:\/\/threeui\.com\//);
+      if (variant.preview) assert.match(variant.preview, /^https:\/\/threeui\.com\//);
+      for (const key of Object.keys(variant)) assert.ok(allowedVariantKeys.has(key), `${item.id}/${variant.id} exposes forbidden field ${key}`);
+      assert.ok(!("sourceId" in variant) && !("props" in variant) && !("controls" in variant), `${item.id}/${variant.id} exposes implementation metadata`);
+    }
   }
 });
 
@@ -43,6 +70,9 @@ test("public app preserves the reduced ThreeUI shell without auth or private fea
   assert.doesNotMatch(appSource, /AccountButton|AuthProvider|OAuthConsent|McpDocumentation|PricingDocumentation|supabase|stripe/i);
   assert.match(appSource, /View full ThreeUI/);
   assert.match(appSource, /Preview only in this repository/);
+  assert.match(appSource, /variant-picker/);
+  assert.doesNotMatch(appSource, /\bbeta\b/i);
+  assert.match(generatorSource, /shader\.status === "beta"/);
 });
 
 function allowedSourceUrl(value) {

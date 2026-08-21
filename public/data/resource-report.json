@@ -1,9 +1,11 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-21T03:30:02.622Z",
-  "communityPublished": 11,
-  "proPreviewsPublished": 59,
-  "communityOmitted": 40,
+  "generatedAt": "2026-08-21T04:31:41.933Z",
+  "communityPublished": 50,
+  "communitySourcePublished": 11,
+  "communityPreviewOnly": 39,
+  "proPreviewsPublished": 44,
+  "communityOmitted": 39,
   "omittedCommunity": [
     {
       "id": "animated-top-dock",
@@ -104,11 +106,6 @@
       "id": "liquid-metal-button",
       "label": "Liquid Metal Button",
       "reason": "source-mentions-pro-id"
-    },
-    {
-      "id": "orrery-hero",
-      "label": "Orrery",
-      "reason": "source-file-overlaps-pro"
     },
     {
       "id": "particle-orb",
