@@ -1,13 +1,14 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-21T05:32:43.820Z",
+  "generatedAt": "2026-08-21T06:11:34.631Z",
   "sourceCommit": "ref: refs/heads/main",
   "communityParents": 50,
   "communityRoutes": 111,
   "communityVariants": 141,
   "excludedProParents": 45,
   "excludedBetaParents": 2,
-  "layoutStylesSha256": "73712a6c877e7d6d9077ee21619a9b671f52581867c82cd2c9930c59731bf786",
+  "layoutStylesSha256": "7afd93e33343e9f7695c6f592881fa49fd901e8824a12b3219d4ff78248b3c7f",
+  "rendererStylesSha256": "ded8fb710124a788f2f9f8a0e12a91ba075c8d2d376abb804acc23444a773e94",
   "components": [
     {
       "id": "kage-landing-page",

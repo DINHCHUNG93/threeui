@@ -54,7 +54,15 @@ const publicAdapterFiles = [
   "src/components/UpgradeLink.tsx",
 ];
 
+const publicRuntimeFiles = [
+  "public/hypnotic-loops.html",
+  "public/japanese-tower.html",
+  "public/threeui-mark.svg",
+  "public/robots.txt",
+];
+
 const generatedRendererPaths = new Set([
+  "src/shaders/threeui.css",
   "src/shaders/globe/GlobeCollection.tsx",
   "src/shaders/landing-pages/LandingPages.tsx",
   "src/shaders/landing-pages/pageRecipes.ts",
@@ -380,6 +388,61 @@ function sanitizeMaccessCss(source) {
   return result;
 }
 
+function generateCommunityStyles(source) {
+  const sliceBetween = (start, end) => {
+    const from = source.indexOf(start);
+    const to = source.indexOf(end, from + start.length);
+    if (from < 0 || to < 0) throw new Error(`Could not isolate Community styles between ${start} and ${end}.`);
+    return source.slice(from, to).trim();
+  };
+  const firstOpen = source.indexOf("{");
+  const firstClose = source.indexOf("}", firstOpen + 1);
+  if (firstOpen < 0 || firstClose < 0) throw new Error("Could not read the shared renderer sizing rule.");
+  const sharedSizing = source.slice(firstOpen, firstClose + 1);
+  const communityRoots = [
+    ".threeui-mount",
+    ".text-path-study",
+    ".article-headings-component",
+    ".animated-top-dock-component",
+    ".typography-vortex-component",
+    ".landscape-scene",
+    ".japanese-tower-landscape",
+    ".liquid-metal-button",
+    ".spark-badge",
+    ".hypnotic-loops",
+    ".at-the-horizon",
+    ".threeui-background",
+  ];
+  const communityOnly = [
+    `${communityRoots.join(",\n")} ${sharedSizing}`,
+    sliceBetween(".japanese-tower-landscape {", ".sakura-branch-scene {"),
+    sliceBetween(".liquid-metal-button {", ".iso-mail-lightshafts {"),
+    sliceBetween(".spark-badge {", ".scalability-bricks {"),
+    sliceBetween(".text-path-study {", ".cross-beam-canvas,"),
+    sliceBetween(".temple-night-scene,", ".yosemite-sunset-scene,"),
+    sliceBetween(".bookshelf,", "@font-face {"),
+    source.slice(source.indexOf("@font-face {")).trim(),
+  ].join("\n\n");
+  const forbidden = [
+    "mechanical-keyboard",
+    "sakura-branch-scene",
+    "isometric-motion-grid",
+    "isometric-charging-dock",
+    "tetrahedron-365",
+    "iso-mail-lightshafts",
+    "scalability-bricks",
+    "terrain-plume",
+    "sunset-valley",
+    "yosemite-sunset",
+    "presidio-sunset",
+    "lake-louise",
+  ];
+  for (const selector of forbidden) {
+    if (communityOnly.includes(selector)) throw new Error(`Community renderer CSS retained ${selector}.`);
+  }
+  return `/* Generated from the main renderer stylesheet; Community selectors only. */\n${communityOnly}\n`;
+}
+
 function generateSkillMarkdownModule(skillById) {
   return `const SKILLS = ${JSON.stringify(Object.fromEntries(skillById), null, 2)};\nexport function buildSkillMarkdown(shader) { const skill = SKILLS[shader.id]; if (!skill) throw new Error(\`No standalone implementation guide exists for \${shader.id}.\`); return skill; }\n`;
 }
@@ -434,7 +497,7 @@ await mkdir(join(projectRoot, "public"), { recursive: true });
 
 for (const path of shellFiles) await copyFromSource(path);
 for (const [path, contents] of publicAdapters) await writeGenerated(path, contents);
-for (const path of ["public/threeui-mark.svg", "public/robots.txt"]) await copyFromSource(path);
+for (const path of publicRuntimeFiles) await copyFromSource(path);
 
 const componentPaths = new Set();
 const assetPaths = new Set();
@@ -476,6 +539,10 @@ await writeGenerated(
   sanitizeMaccessCss(await readFile(join(sourceRoot, "src/shaders/maccess-elements/maccess-elements.css"), "utf8")),
 );
 await writeGenerated(
+  "src/shaders/community.css",
+  generateCommunityStyles(await readFile(join(sourceRoot, "src/shaders/threeui.css"), "utf8")),
+);
+await writeGenerated(
   "src/shaders/sketchbook/sketchbookDocument.js",
   (await readFile(join(sourceRoot, "src/shaders/sketchbook/sketchbookDocument.js"), "utf8"))
     .replace(/\/\* Canonical source: .* \*\//, "/* Canonical source: public/landing-pages/meng-to-sketchbook.html */"),
@@ -500,9 +567,13 @@ await writeFile(join(projectRoot, "src", "components", "buildSkillMarkdown.js"),
 
 const pathUseCount = new Map();
 const componentPathsById = new Map();
+const publicSourcePath = (path) => path === "src/shaders/threeui.css" ? "src/shaders/community.css" : path;
 for (const shader of visibleFreeShaders) {
   const component = registryById.get(String(shader.id));
-  const paths = (component?.files ?? []).map((file) => file.path).filter((path) => {
+  const paths = [
+    ...(component?.files ?? []).map((file) => file.path),
+    ...(component?.sharedFilePaths ?? []),
+  ].map(publicSourcePath).filter((path) => {
     if (path === "src/shaders/globe/sources/network-globe.html" || path === "src/shaders/globe/sources/tangled-constellations.html") return false;
     return textExtensions.has(extname(path));
   });
@@ -511,7 +582,10 @@ for (const shader of visibleFreeShaders) {
 }
 
 const sharedPaths = new Set([...pathUseCount].filter(([, count]) => count > 1).map(([path]) => path));
-const originalFileByPath = new Map(inventory.components.flatMap((component) => component.files ?? []).map((file) => [file.path, file]));
+const originalFileByPath = new Map([
+  ...(inventory.sharedFiles ?? []),
+  ...inventory.components.flatMap((component) => component.files ?? []),
+].map((file) => [publicSourcePath(file.path), file]));
 const sharedFiles = await Promise.all([...sharedPaths].sort().map((path) => fileRecord(path, originalFileByPath.get(path))));
 const sourceComponents = [];
 for (const shader of visibleFreeShaders) {
@@ -542,6 +616,7 @@ const syncReport = {
   excludedProParents: shaderModule.VISIBLE_READY_SHADERS.filter((shader) => shaderModule.getShaderAccess(shader) === "pro").length,
   excludedBetaParents: shaderModule.VISIBLE_READY_SHADERS.filter((shader) => shader.status === "beta").length,
   layoutStylesSha256: createHash("sha256").update(await readFile(join(projectRoot, "src", "styles.css"))).digest("hex"),
+  rendererStylesSha256: createHash("sha256").update(await readFile(join(projectRoot, "src", "shaders", "community.css"))).digest("hex"),
   components: visibleFreeShaders.map((shader) => {
     const variants = (shader.variants ?? []).filter((variant) => shaderModule.getShaderAccess(shader, variant) !== "pro");
     return {

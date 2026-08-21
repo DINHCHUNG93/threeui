@@ -10,6 +10,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const report = JSON.parse(await readFile(join(root, "public", "community-sync-report.json"), "utf8"));
 const sourceRegistry = JSON.parse(await readFile(join(root, "public", "source-code.json"), "utf8"));
 const styles = await readFile(join(root, "src", "styles.css"));
+const rendererStyles = await readFile(join(root, "src", "shaders", "community.css"));
 
 const vite = await createServer({ root, server: { middlewareMode: true }, appType: "custom", logLevel: "silent" });
 let catalog;
@@ -85,6 +86,56 @@ test("all Community parents include their implementation source", () => {
 
 test("the main layout stylesheet remains byte-identical to the synchronized snapshot", () => {
   assert.equal(createHash("sha256").update(styles).digest("hex"), report.layoutStylesSha256);
+});
+
+test("the main Community renderer styles are present without Pro or Beta selectors", async () => {
+  assert.equal(createHash("sha256").update(rendererStyles).digest("hex"), report.rendererStylesSha256);
+  const css = rendererStyles.toString("utf8");
+  for (const selector of [
+    ".threeui-background",
+    ".sketchbook__frame",
+    ".bookshelf__canvas",
+    ".temple-night-canvas",
+    ".japanese-tower-landscape__frame",
+    ".landscape-scene__frame",
+    ".liquid-metal-button__frame",
+    ".spark-badge__frame",
+    ".hypnotic-loops__frame",
+    ".at-the-horizon__frame",
+    ".text-path-study-frame",
+    ".article-headings-component",
+    ".animated-top-dock-component",
+    ".typography-vortex-component",
+  ]) assert.ok(css.includes(selector), `missing Community renderer style ${selector}`);
+  for (const selector of [
+    "mechanical-keyboard",
+    "sakura-branch-scene",
+    "isometric-motion-grid",
+    "isometric-charging-dock",
+    "tetrahedron-365",
+    "iso-mail-lightshafts",
+    "scalability-bricks",
+    "terrain-plume",
+    "sunset-valley",
+    "yosemite-sunset",
+    "presidio-sunset",
+    "lake-louise",
+  ]) assert.ok(!css.includes(selector), `renderer CSS exposes excluded selector ${selector}`);
+  const main = await readFile(join(root, "src", "main.tsx"), "utf8");
+  assert.match(main, /import "\.\/shaders\/community\.css";/);
+  assert.ok(sourceRegistry.sharedFiles.some((file) => file.path === "src/shaders/community.css"));
+});
+
+test("Community iframe renderers include their public runtime documents", async () => {
+  for (const [path, signature] of [
+    ["public/hypnotic-loops.html", "Hypnotic Loops — LINES / DOTS / RAYS / TYPE"],
+    ["public/japanese-tower.html", "<title>Country Towers Landscape</title>"],
+    ["public/landscape.html", "<title>Landscape — Time & Weather</title>"],
+    ["public/spark-badge.html", "<title>Spark Badge — credential in rain</title>"],
+  ]) {
+    const source = await readFile(join(root, path), "utf8");
+    assert.ok(source.includes(signature), `${path} is missing its canonical runtime document`);
+  }
 });
 
 test("mixed-access renderers expose only their Community option", async () => {

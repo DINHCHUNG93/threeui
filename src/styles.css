@@ -4062,7 +4062,17 @@ tbody tr:not(:last-child) {
   color: var(--foreground-muted);
   font: 400 8px/13px var(--font-mono);
   text-overflow: ellipsis;
+  transition: background-color 0.14s ease, border-color 0.14s ease, color 0.14s ease, transform 0.14s ease;
   white-space: nowrap;
+}
+
+@media (hover: hover) {
+  .browse-tags > span:hover {
+    border-color: color-mix(in oklab, var(--foreground) 24%, var(--border));
+    background: var(--hover);
+    color: var(--foreground);
+    transform: translateY(-1px);
+  }
 }
 
 .browse-empty {
