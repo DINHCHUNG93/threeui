@@ -5,6 +5,7 @@ import { copyFile, mkdir, readFile, rm, stat, writeFile } from "node:fs/promises
 import { dirname, extname, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createServer } from "vite";
+import { sanitizeNeuformIsolatedEffects, sanitizeSectionElementsCss, sanitizeSectionElementsModule } from "./community-sanitizers.mjs";
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const sourceRoot = resolve(process.env.THREEUI_SOURCE_ROOT ?? process.argv[2] ?? "");
@@ -447,37 +448,6 @@ function generateCommunityStyles(source, freeIds) {
     if (communityOnly.includes(selector)) throw new Error(`Community renderer CSS retained ${selector}.`);
   }
   return `/* Generated from the main renderer stylesheet; Community selectors only. */\n${communityOnly}\n`;
-}
-
-function sanitizeNeuformIsolatedEffects(source) {
-  const result = source
-    .replace(/^import particleOrbSource from "\.\/sources\/synthesis-orb\.html\?raw";\n/m, "")
-    .replace(/\n  particleOrb: \{[\s\S]*?\n  \},\n  performanceGaugesTachometer:/, "\n  performanceGaugesTachometer:")
-    .replace(/^export const ParticleOrbField = createEffectComponent\(EFFECTS\.particleOrb\);\n/m, "");
-  if (/particleOrb|synthesis-orb/.test(result)) {
-    throw new Error("Neuform isolation retained the excluded Particle Orb Beta renderer.");
-  }
-  return result;
-}
-
-function sanitizeSectionElementsCss(source) {
-  const result = source
-    .replace(/@font-face \{[\s\S]*?\}\s*/g, "")
-    .replace('"Section SF", -apple-system', '-apple-system');
-  if (/Section SF|sf-(?:bold|light|medium|regular|semibold)\.woff2/.test(result)) {
-    throw new Error("Section Elements font sanitization retained a restricted font reference.");
-  }
-  return result;
-}
-
-function sanitizeSectionElementsModule(source) {
-  const result = source
-    .replace(/^const bento13 = .*\nconst bentoQr = .*\nconst bento14 = .*\n/m, "")
-    .replace(/\nconst orbitIcons = \[[\s\S]*?\nexport function EditorialIntroSection/, "\nexport function EditorialIntroSection");
-  if (/bento-1[134]|WorkflowSection|workflowSteps|PairingIllustration/.test(result)) {
-    throw new Error("Section Elements sanitization retained the excluded Workflow Beta renderer.");
-  }
-  return result;
 }
 
 function generateSkillMarkdownModule(skillById) {
