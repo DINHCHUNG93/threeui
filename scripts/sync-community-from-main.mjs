@@ -1,4 +1,6 @@
 import { createHash } from "node:crypto";
+import { execFileSync } from "node:child_process";
+import { realpathSync } from "node:fs";
 import { copyFile, mkdir, readFile, rm, stat, writeFile } from "node:fs/promises";
 import { dirname, extname, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -6,6 +8,7 @@ import { createServer } from "vite";
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const sourceRoot = resolve(process.env.THREEUI_SOURCE_ROOT ?? process.argv[2] ?? "");
+const canonicalSourceRoot = realpathSync(sourceRoot);
 
 if (!process.env.THREEUI_SOURCE_ROOT && !process.argv[2]) {
   throw new Error("Pass the private ThreeUI source snapshot path or set THREEUI_SOURCE_ROOT.");
@@ -19,7 +22,6 @@ const shellFiles = [
   "src/detailPreviews.ts",
   "src/routes.js",
   "src/seo.js",
-  "src/shaderMetrics.ts",
   "src/styles.css",
   "src/theme.ts",
   "src/components/BrandMark.tsx",
@@ -34,7 +36,6 @@ const shellFiles = [
   "src/components/buildCopyBundles.js",
   "src/components/icons.tsx",
   "src/data/catalogResults.ts",
-  "src/data/publicShaders.ts",
   "index.html",
 ];
 
@@ -52,10 +53,11 @@ const publicAdapterFiles = [
   "src/components/ShaderDocumentation.tsx",
   "src/components/Sidebar.tsx",
   "src/components/UpgradeLink.tsx",
+  "src/data/publicShaders.ts",
+  "src/shaderMetrics.ts",
 ];
 
 const publicRuntimeFiles = [
-  "public/hypnotic-loops.html",
   "public/japanese-tower.html",
   "public/threeui-mark.svg",
   "public/robots.txt",
@@ -66,7 +68,9 @@ const generatedRendererPaths = new Set([
   "src/shaders/globe/GlobeCollection.tsx",
   "src/shaders/landing-pages/LandingPages.tsx",
   "src/shaders/landing-pages/pageRecipes.ts",
-  "src/shaders/maccess-elements/maccess-elements.css",
+  "src/shaders/neuform-isolated/NeuformIsolatedEffects.tsx",
+  "src/shaders/section-elements/SectionElements.tsx",
+  "src/shaders/section-elements/section-elements.css",
   "src/shaders/sketchbook/sketchbookDocument.js",
   "src/shaders/spark-badge/SparkBadge.tsx",
   "src/shaders/sylva-living-world/SylvaLivingWorldScene.tsx",
@@ -74,11 +78,11 @@ const generatedRendererPaths = new Set([
 ]);
 
 const excludedAssetPaths = new Set([
-  "src/shaders/maccess-elements/assets/sf-bold.woff2",
-  "src/shaders/maccess-elements/assets/sf-light.woff2",
-  "src/shaders/maccess-elements/assets/sf-medium.woff2",
-  "src/shaders/maccess-elements/assets/sf-regular.woff2",
-  "src/shaders/maccess-elements/assets/sf-semibold.woff2",
+  "src/shaders/section-elements/assets/sf-bold.woff2",
+  "src/shaders/section-elements/assets/sf-light.woff2",
+  "src/shaders/section-elements/assets/sf-medium.woff2",
+  "src/shaders/section-elements/assets/sf-regular.woff2",
+  "src/shaders/section-elements/assets/sf-semibold.woff2",
 ]);
 
 const textExtensions = new Set([".css", ".glsl", ".html", ".js", ".jsx", ".json", ".mjs", ".ts", ".tsx", ".txt"]);
@@ -120,7 +124,15 @@ function rendererDescriptor(shader, componentEntry) {
   const loader = String(component?._payload?._result ?? "");
   const match = loader.match(/__vite_ssr_dynamic_import__\("([^"]+)"\).*default: module\.([A-Za-z0-9_$]+)/s);
   if (!match) throw new Error(`Cannot resolve the lazy renderer for ${shader.id}.`);
-  return { exportName: match[2], path: match[1], eager: false };
+  let path = match[1];
+  const fileSystemIndex = path.indexOf("@fs/");
+  if (fileSystemIndex >= 0) {
+    const absolutePath = path.slice(fileSystemIndex + 3);
+    const sourceRelativePath = relative(canonicalSourceRoot, absolutePath);
+    if (sourceRelativePath.startsWith("..")) throw new Error(`Renderer ${shader.id} resolved outside the source snapshot.`);
+    path = `/${posixPath(sourceRelativePath)}`;
+  }
+  return { exportName: match[2], path, eager: false };
 }
 
 function sanitizeMetadata(shader, freeIds, getShaderAccess) {
@@ -378,17 +390,7 @@ function sanitizeSparkBadgeHtml(source) {
   return result;
 }
 
-function sanitizeMaccessCss(source) {
-  const result = source
-    .replace(/@font-face \{[\s\S]*?\}\s*/g, "")
-    .replace('"Maccess SF", -apple-system', '-apple-system');
-  if (/Maccess SF|sf-(?:bold|light|medium|regular|semibold)\.woff2/.test(result)) {
-    throw new Error("Maccess font sanitization retained a restricted font reference.");
-  }
-  return result;
-}
-
-function generateCommunityStyles(source) {
+function generateCommunityStyles(source, freeIds) {
   const sliceBetween = (start, end) => {
     const from = source.indexOf(start);
     const to = source.indexOf(end, from + start.length);
@@ -409,15 +411,17 @@ function generateCommunityStyles(source) {
     ".japanese-tower-landscape",
     ".liquid-metal-button",
     ".spark-badge",
-    ".hypnotic-loops",
-    ".at-the-horizon",
     ".threeui-background",
   ];
+  if (freeIds.has("hypnotic-loops")) communityRoots.push(".hypnotic-loops");
+  if (freeIds.has("at-the-horizon")) communityRoots.push(".at-the-horizon");
   const communityOnly = [
     `${communityRoots.join(",\n")} ${sharedSizing}`,
     sliceBetween(".japanese-tower-landscape {", ".sakura-branch-scene {"),
     sliceBetween(".liquid-metal-button {", ".iso-mail-lightshafts {"),
-    sliceBetween(".spark-badge {", ".scalability-bricks {"),
+    sliceBetween(".spark-badge {", ".hypnotic-loops {"),
+    ...(freeIds.has("hypnotic-loops") ? [sliceBetween(".hypnotic-loops {", ".at-the-horizon {")] : []),
+    ...(freeIds.has("at-the-horizon") ? [sliceBetween(".at-the-horizon {", ".scalability-bricks {")] : []),
     sliceBetween(".text-path-study {", ".cross-beam-canvas,"),
     sliceBetween(".temple-night-scene,", ".yosemite-sunset-scene,"),
     sliceBetween(".bookshelf,", "@font-face {"),
@@ -436,11 +440,44 @@ function generateCommunityStyles(source) {
     "yosemite-sunset",
     "presidio-sunset",
     "lake-louise",
+    ...(freeIds.has("hypnotic-loops") ? [] : ["hypnotic-loops"]),
+    ...(freeIds.has("at-the-horizon") ? [] : ["at-the-horizon"]),
   ];
   for (const selector of forbidden) {
     if (communityOnly.includes(selector)) throw new Error(`Community renderer CSS retained ${selector}.`);
   }
   return `/* Generated from the main renderer stylesheet; Community selectors only. */\n${communityOnly}\n`;
+}
+
+function sanitizeNeuformIsolatedEffects(source) {
+  const result = source
+    .replace(/^import particleOrbSource from "\.\/sources\/synthesis-orb\.html\?raw";\n/m, "")
+    .replace(/\n  particleOrb: \{[\s\S]*?\n  \},\n  performanceGaugesTachometer:/, "\n  performanceGaugesTachometer:")
+    .replace(/^export const ParticleOrbField = createEffectComponent\(EFFECTS\.particleOrb\);\n/m, "");
+  if (/particleOrb|synthesis-orb/.test(result)) {
+    throw new Error("Neuform isolation retained the excluded Particle Orb Beta renderer.");
+  }
+  return result;
+}
+
+function sanitizeSectionElementsCss(source) {
+  const result = source
+    .replace(/@font-face \{[\s\S]*?\}\s*/g, "")
+    .replace('"Section SF", -apple-system', '-apple-system');
+  if (/Section SF|sf-(?:bold|light|medium|regular|semibold)\.woff2/.test(result)) {
+    throw new Error("Section Elements font sanitization retained a restricted font reference.");
+  }
+  return result;
+}
+
+function sanitizeSectionElementsModule(source) {
+  const result = source
+    .replace(/^const bento13 = .*\nconst bentoQr = .*\nconst bento14 = .*\n/m, "")
+    .replace(/\nconst orbitIcons = \[[\s\S]*?\nexport function EditorialIntroSection/, "\nexport function EditorialIntroSection");
+  if (/bento-1[134]|WorkflowSection|workflowSteps|PairingIllustration/.test(result)) {
+    throw new Error("Section Elements sanitization retained the excluded Workflow Beta renderer.");
+  }
+  return result;
 }
 
 function generateSkillMarkdownModule(skillById) {
@@ -466,8 +503,49 @@ async function fileRecord(path, original) {
   };
 }
 
+async function readJsonIfPresent(path) {
+  try {
+    return JSON.parse(await readFile(path, "utf8"));
+  } catch (error) {
+    if (error?.code === "ENOENT") return undefined;
+    throw error;
+  }
+}
+
+function sourceRevision() {
+  try {
+    return execFileSync("git", ["-C", sourceRoot, "rev-parse", "HEAD"], { encoding: "utf8" }).trim();
+  } catch {
+    return "working-tree";
+  }
+}
+
+function withoutGeneratedAt(value) {
+  if (!value) return value;
+  const clone = structuredClone(value);
+  delete clone.generatedAt;
+  return clone;
+}
+
+function withoutSyncMetadata(value) {
+  const clone = withoutGeneratedAt(value);
+  if (clone) delete clone.sourceCommit;
+  return clone;
+}
+
+function hasProjectChangesOutsideSyncReport() {
+  const status = execFileSync(
+    "git",
+    ["-C", projectRoot, "status", "--porcelain=v1", "--untracked-files=all", "--", ".", ":(exclude)public/community-sync-report.json"],
+    { encoding: "utf8" },
+  );
+  return status.trim().length > 0;
+}
+
 const inventory = JSON.parse(await readFile(sourceInventoryPath, "utf8"));
 const registryById = new Map(inventory.components.map((component) => [String(component.id), component]));
+const previousSourceRegistry = await readJsonIfPresent(join(projectRoot, "public", "source-code.json"));
+const previousSyncReport = await readJsonIfPresent(join(projectRoot, "public", "community-sync-report.json"));
 
 const vite = await createServer({ root: sourceRoot, server: { middlewareMode: true }, appType: "custom", logLevel: "silent" });
 let shaderModule;
@@ -498,6 +576,7 @@ await mkdir(join(projectRoot, "public"), { recursive: true });
 for (const path of shellFiles) await copyFromSource(path);
 for (const [path, contents] of publicAdapters) await writeGenerated(path, contents);
 for (const path of publicRuntimeFiles) await copyFromSource(path);
+if (freeIds.has("hypnotic-loops")) await copyFromSource("public/hypnotic-loops.html");
 
 const componentPaths = new Set();
 const assetPaths = new Set();
@@ -535,12 +614,20 @@ await writeGenerated("src/shaders/landing-pages/pageRecipes.ts", generatePageRec
 await writeGenerated("src/shaders/landing-pages/LandingPages.tsx", generateLandingPagesModule());
 await writeGenerated("src/shaders/globe/GlobeCollection.tsx", generateGlobeCollectionModule());
 await writeGenerated(
-  "src/shaders/maccess-elements/maccess-elements.css",
-  sanitizeMaccessCss(await readFile(join(sourceRoot, "src/shaders/maccess-elements/maccess-elements.css"), "utf8")),
+  "src/shaders/community.css",
+  generateCommunityStyles(await readFile(join(sourceRoot, "src/shaders/threeui.css"), "utf8"), freeIds),
 );
 await writeGenerated(
-  "src/shaders/community.css",
-  generateCommunityStyles(await readFile(join(sourceRoot, "src/shaders/threeui.css"), "utf8")),
+  "src/shaders/neuform-isolated/NeuformIsolatedEffects.tsx",
+  sanitizeNeuformIsolatedEffects(await readFile(join(sourceRoot, "src/shaders/neuform-isolated/NeuformIsolatedEffects.tsx"), "utf8")),
+);
+await writeGenerated(
+  "src/shaders/section-elements/SectionElements.tsx",
+  sanitizeSectionElementsModule(await readFile(join(sourceRoot, "src/shaders/section-elements/SectionElements.tsx"), "utf8")),
+);
+await writeGenerated(
+  "src/shaders/section-elements/section-elements.css",
+  sanitizeSectionElementsCss(await readFile(join(sourceRoot, "src/shaders/section-elements/section-elements.css"), "utf8")),
 );
 await writeGenerated(
   "src/shaders/sketchbook/sketchbookDocument.js",
@@ -604,12 +691,15 @@ for (const shader of visibleFreeShaders) {
 }
 
 const sourceRegistry = { schemaVersion: 1, generatedAt: new Date().toISOString(), readyIds: visibleFreeShaders.map((shader) => String(shader.id)), sharedFiles, components: sourceComponents };
+if (previousSourceRegistry && JSON.stringify(withoutGeneratedAt(previousSourceRegistry)) === JSON.stringify(withoutGeneratedAt(sourceRegistry))) {
+  sourceRegistry.generatedAt = previousSourceRegistry.generatedAt;
+}
 await writeFile(join(projectRoot, "public", "source-code.json"), `${JSON.stringify(sourceRegistry, null, 2)}\n`);
 
 const syncReport = {
   schemaVersion: 1,
   generatedAt: new Date().toISOString(),
-  sourceCommit: (await readFile(join(sourceRoot, ".git", "HEAD"), "utf8").catch(() => "working-tree")).trim(),
+  sourceCommit: sourceRevision(),
   communityParents: visibleFreeShaders.length,
   communityRoutes: freeShaders.length,
   communityVariants: visibleFreeShaders.reduce((total, shader) => total + (shader.variants?.filter((variant) => shaderModule.getShaderAccess(shader, variant) !== "pro").length || 0), 0),
@@ -629,6 +719,14 @@ const syncReport = {
     };
   }),
 };
+if (
+  previousSyncReport
+  && !hasProjectChangesOutsideSyncReport()
+  && JSON.stringify(withoutSyncMetadata(previousSyncReport)) === JSON.stringify(withoutSyncMetadata(syncReport))
+) {
+  syncReport.generatedAt = previousSyncReport.generatedAt;
+  syncReport.sourceCommit = previousSyncReport.sourceCommit;
+}
 await writeFile(join(projectRoot, "public", "community-sync-report.json"), `${JSON.stringify(syncReport, null, 2)}\n`);
 
 console.log(`Synced ${syncReport.communityParents} Community parents, ${syncReport.communityRoutes} routes, and ${syncReport.communityVariants} free variants from the main project.`);
