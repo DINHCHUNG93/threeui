@@ -3,6 +3,7 @@ import type { ReadyShader } from "../data/shaders";
 import { CopyIcon, TocIcon } from "./icons";
 import { INSTALL_COMMANDS, InstallationSteps } from "./InstallationSteps";
 import { RightRailPromos } from "./RightRailPromos";
+import { SyntaxHighlightedCode } from "./SyntaxHighlightedCode";
 
 type InstallationDocumentationProps = {
   onPricing: () => void;
@@ -12,14 +13,18 @@ type InstallationDocumentationProps = {
 const REQUIREMENTS = [
   { name: "react", type: "peer", value: ">= 18.2.0" },
   { name: "react-dom", type: "peer", value: ">= 18.2.0" },
+  { name: "Node.js", type: "Pro CLI", value: ">= 20" },
   { name: "WebGL", type: "browser", value: "WebGL or WebGL2" },
 ] as const;
 
 const INSTALLATION_TOC = [
   { id: "package", label: "Install package" },
   { id: "requirements", label: "Requirements" },
+  { id: "pro", label: "Pro source" },
   { id: "verify", label: "Verify setup" },
 ] as const;
+
+const PRO_INSTALL_COMMAND = "npx @designcodeio/threeui-cli add cross-beam";
 
 async function copyText(text: string) {
   await navigator.clipboard.writeText(text);
@@ -39,7 +44,7 @@ export function InstallationDocumentation({ onPricing, onSelect }: InstallationD
         <main className="doc" id="doc">
           <div className="crumb">Getting started</div>
           <h1>Installation</h1>
-          <p className="lede">Add the provenance-verified ThreeUI renderers to an existing React project.</p>
+          <p className="lede">Install Community components from npm, or authenticate to download entitled Pro source into your project.</p>
           <div className="tagrow">
             <span className="tag">@designcodeio/threeui</span>
           </div>
@@ -62,6 +67,26 @@ export function InstallationDocumentation({ onPricing, onSelect }: InstallationD
                 ))}
               </tbody>
             </table>
+          </div>
+
+          <h2 id="pro">Install Pro source</h2>
+          <p>Pro implementation source is not published to npm. Active members use the public CLI, sign in through OAuth in the browser, and receive source only after the server verifies their current entitlement.</p>
+          <div className="code-card padded card code-inline">
+            <button
+              className="icon-btn inset-shadow copy-corner"
+              aria-label="Copy Pro component command"
+              onClick={() => copyText(PRO_INSTALL_COMMAND).then(() => notify("Copied"))}
+            >
+              <CopyIcon />
+            </button>
+            <pre className="code"><SyntaxHighlightedCode code={PRO_INSTALL_COMMAND} language="text" /></pre>
+          </div>
+          <div className="integrity card">
+            <span className="integrity-icon"><span className="status-dot" /></span>
+            <div>
+              <strong>OAuth + server-side entitlement</strong>
+              <p>The CLI stores a refreshable session with owner-only permissions. Pro files never enter the public React or CLI packages, and changed project files are not overwritten unless you pass <span className="mono-chip">--force</span>.</p>
+            </div>
           </div>
 
           <h2 id="verify">Verify setup</h2>

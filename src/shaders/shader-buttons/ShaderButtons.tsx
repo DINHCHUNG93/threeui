@@ -8,11 +8,18 @@ export type ShaderButtonVariant =
   | "induction-button"
   | "plasma-button"
   | "tactile-button"
-  | "uploading-button";
+  | "thinking-button";
+
+/** @deprecated Variant names that shipped before a rename. Use {@link ShaderButtonVariant}. */
+export type LegacyShaderButtonVariant = "uploading-button";
 
 export type ShaderButtonsProps = NeuformIsolatedEffectProps & {
-  variant?: ShaderButtonVariant;
+  variant?: ShaderButtonVariant | LegacyShaderButtonVariant;
 };
+
+const LEGACY_SHADER_BUTTON_VARIANTS = {
+  "uploading-button": "thinking-button",
+} satisfies Record<LegacyShaderButtonVariant, ShaderButtonVariant>;
 
 const SHADER_BUTTON_VARIANTS = {
   "star-portal": lazy(() =>
@@ -30,13 +37,16 @@ const SHADER_BUTTON_VARIANTS = {
   "tactile-button": lazy(() =>
     import("../neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.TactileButton })),
   ),
-  "uploading-button": lazy(() =>
+  "thinking-button": lazy(() =>
     import("../neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.ThinkingButton })),
   ),
 } satisfies Record<ShaderButtonVariant, LazyExoticComponent<ComponentType<NeuformIsolatedEffectProps>>>;
 
 export function ShaderButtons({ variant = "star-portal", ...props }: ShaderButtonsProps) {
-  const Variant = SHADER_BUTTON_VARIANTS[variant];
+  const resolved = variant in LEGACY_SHADER_BUTTON_VARIANTS
+    ? LEGACY_SHADER_BUTTON_VARIANTS[variant as LegacyShaderButtonVariant]
+    : variant as ShaderButtonVariant;
+  const Variant = SHADER_BUTTON_VARIANTS[resolved];
 
   return (
     <Suspense fallback={null}>

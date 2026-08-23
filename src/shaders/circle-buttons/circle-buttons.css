@@ -139,7 +139,7 @@
   background: conic-gradient(from 180deg, rgba(255, 255, 255, 0.012) 180deg, rgba(255, 255, 255, 0.05) 360deg);
   filter: blur(15px);
   transform: translate(-50%, -50%);
-  animation: circle-button-maccess-orbit 3.6s linear infinite;
+  animation: circle-button-section-orbit 3.6s linear infinite;
   transition: opacity 500ms;
 }
 
@@ -396,7 +396,7 @@
   color: rgba(255, 255, 255, 0.67);
 }
 
-@keyframes circle-button-maccess-orbit {
+@keyframes circle-button-section-orbit {
   0% { transform: translate(-50%, -50%) translateX(0) rotate(0); }
   25% { transform: translate(-50%, -50%) translateX(-30px) rotate(90deg); }
   50% { transform: translate(-50%, -50%) translateX(0) rotate(180deg); }

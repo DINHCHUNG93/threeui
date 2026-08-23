@@ -7,7 +7,13 @@ export const STATIC_ROUTE_PATHS = {
   pricing: "/pricing",
 };
 
+export const LEGAL_ROUTE_PATHS = {
+  privacy: "/privacy",
+  terms: "/terms",
+};
+
 export const OAUTH_CONSENT_PATH = "/oauth/consent";
+export const AFFILIATES_ROUTE_PATH = "/affiliates";
 
 export function categoryRouteSegment(category) {
   return category
@@ -38,9 +44,24 @@ function normalizedPathname(pathname) {
   return withLeadingSlash.length > 1 ? withLeadingSlash.replace(/\/+$/, "") : withLeadingSlash;
 }
 
+/* ids that shipped publicly before a rename: the old URL still resolves, and the
+   canonical path the app replaces it with carries the current id */
+export const RENAMED_SHADER_IDS = {
+  "uploading-button": "thinking-button",
+  "isometric-charging-dock": "isometric-illustration",
+  "gradient-collection": "gallery-heading",
+};
+
+export const RENAMED_SHADER_VARIANTS = {
+  "isometric-illustration": {
+    dock: "search",
+  },
+};
+
 function findShader(catalog, id) {
-  return catalog.find((shader) => shader.id === id)
-    ?? catalog.find((shader) => catalogSlug(shader) === id);
+  const currentId = RENAMED_SHADER_IDS[id] ?? id;
+  return catalog.find((shader) => shader.id === currentId)
+    ?? catalog.find((shader) => catalogSlug(shader) === currentId);
 }
 
 function resolveShaderSelection(catalog, requestedShader, requestedVariantId) {
@@ -49,9 +70,12 @@ function resolveShaderSelection(catalog, requestedShader, requestedVariantId) {
     : requestedShader;
   if (!shader || shader.variantOf) return null;
 
+  const requestedVariant = RENAMED_SHADER_VARIANTS[shader.id]?.[requestedVariantId]
+    ?? RENAMED_SHADER_IDS[requestedVariantId]
+    ?? requestedVariantId;
   const variantId = requestedShader.variantOf
-    ? requestedShader.variantAliases?.[requestedVariantId] ?? requestedShader.id
-    : requestedVariantId;
+    ? requestedShader.variantAliases?.[requestedVariant] ?? requestedShader.id
+    : requestedVariant;
   if (variantId && !shader.variants?.some((variant) => variant.id === variantId)) return null;
 
   return {
@@ -63,7 +87,7 @@ function resolveShaderSelection(catalog, requestedShader, requestedVariantId) {
 }
 
 function staticRoute(page) {
-  return { page, canonicalPath: STATIC_ROUTE_PATHS[page] };
+  return { page, canonicalPath: STATIC_ROUTE_PATHS[page] ?? LEGAL_ROUTE_PATHS[page] };
 }
 
 function resolveLegacyRoute(searchParams, catalog) {
@@ -95,6 +119,9 @@ export function resolveAppRoute(locationLike, catalog) {
   if (pathname === STATIC_ROUTE_PATHS.installation) return staticRoute("installation");
   if (pathname === STATIC_ROUTE_PATHS.mcp) return staticRoute("mcp");
   if (pathname === STATIC_ROUTE_PATHS.pricing) return staticRoute("pricing");
+  if (pathname === LEGAL_ROUTE_PATHS.privacy) return staticRoute("privacy");
+  if (pathname === LEGAL_ROUTE_PATHS.terms) return staticRoute("terms");
+  if (pathname === AFFILIATES_ROUTE_PATH) return { page: "affiliates", canonicalPath: AFFILIATES_ROUTE_PATH };
   if (pathname === OAUTH_CONSENT_PATH) return { page: "oauth-consent", canonicalPath: OAUTH_CONSENT_PATH };
 
   const segments = pathname.slice(1).split("/").map(decodePathSegment);
@@ -124,7 +151,10 @@ export function resolveAppRoute(locationLike, catalog) {
   if (segments[0] !== expectedCategory) return { page: "not-found", canonicalPath: pathname };
 
   const usesLegacyShaderSlug = segments[1] !== catalogSlug(selection.shader);
-  return usesLegacyVariantOrder || usesGroupedVariantAlias || usesLegacyShaderSlug
+  const usesRenamedVariant = segments.length === 3
+    && !usesLegacyVariantOrder
+    && segments[2] !== selection.variantId;
+  return usesLegacyVariantOrder || usesGroupedVariantAlias || usesLegacyShaderSlug || usesRenamedVariant
     ? { ...selection, legacy: true }
     : selection;
 }

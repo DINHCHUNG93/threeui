@@ -91,7 +91,7 @@ output = replaceExact(
   "the authored camera constants",
 );
 output = replaceExact(output, "const UNITS_WIDE=10.4;", "const UNITS_WIDE=48;", "the authored horizontal fit");
-output = replaceExact(output, "const CAM_FLOOR=3.4;", "const CAM_FLOOR=1.35;", "the authored camera floor");
+output = replaceExact(output, "const CAM_FLOOR=3.4;", "const CAM_FLOOR=CAM_H;", "the authored camera floor");
 output = replaceExact(output, "(CAM_FLOOR-7.065)/80", "(CAM_FLOOR-CAM_H)/CAM_D", "the authored elevation clamp");
 output = replaceExact(
   output,

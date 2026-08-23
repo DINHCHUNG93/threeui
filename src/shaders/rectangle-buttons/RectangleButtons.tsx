@@ -1,9 +1,9 @@
 import { lazy, Suspense, type ComponentType, type LazyExoticComponent } from "react";
 
 import {
-  MaccessGlassButton as DarkGlassRectangle,
+  DarkGlassButton as DarkGlassRectangle,
   type SectionCompositionProps,
-} from "../maccess-elements/MaccessElements";
+} from "../section-elements/SectionElements";
 import type { LumenCtaProps } from "../lumen-cta/LumenCta";
 import type { NeuformIsolatedEffectProps } from "../neuform-isolated/NeuformIsolatedEffects";
 
@@ -92,8 +92,8 @@ export function RectangleButtons({ variant = "dark-pill", ...props }: RectangleB
 }
 
 /** @deprecated Use RectangleButtons. */
-export const MaccessGlassButton = RectangleButtons;
+export const DarkGlassButton = RectangleButtons;
 /** @deprecated Use RectangleButtonsProps. */
-export type MaccessGlassButtonProps = RectangleButtonsProps;
+export type DarkGlassButtonProps = RectangleButtonsProps;
 /** @deprecated Use RectangleButtonVariant. */
-export type MaccessGlassButtonVariant = RectangleButtonVariant;
+export type DarkGlassButtonVariant = RectangleButtonVariant;

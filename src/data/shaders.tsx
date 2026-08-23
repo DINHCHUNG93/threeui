@@ -9,105 +9,96 @@ import { LiquidFormBackground as CommunityRenderer7 } from "../shaders/liquid-fo
 const CommunityRenderer8 = lazy(() => import("../shaders/crt/CrtBackground").then((module) => ({ default: module.CrtBackground })));
 const CommunityRenderer9 = lazy(() => import("../shaders/globe/GlobeCollection").then((module) => ({ default: module.GlobeCollection })));
 const CommunityRenderer10 = lazy(() => import("../shaders/spark-badge/SparkBadge").then((module) => ({ default: module.SparkBadge })));
-const CommunityRenderer11 = lazy(() => import("../shaders/hypnotic-loops/HypnoticLoops").then((module) => ({ default: module.HypnoticLoops })));
-const CommunityRenderer12 = lazy(() => import("../shaders/at-the-horizon/AtTheHorizon").then((module) => ({ default: module.AtTheHorizon })));
-const CommunityRenderer13 = lazy(() => import("../shaders/stream-convergence/StreamConvergenceBackground").then((module) => ({ default: module.StreamConvergenceBackground })));
-const CommunityRenderer14 = lazy(() => import("../shaders/bell-field/BellFieldBackground").then((module) => ({ default: module.BellFieldBackground })));
-const CommunityRenderer15 = lazy(() => import("../shaders/neuform-isolated/NeuformBatchEffects").then((module) => ({ default: module.FlowField })));
-const CommunityRenderer16 = lazy(() => import("../shaders/elements/ElementsCollection").then((module) => ({ default: module.ElementsCollection })));
-const CommunityRenderer17 = lazy(() => import("../shaders/elements/ElementsBackground").then((module) => ({ default: module.ElementsBackground })));
-const CommunityRenderer18 = lazy(() => import("../shaders/condensation/CondensationBackground").then((module) => ({ default: module.CondensationBackground })));
-const CommunityRenderer19 = lazy(() => import("../shaders/elements/GenerativeTree").then((module) => ({ default: module.GenerativeTree })));
-const CommunityRenderer20 = lazy(() => import("../shaders/ribbon-field/RibbonFieldBackground").then((module) => ({ default: module.RibbonFieldBackground })));
-const CommunityRenderer21 = lazy(() => import("../shaders/typography-vortex/TypographyVortexCanvas").then((module) => ({ default: module.TypographyVortexCanvas })));
-const CommunityRenderer22 = lazy(() => import("../shaders/semantic-bloom/SemanticBloom").then((module) => ({ default: module.SemanticBloom })));
-const CommunityRenderer23 = lazy(() => import("../shaders/text-path-studies/TextPathStudies").then((module) => ({ default: module.TextPathStudies })));
-const CommunityRenderer24 = lazy(() => import("../shaders/text-path-studies/TextPathStudies").then((module) => ({ default: module.OutlineTypeflow })));
-const CommunityRenderer25 = lazy(() => import("../shaders/text-path-studies/TextPathStudies").then((module) => ({ default: module.MorphingGlyphCloud })));
-const CommunityRenderer26 = lazy(() => import("../shaders/text-path-studies/TextPathStudies").then((module) => ({ default: module.ClothStudy })));
-const CommunityRenderer27 = lazy(() => import("../shaders/text-path-studies/TextPathStudies").then((module) => ({ default: module.RippleStudy })));
-const CommunityRenderer28 = lazy(() => import("../shaders/text-path-studies/TextPathStudies").then((module) => ({ default: module.BallStudy })));
-const CommunityRenderer29 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.ThreeUIIntro })));
-const CommunityRenderer30 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.ParticleWordmark })));
-const CommunityRenderer31 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.AudioWordmark })));
-const CommunityRenderer32 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.GradientCollection })));
-const CommunityRenderer33 = lazy(() => import("../shaders/shader-buttons/ShaderButtons").then((module) => ({ default: module.ShaderButtons })));
-const CommunityRenderer34 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.ParticleOrbField })));
-const CommunityRenderer35 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.IgnitionButton })));
-const CommunityRenderer36 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.InductionButton })));
-const CommunityRenderer37 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.PlasmaButton })));
-const CommunityRenderer38 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.TactileButton })));
-const CommunityRenderer39 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.ThinkingButton })));
-const CommunityRenderer40 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.SlidingTextCta })));
-const CommunityRenderer41 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.FloatingDotsCta })));
-const CommunityRenderer42 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.LaunchButton })));
-const CommunityRenderer43 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.DotBorderButton })));
-const CommunityRenderer44 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.GradientCta })));
-const CommunityRenderer45 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.SpinningBorderButton })));
-const CommunityRenderer46 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.GlassmorphismCta })));
-const CommunityRenderer47 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.GenerateButton })));
-const CommunityRenderer48 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.GradientPillButton })));
-const CommunityRenderer49 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.GradientBeamCta })));
-const CommunityRenderer50 = lazy(() => import("../shaders/rectangle-buttons/RectangleButtons").then((module) => ({ default: module.RectangleButtons })));
-const CommunityRenderer51 = lazy(() => import("../shaders/circle-buttons/CircleButtons").then((module) => ({ default: module.CircleButtons })));
-const CommunityRenderer52 = lazy(() => import("../shaders/liquid-metal-button/LiquidMetalButton").then((module) => ({ default: module.LiquidMetalButton })));
-const CommunityRenderer53 = lazy(() => import("../shaders/lumen-cta/LumenCta").then((module) => ({ default: module.LumenCta })));
-const CommunityRenderer54 = lazy(() => import("../shaders/sections/SectionsCollection").then((module) => ({ default: module.SectionsCollection })));
-const CommunityRenderer55 = lazy(() => import("../shaders/maccess-elements/MaccessElements").then((module) => ({ default: module.EditorialIntroSection })));
-const CommunityRenderer56 = lazy(() => import("../shaders/maccess-elements/MaccessElements").then((module) => ({ default: module.NewsletterFooterSection })));
-const CommunityRenderer57 = lazy(() => import("../shaders/character-carousel/CharacterCarousel").then((module) => ({ default: module.CharacterCarousel })));
-const CommunityRenderer58 = lazy(() => import("../shaders/character-carousel/CharacterCarousel").then((module) => ({ default: module.CharacterFilmstrip })));
-const CommunityRenderer59 = lazy(() => import("../shaders/character-carousel/CharacterCarousel").then((module) => ({ default: module.CharacterWave })));
-const CommunityRenderer60 = lazy(() => import("../shaders/gallery/Gallery").then((module) => ({ default: module.Gallery })));
-const CommunityRenderer61 = lazy(() => import("../shaders/genie-dock/GenieDock").then((module) => ({ default: module.GenieDock })));
-const CommunityRenderer62 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.CloudField })));
-const CommunityRenderer63 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.VoidField })));
-const CommunityRenderer64 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.RecursiveErosionBackground })));
-const CommunityRenderer65 = lazy(() => import("../shaders/quantera-trading-background/QuanteraTradingBackground").then((module) => ({ default: module.QuanteraTradingBackground })));
-const CommunityRenderer66 = lazy(() => import("../shaders/sylva-living-world/SylvaLivingWorldScene").then((module) => ({ default: module.SylvaLivingWorldScene })));
-const CommunityRenderer67 = lazy(() => import("../shaders/temple-night/TempleNightScene").then((module) => ({ default: module.TempleNightScene })));
-const CommunityRenderer68 = lazy(() => import("../shaders/landscape/LandscapeScene").then((module) => ({ default: module.LandscapeScene })));
-const CommunityRenderer69 = lazy(() => import("../shaders/japanese-tower/JapaneseTowerLandscape").then((module) => ({ default: module.JapaneseTowerLandscape })));
-const CommunityRenderer70 = lazy(() => import("../shaders/bookshelf/BookshelfScene").then((module) => ({ default: module.BookshelfScene })));
-const CommunityRenderer71 = lazy(() => import("../shaders/structure-flow/StructureFlowCollection").then((module) => ({ default: module.StructureFlowCollection })));
-const CommunityRenderer72 = lazy(() => import("../shaders/emerald-horizon/EmeraldHorizonBackground").then((module) => ({ default: module.EmeraldHorizonBackground })));
-const CommunityRenderer73 = lazy(() => import("../shaders/orbital-sphere/OrbitalSphereBackground").then((module) => ({ default: module.OrbitalSphereBackground })));
-const CommunityRenderer74 = lazy(() => import("../shaders/dot-matrix/DotMatrixBackground").then((module) => ({ default: module.DotMatrixBackground })));
-const CommunityRenderer75 = lazy(() => import("../shaders/warp-field/WarpFieldBackground").then((module) => ({ default: module.WarpFieldBackground })));
-const CommunityRenderer76 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.ExpanseField })));
-const CommunityRenderer77 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.LogicCoreField })));
-const CommunityRenderer78 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.DimensionalField })));
-const CommunityRenderer79 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.DataField })));
-const CommunityRenderer80 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.TopologyField })));
-const CommunityRenderer81 = lazy(() => import("../shaders/neuform-isolated/NeuformCraftEffects").then((module) => ({ default: module.HalftoneFlow })));
-const CommunityRenderer82 = lazy(() => import("../shaders/neuform-isolated/NeuformCraftEffects").then((module) => ({ default: module.NeonTypography })));
-const CommunityRenderer83 = lazy(() => import("../shaders/neuform-isolated/NeuformCraftEffects").then((module) => ({ default: module.EngravedCertificate })));
-const CommunityRenderer84 = lazy(() => import("../shaders/neuform-isolated/NeuformCraftEffects").then((module) => ({ default: module.WovenCloth })));
-const CommunityRenderer85 = lazy(() => import("../shaders/neuform-isolated/NeuformCraftEffects").then((module) => ({ default: module.NebulaBackground })));
-const CommunityRenderer86 = lazy(() => import("../shaders/neuform-isolated/NeuformCraftEffects").then((module) => ({ default: module.FluidFieldBackground })));
-const CommunityRenderer87 = lazy(() => import("../shaders/neuform-isolated/NeuformCraftEffects").then((module) => ({ default: module.EmberStorm })));
-const CommunityRenderer88 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.PerformanceGauges })));
-const CommunityRenderer89 = lazy(() => import("../shaders/uplink-loader/UplinkLoader").then((module) => ({ default: module.UplinkLoader })));
-const CommunityRenderer90 = lazy(() => import("../shaders/koi-studies/KoiStudies").then((module) => ({ default: module.KoiStudies })));
-const CommunityRenderer91 = lazy(() => import("../shaders/article-headings/TextAnimationCollection").then((module) => ({ default: module.TextAnimationCollection })));
-const CommunityRenderer92 = lazy(() => import("../shaders/animated-top-dock/AnimatedTopDock").then((module) => ({ default: module.AnimatedTopDock })));
-const CommunityRenderer93 = lazy(() => import("../shaders/sketchbook/Sketchbook").then((module) => ({ default: module.Sketchbook })));
-const CommunityRenderer94 = lazy(() => import("../shaders/constellation-field/ConstellationField").then((module) => ({ default: module.ConstellationField })));
-const CommunityRenderer95 = lazy(() => import("../shaders/neuform-isolated/NeuformBatchEffects").then((module) => ({ default: module.ParticleDrift })));
-const CommunityRenderer96 = lazy(() => import("../shaders/neuform-isolated/NeuformBatchEffects").then((module) => ({ default: module.ParticleNetwork })));
-const CommunityRenderer97 = lazy(() => import("../shaders/neuform-isolated/NeuformBatchEffects").then((module) => ({ default: module.FluxVortex })));
-const CommunityRenderer98 = lazy(() => import("../shaders/portal-field/PortalFieldCollection").then((module) => ({ default: module.PortalFieldCollection })));
-const CommunityRenderer99 = lazy(() => import("../shaders/neuform-isolated/NeuformBatchEffects").then((module) => ({ default: module.AmberHalftone })));
-const CommunityRenderer100 = lazy(() => import("../shaders/neuform-isolated/NeuformBatchEffects").then((module) => ({ default: module.DiagnosticsPanel })));
-const CommunityRenderer101 = lazy(() => import("../shaders/neuform-isolated/NeuformBatchEffects").then((module) => ({ default: module.SkeuomorphicToggle })));
-const CommunityRenderer102 = lazy(() => import("../shaders/laser/LaserCollection").then((module) => ({ default: module.LaserCollection })));
-const CommunityRenderer103 = lazy(() => import("../shaders/neuform-isolated/NeuformBatchEffects").then((module) => ({ default: module.GatewayFlow })));
-const CommunityRenderer104 = lazy(() => import("../shaders/neuform-isolated/NeuformBatchEffects").then((module) => ({ default: module.ConnectivityGraph })));
-const CommunityRenderer105 = lazy(() => import("../shaders/neuform-isolated/NeuformBatchEffects").then((module) => ({ default: module.InterfaceLines })));
-const CommunityRenderer106 = lazy(() => import("../shaders/neuform-isolated/NeuformBatchEffects").then((module) => ({ default: module.WireframeForms })));
-const CommunityRenderer107 = lazy(() => import("../shaders/neuform-isolated/NeuformBatchEffects").then((module) => ({ default: module.DefenseLines })));
-const CommunityRenderer108 = lazy(() => import("../shaders/neuform-isolated/NeuformBatchEffects").then((module) => ({ default: module.TopoField })));
-const CommunityRenderer109 = lazy(() => import("../shaders/brand-orbs/BrandOrbs").then((module) => ({ default: module.BrandOrbs })));
+const CommunityRenderer11 = lazy(() => import("../shaders/stream-convergence/StreamConvergenceBackground").then((module) => ({ default: module.StreamConvergenceBackground })));
+const CommunityRenderer12 = lazy(() => import("../shaders/bell-field/BellFieldBackground").then((module) => ({ default: module.BellFieldBackground })));
+const CommunityRenderer13 = lazy(() => import("../shaders/neuform-isolated/NeuformBatchEffects").then((module) => ({ default: module.FlowField })));
+const CommunityRenderer14 = lazy(() => import("../shaders/elements/ElementsCollection").then((module) => ({ default: module.ElementsCollection })));
+const CommunityRenderer15 = lazy(() => import("../shaders/elements/ElementsBackground").then((module) => ({ default: module.ElementsBackground })));
+const CommunityRenderer16 = lazy(() => import("../shaders/condensation/CondensationBackground").then((module) => ({ default: module.CondensationBackground })));
+const CommunityRenderer17 = lazy(() => import("../shaders/elements/GenerativeTree").then((module) => ({ default: module.GenerativeTree })));
+const CommunityRenderer18 = lazy(() => import("../shaders/ribbon-field/RibbonFieldBackground").then((module) => ({ default: module.RibbonFieldBackground })));
+const CommunityRenderer19 = lazy(() => import("../shaders/typography-vortex/TypographyVortexCanvas").then((module) => ({ default: module.TypographyVortexCanvas })));
+const CommunityRenderer20 = lazy(() => import("../shaders/semantic-bloom/SemanticBloom").then((module) => ({ default: module.SemanticBloom })));
+const CommunityRenderer21 = lazy(() => import("../shaders/text-path-studies/TextPathStudies").then((module) => ({ default: module.TextPathStudies })));
+const CommunityRenderer22 = lazy(() => import("../shaders/text-path-studies/TextPathStudies").then((module) => ({ default: module.OutlineTypeflow })));
+const CommunityRenderer23 = lazy(() => import("../shaders/text-path-studies/TextPathStudies").then((module) => ({ default: module.MorphingGlyphCloud })));
+const CommunityRenderer24 = lazy(() => import("../shaders/text-path-studies/TextPathStudies").then((module) => ({ default: module.ClothStudy })));
+const CommunityRenderer25 = lazy(() => import("../shaders/text-path-studies/TextPathStudies").then((module) => ({ default: module.RippleStudy })));
+const CommunityRenderer26 = lazy(() => import("../shaders/text-path-studies/TextPathStudies").then((module) => ({ default: module.BallStudy })));
+const CommunityRenderer27 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.ThreeUIIntro })));
+const CommunityRenderer28 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.ParticleWordmark })));
+const CommunityRenderer29 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.AudioWordmark })));
+const CommunityRenderer30 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.GalleryHeading })));
+const CommunityRenderer31 = lazy(() => import("../shaders/shader-buttons/ShaderButtons").then((module) => ({ default: module.ShaderButtons })));
+const CommunityRenderer32 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.IgnitionButton })));
+const CommunityRenderer33 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.InductionButton })));
+const CommunityRenderer34 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.PlasmaButton })));
+const CommunityRenderer35 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.TactileButton })));
+const CommunityRenderer36 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.ThinkingButton })));
+const CommunityRenderer37 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.SlidingTextCta })));
+const CommunityRenderer38 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.FloatingDotsCta })));
+const CommunityRenderer39 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.LaunchButton })));
+const CommunityRenderer40 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.DotBorderButton })));
+const CommunityRenderer41 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.GradientCta })));
+const CommunityRenderer42 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.SpinningBorderButton })));
+const CommunityRenderer43 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.GlassmorphismCta })));
+const CommunityRenderer44 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.GenerateButton })));
+const CommunityRenderer45 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.GradientPillButton })));
+const CommunityRenderer46 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.GradientBeamCta })));
+const CommunityRenderer47 = lazy(() => import("../shaders/rectangle-buttons/RectangleButtons").then((module) => ({ default: module.RectangleButtons })));
+const CommunityRenderer48 = lazy(() => import("../shaders/circle-buttons/CircleButtons").then((module) => ({ default: module.CircleButtons })));
+const CommunityRenderer49 = lazy(() => import("../shaders/liquid-metal-button/LiquidMetalButton").then((module) => ({ default: module.LiquidMetalButton })));
+const CommunityRenderer50 = lazy(() => import("../shaders/lumen-cta/LumenCta").then((module) => ({ default: module.LumenCta })));
+const CommunityRenderer51 = lazy(() => import("../shaders/character-carousel/CharacterCarousel").then((module) => ({ default: module.CharacterCarousel })));
+const CommunityRenderer52 = lazy(() => import("../shaders/character-carousel/CharacterCarousel").then((module) => ({ default: module.CharacterFilmstrip })));
+const CommunityRenderer53 = lazy(() => import("../shaders/character-carousel/CharacterCarousel").then((module) => ({ default: module.CharacterWave })));
+const CommunityRenderer54 = lazy(() => import("../shaders/gallery/Gallery").then((module) => ({ default: module.Gallery })));
+const CommunityRenderer55 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.CloudField })));
+const CommunityRenderer56 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.VoidField })));
+const CommunityRenderer57 = lazy(() => import("../shaders/sylva-living-world/SylvaLivingWorldScene").then((module) => ({ default: module.SylvaLivingWorldScene })));
+const CommunityRenderer58 = lazy(() => import("../shaders/temple-night/TempleNightScene").then((module) => ({ default: module.TempleNightScene })));
+const CommunityRenderer59 = lazy(() => import("../shaders/landscape/LandscapeScene").then((module) => ({ default: module.LandscapeScene })));
+const CommunityRenderer60 = lazy(() => import("../shaders/japanese-tower/JapaneseTowerLandscape").then((module) => ({ default: module.JapaneseTowerLandscape })));
+const CommunityRenderer61 = lazy(() => import("../shaders/bookshelf/BookshelfScene").then((module) => ({ default: module.BookshelfScene })));
+const CommunityRenderer62 = lazy(() => import("../shaders/structure-flow/StructureFlowCollection").then((module) => ({ default: module.StructureFlowCollection })));
+const CommunityRenderer63 = lazy(() => import("../shaders/emerald-horizon/EmeraldHorizonBackground").then((module) => ({ default: module.EmeraldHorizonBackground })));
+const CommunityRenderer64 = lazy(() => import("../shaders/orbital-sphere/OrbitalSphereBackground").then((module) => ({ default: module.OrbitalSphereBackground })));
+const CommunityRenderer65 = lazy(() => import("../shaders/dot-matrix/DotMatrixBackground").then((module) => ({ default: module.DotMatrixBackground })));
+const CommunityRenderer66 = lazy(() => import("../shaders/warp-field/WarpFieldBackground").then((module) => ({ default: module.WarpFieldBackground })));
+const CommunityRenderer67 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.ExpanseField })));
+const CommunityRenderer68 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.LogicCoreField })));
+const CommunityRenderer69 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.DimensionalField })));
+const CommunityRenderer70 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.DataField })));
+const CommunityRenderer71 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.TopologyField })));
+const CommunityRenderer72 = lazy(() => import("../shaders/neuform-isolated/NeuformCraftEffects").then((module) => ({ default: module.HalftoneFlow })));
+const CommunityRenderer73 = lazy(() => import("../shaders/neuform-isolated/NeuformCraftEffects").then((module) => ({ default: module.NeonTypography })));
+const CommunityRenderer74 = lazy(() => import("../shaders/neuform-isolated/NeuformCraftEffects").then((module) => ({ default: module.EngravedCertificate })));
+const CommunityRenderer75 = lazy(() => import("../shaders/neuform-isolated/NeuformCraftEffects").then((module) => ({ default: module.WovenCloth })));
+const CommunityRenderer76 = lazy(() => import("../shaders/neuform-isolated/NeuformCraftEffects").then((module) => ({ default: module.NebulaBackground })));
+const CommunityRenderer77 = lazy(() => import("../shaders/neuform-isolated/NeuformCraftEffects").then((module) => ({ default: module.FluidFieldBackground })));
+const CommunityRenderer78 = lazy(() => import("../shaders/neuform-isolated/NeuformCraftEffects").then((module) => ({ default: module.EmberStorm })));
+const CommunityRenderer79 = lazy(() => import("../shaders/neuform-isolated/NeuformIsolatedEffects").then((module) => ({ default: module.PerformanceGauges })));
+const CommunityRenderer80 = lazy(() => import("../shaders/uplink-loader/UplinkLoader").then((module) => ({ default: module.UplinkLoader })));
+const CommunityRenderer81 = lazy(() => import("../shaders/koi-studies/KoiStudies").then((module) => ({ default: module.KoiStudies })));
+const CommunityRenderer82 = lazy(() => import("../shaders/article-headings/TextAnimationCollection").then((module) => ({ default: module.TextAnimationCollection })));
+const CommunityRenderer83 = lazy(() => import("../shaders/animated-top-dock/AnimatedTopDock").then((module) => ({ default: module.AnimatedTopDock })));
+const CommunityRenderer84 = lazy(() => import("../shaders/sketchbook/Sketchbook").then((module) => ({ default: module.Sketchbook })));
+const CommunityRenderer85 = lazy(() => import("../shaders/constellation-field/ConstellationField").then((module) => ({ default: module.ConstellationField })));
+const CommunityRenderer86 = lazy(() => import("../shaders/neuform-isolated/NeuformBatchEffects").then((module) => ({ default: module.ParticleDrift })));
+const CommunityRenderer87 = lazy(() => import("../shaders/neuform-isolated/NeuformBatchEffects").then((module) => ({ default: module.ParticleNetwork })));
+const CommunityRenderer88 = lazy(() => import("../shaders/neuform-isolated/NeuformBatchEffects").then((module) => ({ default: module.FluxVortex })));
+const CommunityRenderer89 = lazy(() => import("../shaders/portal-field/PortalFieldCollection").then((module) => ({ default: module.PortalFieldCollection })));
+const CommunityRenderer90 = lazy(() => import("../shaders/neuform-isolated/NeuformBatchEffects").then((module) => ({ default: module.AmberHalftone })));
+const CommunityRenderer91 = lazy(() => import("../shaders/neuform-isolated/NeuformBatchEffects").then((module) => ({ default: module.DiagnosticsPanel })));
+const CommunityRenderer92 = lazy(() => import("../shaders/neuform-isolated/NeuformBatchEffects").then((module) => ({ default: module.SkeuomorphicToggle })));
+const CommunityRenderer93 = lazy(() => import("../shaders/laser/LaserCollection").then((module) => ({ default: module.LaserCollection })));
+const CommunityRenderer94 = lazy(() => import("../shaders/neuform-isolated/NeuformBatchEffects").then((module) => ({ default: module.GatewayFlow })));
+const CommunityRenderer95 = lazy(() => import("../shaders/neuform-isolated/NeuformBatchEffects").then((module) => ({ default: module.ConnectivityGraph })));
+const CommunityRenderer96 = lazy(() => import("../shaders/neuform-isolated/NeuformBatchEffects").then((module) => ({ default: module.InterfaceLines })));
+const CommunityRenderer97 = lazy(() => import("../shaders/neuform-isolated/NeuformBatchEffects").then((module) => ({ default: module.WireframeForms })));
+const CommunityRenderer98 = lazy(() => import("../shaders/neuform-isolated/NeuformBatchEffects").then((module) => ({ default: module.DefenseLines })));
+const CommunityRenderer99 = lazy(() => import("../shaders/neuform-isolated/NeuformBatchEffects").then((module) => ({ default: module.TopoField })));
+const CommunityRenderer100 = lazy(() => import("../shaders/brand-orbs/BrandOrbs").then((module) => ({ default: module.BrandOrbs })));
 
 export type ContractRow = { name: string; type: string; value: string };
 export type RangeControl = { kind?: "range"; key: string; label: string; min: number; max: number; step: number; digits: number; default: number };
@@ -399,10 +390,10 @@ export const READY_SHADERS: readonly ReadyShader[] = [
     "category": "Hero",
     "label": "Complete Shelf",
     "thumbnail": "https://threeui.com/thumbnails/complete-shelf-landing-page.jpg",
-    "description": "The complete Working Volumes bookshelf page, preserved unchanged with all seven tools, its responsive editorial interface, and authored Three.js presentation.",
+    "description": "The complete Working Volumes bookshelf page with all seven tools, its responsive editorial interface, and authored Three.js presentation.",
     "runtime": "Full HTML + DOM/CSS + Three.js r165",
     "origin": "Owner-supplied HTML Pages source",
-    "sourceCommit": "SHA-256 53fe658f794d",
+    "sourceCommit": "SHA-256 606f200fed86",
     "sourceFiles": [
       "src/shaders/landing-pages/LandingPages.tsx",
       "public/landing-pages/complete-shelf-v2.html — byte-exact complete page"
@@ -853,18 +844,18 @@ export const READY_SHADERS: readonly ReadyShader[] = [
     "category": "Hero",
     "label": "Sylva",
     "thumbnail": "https://threeui.com/thumbnails/sylva-hero.jpg",
-    "description": "The complete Sylva Living Green page, preserved with its Three.js scene, local typography, card imagery, and embedded liquid-metal buttons. The authored page exactly as written: moss-root world, pale flowers, ferns, drifting pollen, and the landing butterfly behind the full hero layout.",
+    "description": "The complete Sylva Living Green page, preserved with its Three.js scene, local typography, card imagery, and embedded liquid-metal buttons. The moss-root world with pale flowers, ferns, drifting pollen, the landing butterfly, and native liquid-metal controls behind the full hero layout.",
     "runtime": "Full HTML + DOM/CSS + local Three.js",
     "origin": "Owner-supplied HTML Pages source",
-    "sourceCommit": "SHA-256 fd922291297d",
+    "sourceCommit": "SHA-256 05f359ce157a",
     "sourceFiles": [
       "src/shaders/landing-pages/LandingPages.tsx",
-      "public/landing-pages/inner-green-3d.html — byte-exact complete page"
+      "public/landing-pages/inner-green-3d.html — complete page with native controls"
     ],
     "passes": "1 sandboxed full-document renderer",
     "interaction": "Original pointer, hover, scroll, and responsive scaling",
-    "asset": "Six local assets are packaged at their authored relative paths; the page makes no external request",
-    "assetCount": 6,
+    "asset": "Four local assets are packaged at their authored relative paths; the page makes no external request",
+    "assetCount": 4,
     "importName": "SylvaHero",
     "controls": [
       {
@@ -1005,7 +996,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
       {
         "name": "document",
         "type": "fixed",
-        "value": "Complete original inner-green-3d.html, byte-for-byte"
+        "value": "Complete inner-green-3d.html with native in-document controls"
       },
       {
         "name": "sourceUrl",
@@ -1067,7 +1058,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
       {
         "id": "living-green",
         "label": "Living Green",
-        "description": "The authored page exactly as written: moss-root world, pale flowers, ferns, drifting pollen, and the landing butterfly behind the full hero layout.",
+        "description": "The moss-root world with pale flowers, ferns, drifting pollen, the landing butterfly, and native liquid-metal controls behind the full hero layout.",
         "thumbnail": "https://threeui.com/thumbnails/sylva-hero.jpg",
         "preview": "https://threeui.com/previews/sylva-hero.webm",
         "props": {
@@ -2024,201 +2015,6 @@ export const READY_SHADERS: readonly ReadyShader[] = [
     ]
   }, component: CommunityRenderer10 },
   { ...{
-    "id": "hypnotic-loops",
-    "tags": [
-      "webgl",
-      "glsl",
-      "shader",
-      "canvas",
-      "canvas2d",
-      "generative",
-      "loops",
-      "radial",
-      "bloom",
-      "particles",
-      "dots",
-      "lines",
-      "rays",
-      "typography",
-      "type",
-      "orange",
-      "coral",
-      "amber",
-      "sunset",
-      "morphing",
-      "variants"
-    ],
-    "category": "Backgrounds",
-    "label": "Hypnotic Loops",
-    "thumbnail": "https://threeui.com/thumbnails/hypnotic-loops.jpg",
-    "description": "Four supersampled loop studies—Lines, Dots, Rays, and Type—folded across a centered surface in an orange-to-sunset palette.",
-    "runtime": "Raw WebGL + Canvas 2D",
-    "origin": "HTML Pages",
-    "sourceCommit": "SHA-256 194f67d0a375",
-    "sourceFiles": [
-      "hypnotic-loops.html — complete self-contained WebGL composition",
-      "src/shaders/hypnotic-loops/hypnotic-loops.html",
-      "src/shaders/hypnotic-loops/HypnoticLoops.tsx"
-    ],
-    "passes": "7 — scene, brightness, four separable blur passes, composite",
-    "interaction": "Live shape deformation with four authored pattern modes, custom background color, and reduced-motion support",
-    "asset": "One exact self-contained authored HTML scene; no external assets",
-    "assetCount": 1,
-    "importName": "HypnoticLoops",
-    "contract": [
-      {
-        "name": "renderer",
-        "type": "host",
-        "value": "Raw WebGL + Canvas 2D"
-      },
-      {
-        "name": "mesh",
-        "type": "fixed",
-        "value": "63,571 polar vertices"
-      },
-      {
-        "name": "patterns",
-        "type": "variant",
-        "value": "Lines | Dots | Rays | Type"
-      },
-      {
-        "name": "palette",
-        "type": "controlled",
-        "value": "Orange + Sunset"
-      },
-      {
-        "name": "passes",
-        "type": "fixed",
-        "value": "7"
-      },
-      {
-        "name": "motion",
-        "type": "adaptive",
-        "value": "Visibility + reduced motion"
-      }
-    ],
-    "controls": [
-      {
-        "key": "shape",
-        "label": "Shape",
-        "min": 0,
-        "max": 1.5,
-        "step": 0.01,
-        "digits": 2,
-        "default": 1
-      }
-    ],
-    "variants": [
-      {
-        "id": "lines",
-        "label": "Lines",
-        "description": "The original concentric line field on a vivid solar-orange ground.",
-        "thumbnail": "https://threeui.com/thumbnails/hypnotic-loops.jpg",
-        "preview": "https://threeui.com/previews/hypnotic-loops-lines.mp4",
-        "props": {
-          "variant": "lines"
-        }
-      },
-      {
-        "id": "dots",
-        "label": "Dots",
-        "description": "The original polar dot lattice on a warm coral-sunset ground.",
-        "thumbnail": "https://threeui.com/thumbnails/hypnotic-loops-dots.jpg",
-        "preview": "https://threeui.com/previews/hypnotic-loops-dots.mp4",
-        "props": {
-          "variant": "dots"
-        }
-      },
-      {
-        "id": "rays",
-        "label": "Rays",
-        "description": "The original six-ray cutout on an amber-orange ground.",
-        "thumbnail": "https://threeui.com/thumbnails/hypnotic-loops-rays.jpg",
-        "preview": "https://threeui.com/previews/hypnotic-loops-rays.mp4",
-        "props": {
-          "variant": "rays"
-        }
-      },
-      {
-        "id": "type",
-        "label": "Type",
-        "description": "The original repeating EXPERIMENT bands on a deep sunset-red ground.",
-        "thumbnail": "https://threeui.com/thumbnails/hypnotic-loops-type.jpg",
-        "preview": "https://threeui.com/previews/hypnotic-loops-type.mp4",
-        "props": {
-          "variant": "type"
-        }
-      }
-    ]
-  }, component: CommunityRenderer11 },
-  { ...{
-    "id": "at-the-horizon",
-    "tags": [
-      "webgl",
-      "glsl",
-      "shader",
-      "canvas",
-      "canvas2d",
-      "silhouette",
-      "portrait",
-      "flow field",
-      "monochrome",
-      "grain",
-      "rain",
-      "water",
-      "cinematic"
-    ],
-    "category": "Backgrounds",
-    "label": "Noise Flow",
-    "thumbnail": "https://threeui.com/thumbnails/at-the-horizon.jpg",
-    "description": "A traced encounter between a luminous figure and a vast dissolving profile, rendered entirely in directional threshold grain.",
-    "runtime": "Raw WebGL + Canvas 2D",
-    "origin": "HTML Pages",
-    "sourceCommit": "SHA-256 50c021b04f83",
-    "sourceFiles": [
-      "at-the-horizon-we-meet.html — complete self-contained procedural plate and animated threshold dither",
-      "src/shaders/at-the-horizon/at-the-horizon-we-meet.html",
-      "src/shaders/at-the-horizon/AtTheHorizon.tsx"
-    ],
-    "passes": "2 — Canvas 2D plate bake + animated WebGL threshold-dither composite",
-    "interaction": "Responsive uncropped fit, 25 FPS grain drift, reduced-motion still frame, and visibility-aware preview lifecycle",
-    "asset": "Embedded flow and density fields plus traced vector silhouettes; no external assets",
-    "assetCount": 0,
-    "importName": "AtTheHorizon",
-    "contract": [
-      {
-        "name": "renderer",
-        "type": "host",
-        "value": "Raw WebGL + Canvas 2D"
-      },
-      {
-        "name": "plate",
-        "type": "fixed",
-        "value": "Authored figure and portrait"
-      },
-      {
-        "name": "grain",
-        "type": "fixed",
-        "value": "Directional threshold dither"
-      },
-      {
-        "name": "motion",
-        "type": "adaptive",
-        "value": "25 FPS | reduced-motion still"
-      },
-      {
-        "name": "layout",
-        "type": "responsive",
-        "value": "Uncropped square center fit"
-      },
-      {
-        "name": "assets",
-        "type": "embedded",
-        "value": "Base64 fields + vector traces"
-      }
-    ]
-  }, component: CommunityRenderer12 },
-  { ...{
     "id": "stream-convergence",
     "variantOf": "portal-field",
     "tags": [
@@ -2332,7 +2128,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer13 },
+  }, component: CommunityRenderer11 },
   { ...{
     "id": "bell-field",
     "variantOf": "portal-field",
@@ -2459,7 +2255,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer14 },
+  }, component: CommunityRenderer12 },
   { ...{
     "id": "flow-field",
     "variantOf": "portal-field",
@@ -2617,7 +2413,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer15 },
+  }, component: CommunityRenderer13 },
   { ...{
     "id": "elements",
     "tags": [
@@ -2905,7 +2701,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         ]
       }
     ]
-  }, component: CommunityRenderer16 },
+  }, component: CommunityRenderer14 },
   { ...{
     "id": "elemental-water",
     "variantOf": "elements",
@@ -3027,7 +2823,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer17 },
+  }, component: CommunityRenderer15 },
   { ...{
     "id": "elemental-lightning",
     "variantOf": "elements",
@@ -3148,7 +2944,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer17 },
+  }, component: CommunityRenderer15 },
   { ...{
     "id": "elemental-flame",
     "variantOf": "elements",
@@ -3268,7 +3064,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer17 },
+  }, component: CommunityRenderer15 },
   { ...{
     "id": "condensation",
     "variantOf": "elements",
@@ -3357,7 +3153,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer18 },
+  }, component: CommunityRenderer16 },
   { ...{
     "id": "generative-tree",
     "variantOf": "elements",
@@ -3486,7 +3282,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer19 },
+  }, component: CommunityRenderer17 },
   { ...{
     "id": "ribbon-field",
     "variantOf": "predictive-arc",
@@ -3602,7 +3398,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer20 },
+  }, component: CommunityRenderer18 },
   { ...{
     "id": "typography-vortex",
     "tags": [
@@ -3742,7 +3538,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 920
       }
     ]
-  }, component: CommunityRenderer21 },
+  }, component: CommunityRenderer19 },
   { ...{
     "id": "semantic-bloom",
     "tags": [
@@ -3864,7 +3660,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer22 },
+  }, component: CommunityRenderer20 },
   { ...{
     "id": "globe-study",
     "tags": [
@@ -4062,7 +3858,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         }
       }
     ]
-  }, component: CommunityRenderer23 },
+  }, component: CommunityRenderer21 },
   { ...{
     "id": "outline-typeflow",
     "variantOf": "globe-study",
@@ -4190,7 +3986,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer24 },
+  }, component: CommunityRenderer22 },
   { ...{
     "id": "morphing-glyph-cloud",
     "variantOf": "globe-study",
@@ -4317,7 +4113,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer25 },
+  }, component: CommunityRenderer23 },
   { ...{
     "id": "cloth-study",
     "variantOf": "globe-study",
@@ -4446,7 +4242,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer26 },
+  }, component: CommunityRenderer24 },
   { ...{
     "id": "ripple-study",
     "variantOf": "globe-study",
@@ -4579,7 +4375,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer27 },
+  }, component: CommunityRenderer25 },
   { ...{
     "id": "ball-study",
     "variantOf": "globe-study",
@@ -4714,7 +4510,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer28 },
+  }, component: CommunityRenderer26 },
   { ...{
     "id": "threeui-intro",
     "variantOf": "article-headings",
@@ -4817,7 +4613,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer29 },
+  }, component: CommunityRenderer27 },
   { ...{
     "id": "particle-wordmark",
     "variantOf": "article-headings",
@@ -4921,7 +4717,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer30 },
+  }, component: CommunityRenderer28 },
   { ...{
     "id": "audio-wordmark",
     "variantOf": "article-headings",
@@ -5027,38 +4823,43 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer31 },
+  }, component: CommunityRenderer29 },
   { ...{
-    "id": "gradient-collection",
+    "id": "gallery-heading",
     "tags": [
       "canvas",
       "canvas2d",
-      "gradient",
+      "gallery",
+      "flat color",
+      "noise",
+      "grain",
+      "dither",
+      "halftone",
+      "glitch",
       "carousel",
       "tiles",
       "3d",
       "perspective",
       "typography",
-      "collection",
       "light mode",
       "dark mode"
     ],
     "category": "Text Animation",
-    "label": "Gradient Collection",
-    "thumbnail": "https://threeui.com/thumbnails/gradient-collection.jpg",
-    "description": "Four directional twelve-tile gradient carousels orbiting kinetic ThreeUI headlines, with preserved perspective, shadows, and a synchronized light/dark canvas.",
+    "label": "Gallery Heading",
+    "thumbnail": "https://threeui.com/thumbnails/gallery-heading.jpg",
+    "description": "An oversized headline ringed by twelve 4:3 plates — one flat colour each, shaded by a procedural noise field rather than a gradient — that hold still until the pointer arrives, then orbit. Four galleries, each with its own field, typography, and direction.",
     "runtime": "Canvas 2D",
     "origin": "Owner-selected HTML",
     "sourceCommit": "SHA-256 8e42d2d5b497",
     "sourceFiles": [
-      "src/shaders/neuform-isolated/sources/gradient-collection.html",
+      "src/shaders/neuform-isolated/sources/gallery-heading.html",
       "src/shaders/neuform-isolated/NeuformIsolatedEffects.tsx"
     ],
     "passes": "1 Canvas 2D typographic carousel",
-    "interaction": "Four rising, falling, horizontal, and vertical compositions complete one orbit every 15 seconds with synchronized light/dark mode",
+    "interaction": "The ring rests until a pointer is over it, then comes up to one orbit every 15 seconds — eased in three galleries, sprung in the matte one — and settles back to a stop on leave",
     "asset": "No external assets",
     "assetCount": 0,
-    "importName": "GradientCollection",
+    "importName": "GalleryHeading",
     "contract": [
       {
         "name": "source",
@@ -5079,6 +4880,36 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "name": "palette",
         "type": "optional",
         "value": "Final-frame grade"
+      },
+      {
+        "name": "font",
+        "type": "optional",
+        "value": "serif | didone | oldstyle | sans"
+      },
+      {
+        "name": "weight",
+        "type": "optional",
+        "value": "400 | 700"
+      },
+      {
+        "name": "headlineSize",
+        "type": "optional",
+        "value": "0.6–1.8 x"
+      },
+      {
+        "name": "tiles",
+        "type": "fixed",
+        "value": "Twelve flat 4:3 plates"
+      },
+      {
+        "name": "field",
+        "type": "variant",
+        "value": "matte | glitch | riso | halftone"
+      },
+      {
+        "name": "motion",
+        "type": "pointer",
+        "value": "Orbits while hovered"
       },
       {
         "name": "assets",
@@ -5102,6 +4933,55 @@ export const READY_SHADERS: readonly ReadyShader[] = [
             "label": "Light"
           }
         ]
+      },
+      {
+        "kind": "choice",
+        "key": "font",
+        "label": "Font",
+        "default": "sans",
+        "options": [
+          {
+            "value": "serif",
+            "label": "Serif"
+          },
+          {
+            "value": "didone",
+            "label": "Didone"
+          },
+          {
+            "value": "oldstyle",
+            "label": "Old style"
+          },
+          {
+            "value": "sans",
+            "label": "Sans"
+          }
+        ]
+      },
+      {
+        "kind": "choice",
+        "key": "weight",
+        "label": "Weight",
+        "default": "400",
+        "options": [
+          {
+            "value": "400",
+            "label": "Regular"
+          },
+          {
+            "value": "700",
+            "label": "Bold"
+          }
+        ]
+      },
+      {
+        "key": "headlineSize",
+        "label": "Headline size",
+        "min": 0.6,
+        "max": 1.8,
+        "step": 0.01,
+        "digits": 2,
+        "default": 1.15
       },
       {
         "key": "hue",
@@ -5134,46 +5014,422 @@ export const READY_SHADERS: readonly ReadyShader[] = [
     "variants": [
       {
         "id": "rising-diagonal",
-        "label": "Rising Diagonal",
-        "description": "The original ascending orbit with the New Shader Collection Added headline.",
-        "thumbnail": "https://threeui.com/thumbnails/gradient-collection.jpg",
-        "preview": "https://threeui.com/previews/gradient-collection.webm",
+        "label": "Matte Rise",
+        "description": "Muted museum plates under one slow rise of noise, a light sans on wide tracking, and an ascending ring that springs up to speed instead of easing.",
+        "thumbnail": "https://threeui.com/thumbnails/gallery-heading.jpg",
+        "preview": "https://threeui.com/previews/gallery-heading.webm",
         "props": {
           "variant": "rising-diagonal"
-        }
+        },
+        "controls": [
+          {
+            "kind": "choice",
+            "key": "mode",
+            "label": "Mode",
+            "default": "dark",
+            "options": [
+              {
+                "value": "dark",
+                "label": "Dark"
+              },
+              {
+                "value": "light",
+                "label": "Light"
+              }
+            ]
+          },
+          {
+            "kind": "choice",
+            "key": "font",
+            "label": "Font",
+            "default": "sans",
+            "options": [
+              {
+                "value": "serif",
+                "label": "Serif"
+              },
+              {
+                "value": "didone",
+                "label": "Didone"
+              },
+              {
+                "value": "oldstyle",
+                "label": "Old style"
+              },
+              {
+                "value": "sans",
+                "label": "Sans"
+              }
+            ]
+          },
+          {
+            "kind": "choice",
+            "key": "weight",
+            "label": "Weight",
+            "default": "400",
+            "options": [
+              {
+                "value": "400",
+                "label": "Regular"
+              },
+              {
+                "value": "700",
+                "label": "Bold"
+              }
+            ]
+          },
+          {
+            "key": "headlineSize",
+            "label": "Headline size",
+            "min": 0.6,
+            "max": 1.8,
+            "step": 0.01,
+            "digits": 2,
+            "default": 1.15
+          },
+          {
+            "key": "hue",
+            "label": "Hue",
+            "min": -180,
+            "max": 180,
+            "step": 1,
+            "digits": 0,
+            "default": 0
+          },
+          {
+            "key": "saturation",
+            "label": "Saturation",
+            "min": 0,
+            "max": 2,
+            "step": 0.01,
+            "digits": 2,
+            "default": 1
+          },
+          {
+            "key": "brightness",
+            "label": "Brightness",
+            "min": 0.35,
+            "max": 1.65,
+            "step": 0.01,
+            "digits": 2,
+            "default": 1
+          }
+        ]
       },
       {
         "id": "falling-diagonal",
-        "label": "Falling Diagonal",
-        "description": "A descending counter-orbit framing the Color in Constant Motion headline.",
-        "thumbnail": "https://threeui.com/thumbnails/gradient-collection-falling-diagonal.jpg",
-        "preview": "https://threeui.com/previews/gradient-collection-falling-diagonal.webm",
+        "label": "Glitch Fall",
+        "description": "Broadcast colour torn into flat blocks and slipped rows, with the headline breaking up into two channels over a descending counter-orbit.",
+        "thumbnail": "https://threeui.com/thumbnails/gallery-heading-falling-diagonal.jpg",
+        "preview": "https://threeui.com/previews/gallery-heading-falling-diagonal.webm",
         "props": {
           "variant": "falling-diagonal"
-        }
+        },
+        "controls": [
+          {
+            "kind": "choice",
+            "key": "mode",
+            "label": "Mode",
+            "default": "dark",
+            "options": [
+              {
+                "value": "dark",
+                "label": "Dark"
+              },
+              {
+                "value": "light",
+                "label": "Light"
+              }
+            ]
+          },
+          {
+            "kind": "choice",
+            "key": "font",
+            "label": "Font",
+            "default": "sans",
+            "options": [
+              {
+                "value": "serif",
+                "label": "Serif"
+              },
+              {
+                "value": "didone",
+                "label": "Didone"
+              },
+              {
+                "value": "oldstyle",
+                "label": "Old style"
+              },
+              {
+                "value": "sans",
+                "label": "Sans"
+              }
+            ]
+          },
+          {
+            "kind": "choice",
+            "key": "weight",
+            "label": "Weight",
+            "default": "700",
+            "options": [
+              {
+                "value": "400",
+                "label": "Regular"
+              },
+              {
+                "value": "700",
+                "label": "Bold"
+              }
+            ]
+          },
+          {
+            "key": "headlineSize",
+            "label": "Headline size",
+            "min": 0.6,
+            "max": 1.8,
+            "step": 0.01,
+            "digits": 2,
+            "default": 1.2
+          },
+          {
+            "key": "hue",
+            "label": "Hue",
+            "min": -180,
+            "max": 180,
+            "step": 1,
+            "digits": 0,
+            "default": 0
+          },
+          {
+            "key": "saturation",
+            "label": "Saturation",
+            "min": 0,
+            "max": 2,
+            "step": 0.01,
+            "digits": 2,
+            "default": 1
+          },
+          {
+            "key": "brightness",
+            "label": "Brightness",
+            "min": 0.35,
+            "max": 1.65,
+            "step": 0.01,
+            "digits": 2,
+            "default": 1
+          }
+        ]
       },
       {
         "id": "horizontal-sweep",
-        "label": "Horizontal Sweep",
-        "description": "A wide lateral orbit crossing the Build with Living Gradients headline.",
-        "thumbnail": "https://threeui.com/thumbnails/gradient-collection-horizontal-sweep.jpg",
-        "preview": "https://threeui.com/previews/gradient-collection-horizontal-sweep.webm",
+        "label": "Riso Sweep",
+        "description": "Print colour dithered to three tones over a lit corner, scanlines and heavy grain, under an old-style serif standing on a hard offset plate.",
+        "thumbnail": "https://threeui.com/thumbnails/gallery-heading-horizontal-sweep.jpg",
+        "preview": "https://threeui.com/previews/gallery-heading-horizontal-sweep.webm",
         "props": {
           "variant": "horizontal-sweep"
-        }
+        },
+        "controls": [
+          {
+            "kind": "choice",
+            "key": "mode",
+            "label": "Mode",
+            "default": "dark",
+            "options": [
+              {
+                "value": "dark",
+                "label": "Dark"
+              },
+              {
+                "value": "light",
+                "label": "Light"
+              }
+            ]
+          },
+          {
+            "kind": "choice",
+            "key": "font",
+            "label": "Font",
+            "default": "oldstyle",
+            "options": [
+              {
+                "value": "serif",
+                "label": "Serif"
+              },
+              {
+                "value": "didone",
+                "label": "Didone"
+              },
+              {
+                "value": "oldstyle",
+                "label": "Old style"
+              },
+              {
+                "value": "sans",
+                "label": "Sans"
+              }
+            ]
+          },
+          {
+            "kind": "choice",
+            "key": "weight",
+            "label": "Weight",
+            "default": "700",
+            "options": [
+              {
+                "value": "400",
+                "label": "Regular"
+              },
+              {
+                "value": "700",
+                "label": "Bold"
+              }
+            ]
+          },
+          {
+            "key": "headlineSize",
+            "label": "Headline size",
+            "min": 0.6,
+            "max": 1.8,
+            "step": 0.01,
+            "digits": 2,
+            "default": 1.2
+          },
+          {
+            "key": "hue",
+            "label": "Hue",
+            "min": -180,
+            "max": 180,
+            "step": 1,
+            "digits": 0,
+            "default": 0
+          },
+          {
+            "key": "saturation",
+            "label": "Saturation",
+            "min": 0,
+            "max": 2,
+            "step": 0.01,
+            "digits": 2,
+            "default": 1
+          },
+          {
+            "key": "brightness",
+            "label": "Brightness",
+            "min": 0.35,
+            "max": 1.65,
+            "step": 0.01,
+            "digits": 2,
+            "default": 1
+          }
+        ]
       },
       {
         "id": "vertical-loop",
-        "label": "Vertical Loop",
-        "description": "A tall reverse loop surrounding the Shape the Next Interface headline.",
-        "thumbnail": "https://threeui.com/thumbnails/gradient-collection-vertical-loop.jpg",
-        "preview": "https://threeui.com/previews/gradient-collection-vertical-loop.webm",
+        "label": "Halftone Loop",
+        "description": "One ink on one stock, shaded only by the size of the dots on a rotated screen, under a high-contrast didone on a tall reverse loop.",
+        "thumbnail": "https://threeui.com/thumbnails/gallery-heading-vertical-loop.jpg",
+        "preview": "https://threeui.com/previews/gallery-heading-vertical-loop.webm",
         "props": {
           "variant": "vertical-loop"
-        }
+        },
+        "controls": [
+          {
+            "kind": "choice",
+            "key": "mode",
+            "label": "Mode",
+            "default": "dark",
+            "options": [
+              {
+                "value": "dark",
+                "label": "Dark"
+              },
+              {
+                "value": "light",
+                "label": "Light"
+              }
+            ]
+          },
+          {
+            "kind": "choice",
+            "key": "font",
+            "label": "Font",
+            "default": "didone",
+            "options": [
+              {
+                "value": "serif",
+                "label": "Serif"
+              },
+              {
+                "value": "didone",
+                "label": "Didone"
+              },
+              {
+                "value": "oldstyle",
+                "label": "Old style"
+              },
+              {
+                "value": "sans",
+                "label": "Sans"
+              }
+            ]
+          },
+          {
+            "kind": "choice",
+            "key": "weight",
+            "label": "Weight",
+            "default": "400",
+            "options": [
+              {
+                "value": "400",
+                "label": "Regular"
+              },
+              {
+                "value": "700",
+                "label": "Bold"
+              }
+            ]
+          },
+          {
+            "key": "headlineSize",
+            "label": "Headline size",
+            "min": 0.6,
+            "max": 1.8,
+            "step": 0.01,
+            "digits": 2,
+            "default": 1.25
+          },
+          {
+            "key": "hue",
+            "label": "Hue",
+            "min": -180,
+            "max": 180,
+            "step": 1,
+            "digits": 0,
+            "default": 0
+          },
+          {
+            "key": "saturation",
+            "label": "Saturation",
+            "min": 0,
+            "max": 2,
+            "step": 0.01,
+            "digits": 2,
+            "default": 1
+          },
+          {
+            "key": "brightness",
+            "label": "Brightness",
+            "min": 0.35,
+            "max": 1.65,
+            "step": 0.01,
+            "digits": 2,
+            "default": 1
+          }
+        ]
       }
     ]
-  }, component: CommunityRenderer32 },
+  }, component: CommunityRenderer30 },
   { ...{
     "id": "star-portal",
     "tags": [
@@ -5215,7 +5471,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
       "src/shaders/neuform-isolated/sources/valence-core.html",
       "src/shaders/neuform-isolated/sources/aetheris-labs.html",
       "src/shaders/neuform-isolated/sources/nexus-tactile.html",
-      "src/shaders/neuform-isolated/sources/uploading-button.html"
+      "src/shaders/neuform-isolated/sources/thinking-button.html"
     ],
     "passes": "1 selected shader, canvas, and CSS button composition",
     "interaction": "Variant selection with authored pointer, hover, motion, and palette behavior",
@@ -5349,98 +5605,17 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         }
       },
       {
-        "id": "uploading-button",
+        "id": "thinking-button",
         "label": "Thinking",
         "description": "A luminous Canvas 2D trace orbiting a softly raised blue button.",
-        "thumbnail": "https://threeui.com/thumbnails/uploading-button.jpg",
-        "preview": "https://threeui.com/previews/uploading-button.webm",
+        "thumbnail": "https://threeui.com/thumbnails/thinking-button.jpg",
+        "preview": "https://threeui.com/previews/thinking-button.webm",
         "props": {
-          "variant": "uploading-button"
+          "variant": "thinking-button"
         }
       }
     ]
-  }, component: CommunityRenderer33 },
-  { ...{
-    "id": "particle-orb",
-    "tags": [
-      "canvas",
-      "canvas2d",
-      "particles",
-      "orb",
-      "sphere",
-      "network",
-      "nodes",
-      "background",
-      "animated"
-    ],
-    "category": "Backgrounds",
-    "label": "Particle Orb",
-    "thumbnail": "https://threeui.com/thumbnails/particle-orb.jpg",
-    "description": "The exact autonomous-system particle orb and connective field isolated from its source page.",
-    "runtime": "Canvas 2D",
-    "origin": "Neuform export",
-    "sourceCommit": "SHA-256 4acc5f965c2c",
-    "sourceFiles": [
-      "src/shaders/neuform-isolated/sources/synthesis-orb.html",
-      "src/shaders/neuform-isolated/NeuformIsolatedEffects.tsx"
-    ],
-    "passes": "1 Canvas 2D particle-network pass",
-    "interaction": "Autonomous particle motion + optional final-frame palette",
-    "asset": "No owned binary assets",
-    "assetCount": 0,
-    "importName": "ParticleOrbField",
-    "contract": [
-      {
-        "name": "source",
-        "type": "fixed",
-        "value": "Exact Neuform HTML"
-      },
-      {
-        "name": "focus",
-        "type": "host",
-        "value": "Effect-only sandbox"
-      },
-      {
-        "name": "palette",
-        "type": "optional",
-        "value": "Final-frame grade"
-      },
-      {
-        "name": "assets",
-        "type": "fixed",
-        "value": "No owned binary assets"
-      }
-    ],
-    "controls": [
-      {
-        "key": "hue",
-        "label": "Hue",
-        "min": -180,
-        "max": 180,
-        "step": 1,
-        "digits": 0,
-        "default": 0
-      },
-      {
-        "key": "saturation",
-        "label": "Saturation",
-        "min": 0,
-        "max": 2,
-        "step": 0.01,
-        "digits": 2,
-        "default": 1
-      },
-      {
-        "key": "brightness",
-        "label": "Brightness",
-        "min": 0.35,
-        "max": 1.65,
-        "step": 0.01,
-        "digits": 2,
-        "default": 1
-      }
-    ]
-  }, component: CommunityRenderer34 },
+  }, component: CommunityRenderer31 },
   { ...{
     "id": "ignition-button",
     "variantOf": "star-portal",
@@ -5544,7 +5719,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer35 },
+  }, component: CommunityRenderer32 },
   { ...{
     "id": "induction-button",
     "variantOf": "star-portal",
@@ -5648,7 +5823,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer36 },
+  }, component: CommunityRenderer33 },
   { ...{
     "id": "plasma-button",
     "variantOf": "star-portal",
@@ -5752,7 +5927,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer37 },
+  }, component: CommunityRenderer34 },
   { ...{
     "id": "tactile-button",
     "variantOf": "star-portal",
@@ -5856,9 +6031,9 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer38 },
+  }, component: CommunityRenderer35 },
   { ...{
-    "id": "uploading-button",
+    "id": "thinking-button",
     "variantOf": "star-portal",
     "tags": [
       "canvas",
@@ -5875,13 +6050,13 @@ export const READY_SHADERS: readonly ReadyShader[] = [
     ],
     "category": "Buttons",
     "label": "Thinking Button",
-    "thumbnail": "https://threeui.com/thumbnails/uploading-button.jpg",
+    "thumbnail": "https://threeui.com/thumbnails/thinking-button.jpg",
     "description": "A Canvas 2D thinking state with a luminous blue trace orbiting a softly raised blue button.",
     "runtime": "Canvas 2D",
     "origin": "Owner-selected HTML",
     "sourceCommit": "SHA-256 194da3529f2f",
     "sourceFiles": [
-      "src/shaders/neuform-isolated/sources/uploading-button.html",
+      "src/shaders/neuform-isolated/sources/thinking-button.html",
       "src/shaders/neuform-isolated/NeuformIsolatedEffects.tsx"
     ],
     "passes": "1 Canvas 2D plate, label, trace, and bloom composition",
@@ -5961,10 +6136,10 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer39 },
+  }, component: CommunityRenderer36 },
   { ...{
     "id": "sliding-text-cta",
-    "variantOf": "maccess-glass-button",
+    "variantOf": "rectangle-buttons",
     "tags": [
       "css",
       "dom",
@@ -6065,10 +6240,10 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer40 },
+  }, component: CommunityRenderer37 },
   { ...{
     "id": "floating-dots-cta",
-    "variantOf": "maccess-glass-button",
+    "variantOf": "rectangle-buttons",
     "tags": [
       "css",
       "dom",
@@ -6169,10 +6344,10 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer41 },
+  }, component: CommunityRenderer38 },
   { ...{
     "id": "launch-button",
-    "variantOf": "maccess-glass-button",
+    "variantOf": "rectangle-buttons",
     "tags": [
       "css",
       "dom",
@@ -6272,10 +6447,10 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer42 },
+  }, component: CommunityRenderer39 },
   { ...{
     "id": "dot-border-button",
-    "variantOf": "maccess-glass-button",
+    "variantOf": "rectangle-buttons",
     "tags": [
       "css",
       "dom",
@@ -6375,10 +6550,10 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer43 },
+  }, component: CommunityRenderer40 },
   { ...{
     "id": "gradient-cta",
-    "variantOf": "maccess-glass-button",
+    "variantOf": "rectangle-buttons",
     "tags": [
       "css",
       "dom",
@@ -6479,10 +6654,10 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer44 },
+  }, component: CommunityRenderer41 },
   { ...{
     "id": "spinning-border-button",
-    "variantOf": "maccess-glass-button",
+    "variantOf": "rectangle-buttons",
     "tags": [
       "css",
       "dom",
@@ -6583,10 +6758,10 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer45 },
+  }, component: CommunityRenderer42 },
   { ...{
     "id": "glassmorphism-cta",
-    "variantOf": "maccess-glass-button",
+    "variantOf": "rectangle-buttons",
     "tags": [
       "css",
       "dom",
@@ -6687,10 +6862,10 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer46 },
+  }, component: CommunityRenderer43 },
   { ...{
     "id": "generate-button",
-    "variantOf": "maccess-glass-button",
+    "variantOf": "rectangle-buttons",
     "tags": [
       "css",
       "dom",
@@ -6791,10 +6966,10 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer47 },
+  }, component: CommunityRenderer44 },
   { ...{
     "id": "gradient-pill-button",
-    "variantOf": "maccess-glass-button",
+    "variantOf": "rectangle-buttons",
     "tags": [
       "css",
       "dom",
@@ -6894,10 +7069,10 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer48 },
+  }, component: CommunityRenderer45 },
   { ...{
     "id": "gradient-beam-cta",
-    "variantOf": "maccess-glass-button",
+    "variantOf": "rectangle-buttons",
     "tags": [
       "css",
       "dom",
@@ -6998,9 +7173,9 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer49 },
+  }, component: CommunityRenderer46 },
   { ...{
-    "id": "maccess-glass-button",
+    "id": "rectangle-buttons",
     "tags": [
       "css",
       "dom",
@@ -7027,16 +7202,16 @@ export const READY_SHADERS: readonly ReadyShader[] = [
     ],
     "category": "Buttons",
     "label": "Rectangle Buttons",
-    "thumbnail": "https://threeui.com/thumbnails/maccess-glass-button.jpg",
+    "thumbnail": "https://threeui.com/thumbnails/rectangle-buttons.jpg",
     "description": "Thirteen authored rectangle-button and animated CTA treatments collected into one family.",
     "runtime": "DOM + CSS",
     "origin": "HTML Pages",
-    "sourceCommit": "SHA-256 91315de0cfb8",
+    "sourceCommit": "SHA-256 df1b4f032d7e",
     "sourceFiles": [
       "src/shaders/rectangle-buttons/RectangleButtons.tsx",
-      "maccess.html — shared button treatment",
-      "src/shaders/maccess-elements/MaccessElements.tsx",
-      "src/shaders/maccess-elements/maccess-elements.css",
+      "remote-control.html — shared button treatment",
+      "src/shaders/section-elements/SectionElements.tsx",
+      "src/shaders/section-elements/section-elements.css",
       "src/shaders/neuform-isolated/NeuformIsolatedEffects.tsx",
       "src/shaders/neuform-isolated/sources/launch-button.html",
       "src/shaders/neuform-isolated/sources/dot-border-button.html",
@@ -7144,8 +7319,8 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "id": "dark-pill",
         "label": "Dark Glass",
         "description": "A deep charcoal glass rectangle with a softly revolving inner highlight and restrained metallic type.",
-        "thumbnail": "https://threeui.com/thumbnails/maccess-glass-button.jpg",
-        "preview": "https://threeui.com/previews/maccess-glass-button.webm",
+        "thumbnail": "https://threeui.com/thumbnails/rectangle-buttons.jpg",
+        "preview": "https://threeui.com/previews/rectangle-buttons.webm",
         "props": {}
       },
       {
@@ -7359,7 +7534,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         ]
       }
     ]
-  }, component: CommunityRenderer50 },
+  }, component: CommunityRenderer47 },
   { ...{
     "id": "circle-buttons",
     "tags": [
@@ -7525,7 +7700,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         }
       }
     ]
-  }, component: CommunityRenderer51 },
+  }, component: CommunityRenderer48 },
   { ...{
     "id": "liquid-metal-button",
     "tags": [
@@ -7721,10 +7896,10 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         }
       }
     ]
-  }, component: CommunityRenderer52 },
+  }, component: CommunityRenderer49 },
   { ...{
     "id": "lumen-cta",
-    "variantOf": "maccess-glass-button",
+    "variantOf": "rectangle-buttons",
     "tags": [
       "button",
       "cta",
@@ -7842,253 +8017,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer53 },
-  { ...{
-    "id": "maccess-workflow",
-    "tags": [
-      "css",
-      "dom",
-      "sections",
-      "section collection",
-      "cards",
-      "onboarding",
-      "workflow",
-      "device",
-      "product",
-      "illustration",
-      "glass",
-      "responsive",
-      "diagram",
-      "editorial intro",
-      "newsletter",
-      "footer",
-      "form",
-      "unbranded",
-      "variants"
-    ],
-    "category": "Sections",
-    "label": "Sections",
-    "thumbnail": "https://threeui.com/thumbnails/maccess-workflow.jpg",
-    "description": "Three reusable dark product sections collected into one responsive family.",
-    "runtime": "DOM + CSS",
-    "origin": "HTML Pages — adapted with neutral copy",
-    "sourceCommit": "SHA-256 91315de0cfb8",
-    "sourceFiles": [
-      "src/shaders/sections/SectionsCollection.tsx",
-      "src/shaders/maccess-elements/MaccessElements.tsx",
-      "src/shaders/maccess-elements/maccess-elements.css",
-      "Original HTML — layout and motion source"
-    ],
-    "passes": "1 selected responsive DOM/SVG composition",
-    "interaction": "Variant selection with authored motion, native form behavior, and reduced-motion fallback",
-    "asset": "5 local font subsets + 6 authored SVG illustrations",
-    "assetCount": 11,
-    "importName": "SectionsCollection",
-    "contract": [
-      {
-        "name": "renderer",
-        "type": "host",
-        "value": "React DOM + scoped CSS"
-      },
-      {
-        "name": "source",
-        "type": "fixed",
-        "value": "Owner-selected reference HTML"
-      },
-      {
-        "name": "theme",
-        "type": "fixed",
-        "value": "Dark"
-      },
-      {
-        "name": "layout",
-        "type": "responsive",
-        "value": "Container-relative 16:9 composition"
-      },
-      {
-        "name": "motion",
-        "type": "adaptive",
-        "value": "Reduced-motion safe"
-      },
-      {
-        "name": "assets",
-        "type": "owned",
-        "value": "Local fonts and illustrations"
-      },
-      {
-        "name": "identity",
-        "type": "fixed",
-        "value": "Neutral, unbranded copy"
-      },
-      {
-        "name": "variants",
-        "type": "fixed",
-        "value": "Onboarding Steps + Editorial Intro + Newsletter Footer"
-      }
-    ],
-    "variants": [
-      {
-        "id": "maccess-workflow",
-        "label": "Onboarding Steps",
-        "description": "A responsive three-step workspace setup with glass cards and an orbiting connection diagram.",
-        "thumbnail": "https://threeui.com/thumbnails/maccess-workflow.jpg",
-        "preview": "https://threeui.com/previews/maccess-workflow.webm",
-        "props": {}
-      },
-      {
-        "id": "maccess-testimonial-intro",
-        "label": "Editorial Intro",
-        "description": "A centered editorial statement with a dimly lit device, circuit traces, and oversized gradient typography.",
-        "thumbnail": "https://threeui.com/thumbnails/maccess-testimonial-intro.jpg",
-        "preview": "https://threeui.com/previews/maccess-testimonial-intro.webm",
-        "props": {
-          "variant": "editorial-intro"
-        }
-      },
-      {
-        "id": "maccess-newsletter-footer",
-        "label": "Newsletter Footer",
-        "description": "An unbranded footer with an inline newsletter form, oversized closing phrase, and compact legal navigation.",
-        "thumbnail": "https://threeui.com/thumbnails/maccess-newsletter-footer.jpg",
-        "preview": "https://threeui.com/previews/maccess-newsletter-footer.webm",
-        "props": {
-          "variant": "newsletter-footer"
-        }
-      }
-    ]
-  }, component: CommunityRenderer54 },
-  { ...{
-    "id": "maccess-testimonial-intro",
-    "variantOf": "maccess-workflow",
-    "tags": [
-      "css",
-      "dom",
-      "section",
-      "editorial",
-      "intro",
-      "computer",
-      "circuits",
-      "typography",
-      "hero",
-      "gradient",
-      "unbranded"
-    ],
-    "category": "Sections",
-    "label": "Editorial Intro",
-    "thumbnail": "https://threeui.com/thumbnails/maccess-testimonial-intro.jpg",
-    "description": "A centered editorial intro built around a dimly lit device illustration, circuit traces, and oversized gradient typography.",
-    "runtime": "DOM + CSS",
-    "origin": "HTML Pages",
-    "sourceCommit": "SHA-256 91315de0cfb8",
-    "sourceFiles": [
-      "Original HTML — editorial heading and illustration",
-      "src/shaders/maccess-elements/MaccessElements.tsx",
-      "src/shaders/maccess-elements/maccess-elements.css"
-    ],
-    "passes": "1 layered DOM/SVG composition",
-    "interaction": "Subtle device float and circuit drift with reduced-motion fallback",
-    "asset": "5 local font subsets + 3 authored SVG illustration layers",
-    "assetCount": 8,
-    "importName": "EditorialIntroSection",
-    "contract": [
-      {
-        "name": "renderer",
-        "type": "host",
-        "value": "React DOM + scoped CSS"
-      },
-      {
-        "name": "source",
-        "type": "fixed",
-        "value": "Owner-selected reference HTML"
-      },
-      {
-        "name": "theme",
-        "type": "fixed",
-        "value": "Dark"
-      },
-      {
-        "name": "layout",
-        "type": "responsive",
-        "value": "Container-relative 16:9 composition"
-      },
-      {
-        "name": "motion",
-        "type": "adaptive",
-        "value": "Reduced-motion safe"
-      },
-      {
-        "name": "assets",
-        "type": "owned",
-        "value": "Local fonts and illustrations"
-      }
-    ]
-  }, component: CommunityRenderer55 },
-  { ...{
-    "id": "maccess-newsletter-footer",
-    "variantOf": "maccess-workflow",
-    "tags": [
-      "css",
-      "dom",
-      "section",
-      "footer",
-      "form",
-      "newsletter",
-      "navigation",
-      "closing phrase",
-      "product",
-      "dark",
-      "unbranded"
-    ],
-    "category": "Sections",
-    "label": "Newsletter Footer",
-    "thumbnail": "https://threeui.com/thumbnails/maccess-newsletter-footer.jpg",
-    "description": "A dark unbranded product footer with an inline newsletter form, oversized closing phrase, and compact legal navigation.",
-    "runtime": "DOM + CSS",
-    "origin": "HTML Pages",
-    "sourceCommit": "SHA-256 91315de0cfb8",
-    "sourceFiles": [
-      "Original HTML — newsletter footer",
-      "src/shaders/maccess-elements/MaccessElements.tsx",
-      "src/shaders/maccess-elements/maccess-elements.css"
-    ],
-    "passes": "1 responsive DOM/CSS composition",
-    "interaction": "Email validation and animated inline success state",
-    "asset": "5 local font subsets + DOM-rendered marker and closing phrase",
-    "assetCount": 5,
-    "importName": "NewsletterFooterSection",
-    "contract": [
-      {
-        "name": "renderer",
-        "type": "host",
-        "value": "React DOM + scoped CSS"
-      },
-      {
-        "name": "source",
-        "type": "fixed",
-        "value": "Owner-selected reference HTML"
-      },
-      {
-        "name": "theme",
-        "type": "fixed",
-        "value": "Dark"
-      },
-      {
-        "name": "layout",
-        "type": "responsive",
-        "value": "Container-relative 16:9 composition"
-      },
-      {
-        "name": "motion",
-        "type": "adaptive",
-        "value": "Reduced-motion safe"
-      },
-      {
-        "name": "assets",
-        "type": "owned",
-        "value": "Local fonts and illustrations"
-      }
-    ]
-  }, component: CommunityRenderer56 },
+  }, component: CommunityRenderer50 },
   { ...{
     "id": "character-carousel",
     "tags": [
@@ -8234,7 +8163,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         }
       }
     ]
-  }, component: CommunityRenderer57 },
+  }, component: CommunityRenderer51 },
   { ...{
     "id": "character-filmstrip",
     "variantOf": "character-carousel",
@@ -8352,7 +8281,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer58 },
+  }, component: CommunityRenderer52 },
   { ...{
     "id": "character-wave",
     "variantOf": "character-carousel",
@@ -8468,7 +8397,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer59 },
+  }, component: CommunityRenderer53 },
   { ...{
     "id": "gallery",
     "tags": [
@@ -8596,78 +8525,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer60 },
-  { ...{
-    "id": "genie-dock",
-    "tags": [
-      "css",
-      "dom",
-      "svg",
-      "ui",
-      "dock",
-      "macos",
-      "genie effect",
-      "window",
-      "minimize",
-      "restore",
-      "live dom",
-      "slices",
-      "curve",
-      "funnel",
-      "drag",
-      "scrub",
-      "traffic lights",
-      "glass",
-      "responsive",
-      "interactive",
-      "reduced motion",
-      "animated"
-    ],
-    "category": "UI Elements",
-    "label": "Genie Dock",
-    "thumbnail": "https://threeui.com/thumbnails/genie-dock.jpg",
-    "description": "A macOS-inspired application dock where live windows bend into their icons along a measured Genie curve, then restore without flattening their DOM content.",
-    "runtime": "DOM + SVG + CSS",
-    "origin": "HTML Pages",
-    "sourceCommit": "SHA-256 721030e1dbf0",
-    "sourceFiles": [
-      "genie-effect.html — complete authored dock and window source",
-      "src/shaders/genie-dock/sources/genie-effect.html",
-      "src/shaders/genie-dock/GenieDock.tsx"
-    ],
-    "passes": "20–64 live DOM slices per moving window + 1 SVG silhouette",
-    "interaction": "Click dock icons or traffic lights to minimize and restore, drag titlebars downward to scrub the curve, move and zoom windows, and edit live form controls mid-flight",
-    "asset": "1 embedded Lexend variable font + 1 embedded authored fjord image",
-    "assetCount": 2,
-    "importName": "GenieDock",
-    "contract": [
-      {
-        "name": "renderer",
-        "type": "host",
-        "value": "Sandboxed authored DOM/SVG document"
-      },
-      {
-        "name": "motion",
-        "type": "fixed",
-        "value": "Measured Genie funnel with live DOM slices"
-      },
-      {
-        "name": "interaction",
-        "type": "input",
-        "value": "dock + traffic lights + pointer drag + form controls"
-      },
-      {
-        "name": "lifecycle",
-        "type": "host",
-        "value": "responsive + visibility-aware + reduced motion"
-      },
-      {
-        "name": "assets",
-        "type": "embedded",
-        "value": "Lexend variable font + fjord image"
-      }
-    ]
-  }, component: CommunityRenderer61 },
+  }, component: CommunityRenderer54 },
   { ...{
     "id": "cloud-field",
     "variantOf": "portal-field",
@@ -8749,7 +8607,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer62 },
+  }, component: CommunityRenderer55 },
   { ...{
     "id": "void-field",
     "variantOf": "predictive-arc",
@@ -8831,195 +8689,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer63 },
-  { ...{
-    "id": "recursive-erosion",
-    "tags": [
-      "webgl",
-      "glsl",
-      "shader",
-      "canvas",
-      "canvas2d",
-      "particles",
-      "sphere",
-      "erosion",
-      "holes",
-      "trails",
-      "generative",
-      "loop",
-      "orange",
-      "amber",
-      "transparent",
-      "light mode",
-      "dark mode",
-      "responsive"
-    ],
-    "category": "Backgrounds",
-    "label": "Recursive Erosion",
-    "thumbnail": "https://threeui.com/thumbnails/recursive-erosion.jpg",
-    "description": "A looping particle sphere that recursively erodes into holes while luminous trails crawl across its surface.",
-    "runtime": "Raw WebGL + Canvas 2D",
-    "origin": "Owner-selected HTML",
-    "sourceCommit": "SHA-256 2f407d606658",
-    "sourceFiles": [
-      "src/shaders/neuform-isolated/sources/recursive-erosion.html",
-      "src/shaders/neuform-isolated/NeuformIsolatedEffects.tsx"
-    ],
-    "passes": "3 WebGL particle passes + 1 Canvas 2D grain composite",
-    "interaction": "Authored four-second seamless loop + optional final-frame palette",
-    "asset": "No owned binary assets",
-    "assetCount": 0,
-    "importName": "RecursiveErosionBackground",
-    "contract": [
-      {
-        "name": "source",
-        "type": "fixed",
-        "value": "Exact owner-selected HTML"
-      },
-      {
-        "name": "focus",
-        "type": "host",
-        "value": "Effect-only sandbox"
-      },
-      {
-        "name": "palette",
-        "type": "optional",
-        "value": "Final-frame grade"
-      },
-      {
-        "name": "assets",
-        "type": "fixed",
-        "value": "No owned binary assets"
-      }
-    ],
-    "controls": [
-      {
-        "kind": "choice",
-        "key": "mode",
-        "label": "Mode",
-        "default": "dark",
-        "options": [
-          {
-            "value": "dark",
-            "label": "Dark"
-          },
-          {
-            "value": "light",
-            "label": "Light"
-          }
-        ]
-      },
-      {
-        "key": "hue",
-        "label": "Hue",
-        "min": -180,
-        "max": 180,
-        "step": 1,
-        "digits": 0,
-        "default": 0
-      },
-      {
-        "key": "saturation",
-        "label": "Saturation",
-        "min": 0,
-        "max": 2,
-        "step": 0.01,
-        "digits": 2,
-        "default": 1
-      },
-      {
-        "key": "brightness",
-        "label": "Brightness",
-        "min": 0.35,
-        "max": 1.65,
-        "step": 0.01,
-        "digits": 2,
-        "default": 1
-      }
-    ]
-  }, component: CommunityRenderer64 },
-  { ...{
-    "id": "quantera-trading-background",
-    "tags": [
-      "threejs",
-      "three.js",
-      "3d",
-      "webgl",
-      "glsl",
-      "shader",
-      "background",
-      "trading",
-      "finance",
-      "green",
-      "volumetric",
-      "light shafts",
-      "equations",
-      "chalk",
-      "particles",
-      "sparkles",
-      "bloom",
-      "parallax",
-      "pointer",
-      "interactive",
-      "dark",
-      "animated",
-      "responsive",
-      "reduced motion"
-    ],
-    "category": "Backgrounds",
-    "label": "Quantera Trading Background",
-    "thumbnail": "https://threeui.com/thumbnails/quantera-trading-background.jpg",
-    "description": "A deep green trading field with volumetric light shafts, drifting chalk equations, sparkling dust, subtle bloom, and pointer parallax.",
-    "runtime": "Three.js r165 + postprocessing",
-    "origin": "Owner-selected HTML Pages background",
-    "sourceCommit": "SHA-256 ed0989b5f8f5",
-    "sourceFiles": [
-      "src/shaders/quantera-trading-background/QuanteraTradingBackground.tsx",
-      "src/shaders/quantera-trading-background/sources/quantera-trading-hero.html"
-    ],
-    "passes": "1 Three.js scene render + UnrealBloom postprocessing",
-    "interaction": "Pointer-driven light, equation, particle, and camera-space parallax",
-    "asset": "No binary scene assets — procedural ShaderMaterials, CanvasTextures, and CDN Three.js r165 modules",
-    "assetCount": 0,
-    "importName": "QuanteraTradingBackground",
-    "contract": [
-      {
-        "name": "renderer",
-        "type": "sandbox",
-        "value": "Three.js r165 + bloom"
-      },
-      {
-        "name": "presentation",
-        "type": "fixed",
-        "value": "Background only; page UI hidden"
-      },
-      {
-        "name": "layers",
-        "type": "fixed",
-        "value": "Light shafts + equations + particles"
-      },
-      {
-        "name": "interaction",
-        "type": "pointer",
-        "value": "Parallax + light response"
-      },
-      {
-        "name": "motion",
-        "type": "adaptive",
-        "value": "Visibility + reduced motion"
-      },
-      {
-        "name": "pixelRatio",
-        "type": "adaptive",
-        "value": "≤ 1.75"
-      },
-      {
-        "name": "assets",
-        "type": "fixed",
-        "value": "No binary scene assets"
-      }
-    ]
-  }, component: CommunityRenderer65 },
+  }, component: CommunityRenderer56 },
   { ...{
     "id": "sylva-living-world",
     "tags": [
@@ -9150,7 +8820,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         }
       }
     ]
-  }, component: CommunityRenderer66 },
+  }, component: CommunityRenderer57 },
   { ...{
     "id": "temple-night",
     "tags": [
@@ -9234,7 +8904,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         }
       }
     ]
-  }, component: CommunityRenderer67 },
+  }, component: CommunityRenderer58 },
   { ...{
     "id": "landscape",
     "tags": [
@@ -9402,7 +9072,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         }
       }
     ]
-  }, component: CommunityRenderer68 },
+  }, component: CommunityRenderer59 },
   { ...{
     "id": "japanese-tower",
     "tags": [
@@ -9552,7 +9222,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         }
       }
     ]
-  }, component: CommunityRenderer69 },
+  }, component: CommunityRenderer60 },
   { ...{
     "id": "bookshelf",
     "tags": [
@@ -9618,7 +9288,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "value": "2 exact owned atlases"
       }
     ]
-  }, component: CommunityRenderer70 },
+  }, component: CommunityRenderer61 },
   { ...{
     "id": "structure-flow",
     "tags": [
@@ -10411,7 +10081,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         ]
       }
     ]
-  }, component: CommunityRenderer71 },
+  }, component: CommunityRenderer62 },
   { ...{
     "id": "emerald-horizon",
     "variantOf": "structure-flow",
@@ -10518,7 +10188,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer72 },
+  }, component: CommunityRenderer63 },
   { ...{
     "id": "orbital-sphere",
     "variantOf": "structure-flow",
@@ -10634,7 +10304,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 0.2
       }
     ]
-  }, component: CommunityRenderer73 },
+  }, component: CommunityRenderer64 },
   { ...{
     "id": "dot-matrix",
     "variantOf": "structure-flow",
@@ -10750,7 +10420,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 0.35
       }
     ]
-  }, component: CommunityRenderer74 },
+  }, component: CommunityRenderer65 },
   { ...{
     "id": "warp-field",
     "tags": [
@@ -10765,6 +10435,13 @@ export const READY_SHADERS: readonly ReadyShader[] = [
       "fog",
       "emerald",
       "warp",
+      "letters",
+      "glyphs",
+      "typography",
+      "keycaps",
+      "keyboard",
+      "hyperspace",
+      "tunnel",
       "background"
     ],
     "category": "Three.js",
@@ -10789,6 +10466,11 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "name": "renderer",
         "type": "host",
         "value": "Three.js r128"
+      },
+      {
+        "name": "variant",
+        "type": "optional",
+        "value": "streaks | letters | keycaps | hyperspace"
       },
       {
         "name": "streaks",
@@ -10827,7 +10509,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
       },
       {
         "key": "tileOpacity",
-        "label": "Tiles",
+        "label": "Payload",
         "min": 0.05,
         "max": 1,
         "step": 0.01,
@@ -10870,8 +10552,48 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "digits": 2,
         "default": 1
       }
+    ],
+    "variants": [
+      {
+        "id": "streaks",
+        "label": "Warp Field",
+        "description": "The original hero warp: 400 emerald streaks and 40 luminous tiles through deep-space fog.",
+        "thumbnail": "https://threeui.com/thumbnails/warp-field.jpg",
+        "preview": "https://threeui.com/previews/warp-field.webm",
+        "props": {}
+      },
+      {
+        "id": "letters",
+        "label": "Letter Storm",
+        "description": "160 tumbling glyphs wandering off the rails while the streak field keeps the corridor moving.",
+        "thumbnail": "https://threeui.com/thumbnails/warp-field-letters.jpg",
+        "preview": "https://threeui.com/previews/warp-field-letters.webm",
+        "props": {
+          "variant": "letters"
+        }
+      },
+      {
+        "id": "keycaps",
+        "label": "Keycap Drift",
+        "description": "72 lit mechanical keycaps tumbling through a 900-spark particle wake.",
+        "thumbnail": "https://threeui.com/thumbnails/warp-field-keycaps.jpg",
+        "preview": "https://threeui.com/previews/warp-field-keycaps.webm",
+        "props": {
+          "variant": "keycaps"
+        }
+      },
+      {
+        "id": "hyperspace",
+        "label": "Hyperspace",
+        "description": "1,200 ice-blue streaks stretched down a scrolling tunnel toward a pulsing jump core.",
+        "thumbnail": "https://threeui.com/thumbnails/warp-field-hyperspace.jpg",
+        "preview": "https://threeui.com/previews/warp-field-hyperspace.webm",
+        "props": {
+          "variant": "hyperspace"
+        }
+      }
     ]
-  }, component: CommunityRenderer75 },
+  }, component: CommunityRenderer66 },
   { ...{
     "id": "expanse-field",
     "variantOf": "structure-flow",
@@ -10954,7 +10676,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer76 },
+  }, component: CommunityRenderer67 },
   { ...{
     "id": "logic-core",
     "variantOf": "structure-flow",
@@ -11037,7 +10759,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer77 },
+  }, component: CommunityRenderer68 },
   { ...{
     "id": "dimensional-field",
     "variantOf": "structure-flow",
@@ -11120,7 +10842,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer78 },
+  }, component: CommunityRenderer69 },
   { ...{
     "id": "data-field",
     "variantOf": "structure-flow",
@@ -11203,7 +10925,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer79 },
+  }, component: CommunityRenderer70 },
   { ...{
     "id": "topology-field",
     "variantOf": "structure-flow",
@@ -11287,7 +11009,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer80 },
+  }, component: CommunityRenderer71 },
   { ...{
     "id": "halftone-flow",
     "variantOf": "predictive-arc",
@@ -11370,7 +11092,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer81 },
+  }, component: CommunityRenderer72 },
   { ...{
     "id": "neon-sign",
     "variantOf": "article-headings",
@@ -11457,7 +11179,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer82 },
+  }, component: CommunityRenderer73 },
   { ...{
     "id": "engraved-certificate",
     "tags": [
@@ -11540,7 +11262,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer83 },
+  }, component: CommunityRenderer74 },
   { ...{
     "id": "woven-cloth",
     "tags": [
@@ -11626,7 +11348,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer84 },
+  }, component: CommunityRenderer75 },
   { ...{
     "id": "nebula",
     "variantOf": "structure-flow",
@@ -11712,7 +11434,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer85 },
+  }, component: CommunityRenderer76 },
   { ...{
     "id": "fluid-field",
     "variantOf": "structure-flow",
@@ -11796,7 +11518,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer86 },
+  }, component: CommunityRenderer77 },
   { ...{
     "id": "ember-storm",
     "variantOf": "structure-flow",
@@ -11881,7 +11603,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer87 },
+  }, component: CommunityRenderer78 },
   { ...{
     "id": "performance-gauges",
     "tags": [
@@ -12127,7 +11849,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         ]
       }
     ]
-  }, component: CommunityRenderer88 },
+  }, component: CommunityRenderer79 },
   { ...{
     "id": "uplink-loader",
     "tags": [
@@ -12194,7 +11916,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "value": "No owned binary assets"
       }
     ]
-  }, component: CommunityRenderer89 },
+  }, component: CommunityRenderer80 },
   { ...{
     "id": "koi-studies",
     "tags": [
@@ -12273,7 +11995,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "value": "Reduced motion, reduced transparency, visibility, and focus aware"
       }
     ]
-  }, component: CommunityRenderer90 },
+  }, component: CommunityRenderer81 },
   { ...{
     "id": "article-headings",
     "tags": [
@@ -12581,7 +12303,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         ]
       }
     ]
-  }, component: CommunityRenderer91 },
+  }, component: CommunityRenderer82 },
   { ...{
     "id": "animated-top-dock",
     "tags": [
@@ -12698,7 +12420,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 3.5
       }
     ]
-  }, component: CommunityRenderer92 },
+  }, component: CommunityRenderer83 },
   { ...{
     "id": "sketchbook",
     "tags": [
@@ -12765,7 +12487,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "value": "17 exact local files"
       }
     ]
-  }, component: CommunityRenderer93 },
+  }, component: CommunityRenderer84 },
   { ...{
     "id": "constellation-field",
     "tags": [
@@ -13045,7 +12767,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         }
       }
     ]
-  }, component: CommunityRenderer94 },
+  }, component: CommunityRenderer85 },
   { ...{
     "id": "particle-drift",
     "variantOf": "constellation-field",
@@ -13218,7 +12940,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer95 },
+  }, component: CommunityRenderer86 },
   { ...{
     "id": "particle-network",
     "variantOf": "constellation-field",
@@ -13392,7 +13114,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer96 },
+  }, component: CommunityRenderer87 },
   { ...{
     "id": "flux-vortex",
     "variantOf": "structure-flow",
@@ -13546,7 +13268,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer97 },
+  }, component: CommunityRenderer88 },
   { ...{
     "id": "portal-field",
     "tags": [
@@ -13775,7 +13497,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         }
       }
     ]
-  }, component: CommunityRenderer98 },
+  }, component: CommunityRenderer89 },
   { ...{
     "id": "amber-halftone",
     "variantOf": "predictive-arc",
@@ -13950,7 +13672,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer99 },
+  }, component: CommunityRenderer90 },
   { ...{
     "id": "diagnostics-panel",
     "tags": [
@@ -14138,7 +13860,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         }
       }
     ]
-  }, component: CommunityRenderer100 },
+  }, component: CommunityRenderer91 },
   { ...{
     "id": "skeuomorphic-toggle",
     "tags": [
@@ -14288,7 +14010,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer101 },
+  }, component: CommunityRenderer92 },
   { ...{
     "id": "matrix-field",
     "tags": [
@@ -14475,7 +14197,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         }
       }
     ]
-  }, component: CommunityRenderer102 },
+  }, component: CommunityRenderer93 },
   { ...{
     "id": "gateway-flow",
     "variantOf": "constellation-field",
@@ -14648,7 +14370,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer103 },
+  }, component: CommunityRenderer94 },
   { ...{
     "id": "connectivity-graph",
     "variantOf": "constellation-field",
@@ -14822,7 +14544,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer104 },
+  }, component: CommunityRenderer95 },
   { ...{
     "id": "interface-lines",
     "variantOf": "constellation-field",
@@ -14995,7 +14717,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer105 },
+  }, component: CommunityRenderer96 },
   { ...{
     "id": "wireframe-forms",
     "tags": [
@@ -15206,7 +14928,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         }
       }
     ]
-  }, component: CommunityRenderer106 },
+  }, component: CommunityRenderer97 },
   { ...{
     "id": "defense-lines",
     "variantOf": "constellation-field",
@@ -15379,7 +15101,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer107 },
+  }, component: CommunityRenderer98 },
   { ...{
     "id": "topo-field",
     "variantOf": "constellation-field",
@@ -15553,7 +15275,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         "default": 1
       }
     ]
-  }, component: CommunityRenderer108 },
+  }, component: CommunityRenderer99 },
   { ...{
     "id": "brand-orbs",
     "tags": [
@@ -15932,7 +15654,7 @@ export const READY_SHADERS: readonly ReadyShader[] = [
         }
       }
     ]
-  }, component: CommunityRenderer109 }
+  }, component: CommunityRenderer100 }
 ];
 export const VISIBLE_READY_SHADERS = READY_SHADERS.filter((shader) => !shader.variantOf);
 export const READY_SHADER_COLLECTION_COUNT = VISIBLE_READY_SHADERS.reduce((total, shader) => total + (shader.variants?.length || 1), 0);
