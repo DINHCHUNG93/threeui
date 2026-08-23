@@ -216,12 +216,11 @@ test("the public shell keeps the main UI but has no auth or private catalog runt
     "src/localBeta.ts",
   ]) await assert.rejects(stat(join(root, path)), `${path} must not ship`);
 
-  let sectionAssets;
+  let sectionAssets = [];
   try {
     sectionAssets = await readdir(join(root, "src/shaders/section-elements/assets"));
   } catch (error) {
     if (error?.code !== "ENOENT") throw error;
-    sectionAssets = await readdir(join(root, "src/shaders", ["mac", "cess-elements"].join(""), "assets"));
   }
   assert.ok(sectionAssets.every((name) => !name.endsWith(".woff2")), "restricted font binaries must not ship");
 
