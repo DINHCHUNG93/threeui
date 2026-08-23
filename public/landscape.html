@@ -2918,7 +2918,7 @@ let orbAz=0,orbEl=0,hovAz=0,hovEl=0,curAz=0,curEl=0;
 let zoomT=1,zoom=1;
 /* the camera orbits at CAM_D, so elevation sets its height: CAM_H + CAM_D*sin(el).
    Floor it well above the ground swell or the terrain is seen from underneath. */
-const CAM_FLOOR=1.35;
+const CAM_FLOOR=CAM_H;
 const EL_MIN=Math.asin((CAM_FLOOR-CAM_H)/CAM_D),EL_MAX=0.62;
 let K=1,stageW=0,stageH=0,stageTop=0,canvasW=0,canvasH=0;
 const ringsEl=document.getElementById('rings');

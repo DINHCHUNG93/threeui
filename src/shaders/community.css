@@ -8,8 +8,6 @@
 .japanese-tower-landscape,
 .liquid-metal-button,
 .spark-badge,
-.hypnotic-loops,
-.at-the-horizon,
 .threeui-background {
   position: relative;
   width: 100%;
@@ -107,47 +105,6 @@
 }
 
 .spark-badge__frame.is-ready {
-  opacity: 1;
-}
-
-.hypnotic-loops {
-  isolation: isolate;
-  background: #f15a24;
-}
-
-.hypnotic-loops__frame {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  background: #f15a24;
-  opacity: 0;
-}
-
-.hypnotic-loops__frame.is-ready {
-  opacity: 1;
-}
-
-.at-the-horizon {
-  isolation: isolate;
-  background: #000;
-}
-
-.at-the-horizon__frame {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  background: #000;
-  opacity: 0;
-  transition: opacity 180ms ease-out;
-}
-
-.at-the-horizon__frame.is-ready {
   opacity: 1;
 }
 

@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-21T06:11:34.631Z",
-  "sourceCommit": "ref: refs/heads/main",
-  "communityParents": 50,
-  "communityRoutes": 111,
-  "communityVariants": 141,
-  "excludedProParents": 45,
-  "excludedBetaParents": 2,
-  "layoutStylesSha256": "7afd93e33343e9f7695c6f592881fa49fd901e8824a12b3219d4ff78248b3c7f",
-  "rendererStylesSha256": "ded8fb710124a788f2f9f8a0e12a91ba075c8d2d376abb804acc23444a773e94",
+  "generatedAt": "2026-08-23T07:29:26.170Z",
+  "sourceCommit": "b808785bd1ff7c730da7433f8ad434e57446f493",
+  "communityParents": 43,
+  "communityRoutes": 102,
+  "communityVariants": 138,
+  "excludedProParents": 57,
+  "excludedBetaParents": 25,
+  "layoutStylesSha256": "632dc648dcf8eed587ca155c5b58ed84bae4cdce384009faeed95f4a930ced90",
+  "rendererStylesSha256": "6d975e7d3332aa85d7bc1a55cdff592d63b0403f0988dfefa905dbe4c341d328",
   "components": [
     {
       "id": "kage-landing-page",
@@ -188,30 +188,6 @@
       }
     },
     {
-      "id": "hypnotic-loops",
-      "variantIds": [
-        "lines",
-        "dots",
-        "rays",
-        "type"
-      ],
-      "controlKeys": [
-        "shape"
-      ],
-      "variantControlKeys": {
-        "lines": [],
-        "dots": [],
-        "rays": [],
-        "type": []
-      }
-    },
-    {
-      "id": "at-the-horizon",
-      "variantIds": [],
-      "controlKeys": [],
-      "variantControlKeys": {}
-    },
-    {
       "id": "elements",
       "variantIds": [
         "elemental-water",
@@ -302,7 +278,7 @@
       }
     },
     {
-      "id": "gradient-collection",
+      "id": "gallery-heading",
       "variantIds": [
         "rising-diagonal",
         "falling-diagonal",
@@ -311,15 +287,50 @@
       ],
       "controlKeys": [
         "mode",
+        "font",
+        "weight",
+        "headlineSize",
         "hue",
         "saturation",
         "brightness"
       ],
       "variantControlKeys": {
-        "rising-diagonal": [],
-        "falling-diagonal": [],
-        "horizontal-sweep": [],
-        "vertical-loop": []
+        "rising-diagonal": [
+          "mode",
+          "font",
+          "weight",
+          "headlineSize",
+          "hue",
+          "saturation",
+          "brightness"
+        ],
+        "falling-diagonal": [
+          "mode",
+          "font",
+          "weight",
+          "headlineSize",
+          "hue",
+          "saturation",
+          "brightness"
+        ],
+        "horizontal-sweep": [
+          "mode",
+          "font",
+          "weight",
+          "headlineSize",
+          "hue",
+          "saturation",
+          "brightness"
+        ],
+        "vertical-loop": [
+          "mode",
+          "font",
+          "weight",
+          "headlineSize",
+          "hue",
+          "saturation",
+          "brightness"
+        ]
       }
     },
     {
@@ -330,7 +341,7 @@
         "induction-button",
         "plasma-button",
         "tactile-button",
-        "uploading-button"
+        "thinking-button"
       ],
       "controlKeys": [
         "mode",
@@ -344,21 +355,11 @@
         "induction-button": [],
         "plasma-button": [],
         "tactile-button": [],
-        "uploading-button": []
+        "thinking-button": []
       }
     },
     {
-      "id": "particle-orb",
-      "variantIds": [],
-      "controlKeys": [
-        "hue",
-        "saturation",
-        "brightness"
-      ],
-      "variantControlKeys": {}
-    },
-    {
-      "id": "maccess-glass-button",
+      "id": "rectangle-buttons",
       "variantIds": [
         "dark-pill",
         "launch-button",
@@ -445,20 +446,6 @@
       }
     },
     {
-      "id": "maccess-workflow",
-      "variantIds": [
-        "maccess-workflow",
-        "maccess-testimonial-intro",
-        "maccess-newsletter-footer"
-      ],
-      "controlKeys": [],
-      "variantControlKeys": {
-        "maccess-workflow": [],
-        "maccess-testimonial-intro": [],
-        "maccess-newsletter-footer": []
-      }
-    },
-    {
       "id": "character-carousel",
       "variantIds": [
         "character-filmstrip",
@@ -488,29 +475,6 @@
         "saturation",
         "brightness"
       ],
-      "variantControlKeys": {}
-    },
-    {
-      "id": "genie-dock",
-      "variantIds": [],
-      "controlKeys": [],
-      "variantControlKeys": {}
-    },
-    {
-      "id": "recursive-erosion",
-      "variantIds": [],
-      "controlKeys": [
-        "mode",
-        "hue",
-        "saturation",
-        "brightness"
-      ],
-      "variantControlKeys": {}
-    },
-    {
-      "id": "quantera-trading-background",
-      "variantIds": [],
-      "controlKeys": [],
       "variantControlKeys": {}
     },
     {
@@ -693,7 +657,12 @@
     },
     {
       "id": "warp-field",
-      "variantIds": [],
+      "variantIds": [
+        "streaks",
+        "letters",
+        "keycaps",
+        "hyperspace"
+      ],
       "controlKeys": [
         "speed",
         "streakOpacity",
@@ -703,7 +672,12 @@
         "saturation",
         "brightness"
       ],
-      "variantControlKeys": {}
+      "variantControlKeys": {
+        "streaks": [],
+        "letters": [],
+        "keycaps": [],
+        "hyperspace": []
+      }
     },
     {
       "id": "engraved-certificate",

@@ -711,7 +711,10 @@ svg {
   text-transform: capitalize;
 }
 
-.account-popover button {
+.account-popover button,
+.account-affiliates-link {
+  display: flex;
+  align-items: center;
   min-height: 32px;
   padding: 6px 8px;
   border-radius: var(--r-xs);
@@ -721,8 +724,152 @@ svg {
   text-align: left;
 }
 
-.account-popover button:hover {
+.account-popover button:hover,
+.account-affiliates-link:hover {
   background: var(--hover);
+}
+
+.feedback-popover {
+  position: fixed;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  z-index: 1000;
+  width: min(310px, calc(100vw - 24px));
+  max-width: calc(100vw - 24px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.feedback-form > strong {
+  font-size: 13px;
+  font-weight: 450;
+}
+
+.feedback-description,
+.feedback-error,
+.feedback-success p {
+  margin: 0;
+  font-size: 11px;
+  line-height: 17px;
+}
+
+.feedback-description {
+  color: var(--foreground-muted);
+}
+
+.feedback-form textarea {
+  width: 100%;
+  min-height: 118px;
+  resize: vertical;
+  padding: 9px 10px;
+  border: 0.5px solid var(--border);
+  border-radius: var(--r-xs);
+  outline: none;
+  background: var(--background-inset);
+  color: var(--foreground);
+  font: 400 12px/18px var(--font-sans);
+}
+
+.feedback-form textarea::placeholder {
+  color: color-mix(in oklab, var(--foreground-muted) 68%, transparent);
+}
+
+.feedback-form textarea:focus {
+  border-color: color-mix(in oklab, var(--foreground) 34%, var(--border));
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--foreground) 6%, transparent);
+}
+
+.feedback-count {
+  align-self: flex-end;
+  color: var(--foreground-muted);
+  font: 400 9px/12px var(--font-mono);
+}
+
+.feedback-error {
+  color: var(--danger, #b43c3c);
+}
+
+.feedback-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.account-popover .feedback-actions button {
+  min-width: 0;
+  flex: 1 1 112px;
+  text-align: center;
+}
+
+.account-popover .feedback-actions .feedback-send {
+  flex-grow: 1.35;
+  background: var(--foreground);
+  color: var(--background);
+}
+
+.account-popover .feedback-actions .feedback-send:hover {
+  background: color-mix(in oklab, var(--foreground) 88%, transparent);
+}
+
+.account-popover .feedback-actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.feedback-success {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  min-height: 72px;
+  padding: 12px;
+  border-radius: var(--r-xs);
+  background: var(--tint);
+  color: var(--foreground);
+}
+
+.feedback-success > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--foreground);
+  color: var(--background);
+  font-size: 12px;
+}
+
+.account-legal-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  padding-top: 8px;
+  border-top: 0.5px solid var(--border);
+}
+
+.account-legal-links a {
+  padding: 5px 4px;
+  border-radius: var(--r-xs);
+  color: var(--foreground-muted);
+  font-size: 10px;
+  line-height: 15px;
+  text-align: center;
+}
+
+.account-legal-links a:hover {
+  background: var(--hover);
+  color: var(--foreground);
 }
 
 .account-signin-compact,
@@ -1730,6 +1877,8 @@ pre {
 .shader-preview .text-path-study,
 .shader-preview .sunset-valley-scene,
 .shader-preview .mechanical-keyboard,
+.shader-preview .grid-illustrations,
+.shader-preview .retro-metallic,
 .shader-preview .landscape-scene,
 .shader-preview .japanese-tower-landscape,
 .shader-preview .isometric-motion-grid,
@@ -1762,6 +1911,14 @@ pre {
 }
 
 .shader-preview .mechanical-keyboard {
+  pointer-events: auto;
+}
+
+.shader-preview .grid-illustrations {
+  pointer-events: auto;
+}
+
+.shader-preview .retro-metallic {
   pointer-events: auto;
 }
 
@@ -2939,6 +3096,99 @@ tbody tr:not(:last-child) {
   line-height: 21px;
 }
 
+.pricing-footer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 72px;
+  padding-top: 20px;
+  border-top: 0.5px solid var(--border);
+  color: var(--foreground-muted);
+  font-size: 11px;
+  line-height: 19px;
+}
+
+.pricing-footer a,
+.legal-section a,
+.legal-page-links a {
+  color: var(--foreground);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, var(--foreground-muted) 48%, transparent);
+  text-underline-offset: 3px;
+}
+
+.pricing-footer a:hover,
+.legal-section a:hover,
+.legal-page-links a:hover {
+  text-decoration-color: currentColor;
+}
+
+.legal-doc {
+  max-width: 860px;
+}
+
+.legal-updated {
+  display: inline-flex;
+  margin-top: 10px;
+  padding: 5px 8px;
+  border-radius: var(--r-xs);
+  background: var(--tint);
+  color: var(--foreground-muted);
+  font: 400 10px/16px var(--font-mono);
+}
+
+.legal-section {
+  max-width: 76ch;
+  margin-top: 48px;
+}
+
+.legal-section h2 {
+  margin: 0 0 12px;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.legal-section h3 {
+  margin: 24px 0 8px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.legal-section p,
+.legal-section li {
+  color: var(--foreground-muted);
+  font-size: 12px;
+  line-height: 22px;
+}
+
+.legal-section p {
+  margin: 0 0 12px;
+}
+
+.legal-section ul {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0 0;
+  padding-left: 20px;
+}
+
+.legal-section strong {
+  color: var(--foreground);
+  font-weight: 500;
+}
+
+.legal-page-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 56px;
+  padding-top: 20px;
+  border-top: 0.5px solid var(--border);
+  font-size: 11px;
+}
+
 .mcp-doc .doc-topline h1 {
   margin-bottom: 0;
 }
@@ -3442,6 +3692,8 @@ tbody tr:not(:last-child) {
 .results button {
   position: relative;
   display: block;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 160px;
   width: 100%;
   min-width: 0;
   min-height: 0;
@@ -3873,6 +4125,14 @@ tbody tr:not(:last-child) {
   margin-bottom: 0;
 }
 
+.browse-controls-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 18px;
+}
+
 .browse-filter {
   position: relative;
   display: flex;
@@ -3922,9 +4182,10 @@ tbody tr:not(:last-child) {
 
 .browse-category-filters {
   display: flex;
+  flex: 1;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: 18px;
+  min-width: 0;
 }
 
 .browse-category-filters button {
@@ -3967,6 +4228,8 @@ tbody tr:not(:last-child) {
 }
 
 .browse-item {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 220px;
   min-width: 0;
   opacity: 0;
   transform: translateY(6px);
@@ -4014,7 +4277,6 @@ tbody tr:not(:last-child) {
 .browse-item-link:hover .browse-media,
 .browse-item-link:focus-visible .browse-media {
   border-color: color-mix(in oklab, var(--foreground) 30%, transparent);
-  transform: translateY(-2px);
 }
 
 .browse-item-link:active .browse-media {
@@ -4122,6 +4384,10 @@ tbody tr:not(:last-child) {
     align-items: flex-start;
     flex-direction: column;
     gap: 12px;
+  }
+
+  .browse-controls-row {
+    flex-direction: column;
   }
 
   .browse-filter {

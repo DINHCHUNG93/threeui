@@ -54,6 +54,33 @@ function sourceReferenceSection(files, sourceBaseUrl, sourcePageUrl) {
   ];
 }
 
+export function buildPromptSourceFallback(shader) {
+  const files = (shader.sourceFiles ?? []).flatMap((sourceFile, index) => {
+    const path = String(sourceFile).split(" — ", 1)[0].trim();
+    if (!path || !/\.[a-z0-9]+$/i.test(path)) return [];
+    const publicPath = path.startsWith("public/") ? `/${path.slice("public/".length)}` : undefined;
+    return [{
+      path,
+      language: "text",
+      role: publicPath ? "canonical-source" : index === 0 ? "component" : "reference-source",
+      bytes: 0,
+      lines: 0,
+      sha256: "local-beta-reference",
+      ...(publicPath ? { sourceUrl: publicPath } : {}),
+    }];
+  });
+
+  if (files.length > 0) return files;
+  return [{
+    path: `${shader.id}.tsx`,
+    language: "tsx",
+    role: "component",
+    bytes: 0,
+    lines: 0,
+    sha256: "local-beta-reference",
+  }];
+}
+
 export function buildCodeBundle({ shader, files, assets }) {
   return [
     `# ${shader.label} — Complete source`,

@@ -48,11 +48,12 @@ function catalogItems(catalog, origin) {
 
 export function buildRouteSeo(route, origin, catalog = []) {
   const defaultImage = absoluteUrl(origin, "/thumbnails/threeui-intro.jpg");
+  const browseImage = absoluteUrl(origin, "/thumbnails/threeui-browse.jpg");
   const indexable = route.page !== "not-found" && route.page !== "capture" && route.page !== "oauth-consent";
   let title = brandedTitle(SITE_TITLE);
   let description = SITE_DESCRIPTION;
   let canonicalPath = route.canonicalPath ?? STATIC_ROUTE_PATHS.browse;
-  let image = defaultImage;
+  let image = route.page === "browse" ? browseImage : defaultImage;
   let structuredData;
 
   if (route.page === "installation") {
@@ -84,6 +85,41 @@ export function buildRouteSeo(route, origin, catalog = []) {
       "@context": "https://schema.org",
       "@type": "WebPage",
       name: "ThreeUI Pro Pricing",
+      description,
+      url: absoluteUrl(origin, canonicalPath),
+    };
+  } else if (route.page === "affiliates") {
+    title = brandedTitle("Affiliate Program — Earn 50%");
+    description = "Join the ThreeUI affiliate program and earn 50% of eligible referred revenue for up to 12 months with a 60-day attribution window.";
+    structuredData = {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: "ThreeUI Affiliate Program",
+      description,
+      url: absoluteUrl(origin, canonicalPath),
+      about: {
+        "@type": "Organization",
+        name: "ThreeUI",
+        url: absoluteUrl(origin, "/"),
+      },
+    };
+  } else if (route.page === "privacy") {
+    title = brandedTitle("Privacy Policy");
+    description = "Learn how ThreeUI handles account, checkout, analytics, and component usage data.";
+    structuredData = {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: "ThreeUI Privacy Policy",
+      description,
+      url: absoluteUrl(origin, canonicalPath),
+    };
+  } else if (route.page === "terms") {
+    title = brandedTitle("Terms of Use");
+    description = "Review the ThreeUI terms for Community and Pro access, purchases, commercial use, and source distribution.";
+    structuredData = {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: "ThreeUI Terms of Use",
       description,
       url: absoluteUrl(origin, canonicalPath),
     };
