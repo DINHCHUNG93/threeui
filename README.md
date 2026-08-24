@@ -1,3 +1,39 @@
+
+Thư viện 3D UI mã nguồn mở cực đẹp 🎉 cho website với hơn 150+ hiệu ứng, chỉ một câu prompt AI với thư viện này bạn sẽ có ngay hiệu ứng bắt mắt khác biệt
+
+Nếu bạn muốn tạo những website có hero 3D, shader, animation và hiệu ứng WebGL nhưng không muốn bắt đầu mọi thứ từ con số 0, ThreeUI của Meng To là một dự án rất đáng chú ý.
+
+ThreeUI Community là phiên bản mã nguồn mở, không cần đăng nhập, cung cấp các component Three js có thể xem trực tiếp, tùy chỉnh và lấy source để đưa vào dự án. 
+
+Có gì nổi bật?
+
+* 50+ component 3D Community, với tổng cộng 164 kết quả/variant để khám phá.
+* Live preview, variant picker, controls, themes và responsive layout.
+* Các hiệu ứng Three js, Shader, WebGL được thiết kế sẵn theo hướng production-ready.
+* Có thể lấy source code và chỉnh sửa trực tiếp bằng React.
+* Hỗ trợ component package qua npm: @designcodeio/threeui.
+* Có thể import từng component riêng để giảm kích thước dependency.
+* Phù hợp để xây dựng landing page, portfolio, SaaS, product page và website AI có giao diện 3D ấn tượng. 
+
+Đặc biệt hợp với AI Coding
+
+Điểm mình thích ở ThreeUI là cách dự án kết hợp component 3D + source code + variant.
+
+Thay vì nói với AI:
+
+“Hãy tạo cho tôi một hiệu ứng 3D đẹp.”
+
+Bạn có thể đưa một component ThreeUI cho Claude Code, Codex hoặc Cursor, sau đó yêu cầu:
+
+“Giữ nguyên cấu trúc 3D này, đổi màu, lighting, animation và nội dung theo thương hiệu của tôi.”
+
+Đây là hướng rất phù hợp với xu thế AI-generated UI: bắt đầu từ một thiết kế có sẵn chất lượng cao rồi để agent tiếp tục customize.
+
+ThreeUI cho thấy tương lai của web design có thể không còn là “AI viết CSS từ đầu”, mà là AI lấy những visual component chất lượng cao rồi tự biến đổi chúng thành giao diện hoàn chỉnh.
+
+
+
+
 # ThreeUI Community
 
 The open-source, login-free edition of ThreeUI. It uses the same application shell, layout, navigation, browse grid, search, themes, responsive behavior, component pages, live renderers, controls, variant picker, and source tabs as the main project.
